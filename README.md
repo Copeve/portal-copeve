@@ -18,11 +18,20 @@ Instale o VS Code
 
 1) Siga os procedimentos do site: https://code.visualstudio.com/download
 
+Libere a executação de script
+
+1) Abra o pronpt em modo administrador
+2) Execute o comando: Set-ExecutionPolicy Unrestricted
+
 Instale o Git
 
  1) Siga as instruçãoe do site: https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git
 
- Faça chreckout nesse projeto
+Instale o Yarn
+
+1) npm install --global yarn
+
+Faça chreckout nesse projeto
 
  1) no VSCode acesse o Source Control
  2) Faça o checkout
