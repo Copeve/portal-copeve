@@ -17,3 +17,14 @@ Instale o NodeJS com o NPM
 Instale o VS Code
 
 1) Siga os procedimentos do site: https://code.visualstudio.com/download
+
+Instale o Git
+
+ 1) Siga as instruçãoe do site: https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git
+
+ Faça chreckout nesse projeto
+
+ 1) no VSCode acesse o Source Control
+ 2) Faça o checkout
+
+Bora Codar!
