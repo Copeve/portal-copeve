@@ -4,6 +4,7 @@ import swaggerSetup from '../middleware/swagger';
 import bodyParser from 'body-parser';
 import routesConcursos from './concursosRoutes';
 import routesNoticias from './noticiasRoutes';
+import routesResultados from './resultadosRoutes';
 
 const app = express();
 const port = 4000;
@@ -21,7 +22,7 @@ app.get('/example', (req: Request, res: Response) => {
     res.send('Hello World');
 });
 
-app.use(bodyParser.json(), routesConcursos, routesNoticias);
+app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
