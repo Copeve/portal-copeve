@@ -2,9 +2,9 @@ import express from 'express';
 import { Request, Response } from 'express';
 import swaggerSetup from '../middleware/swagger';
 import bodyParser from 'body-parser';
-import routesConcursos from './concursosRoutes';
-import routesNoticias from './noticiasRoutes';
-import routesResultados from './resultadosRoutes';
+import routesConcursos from './api/routes/concursosRoutes';
+import routesNoticias from './api/routes/noticiasRoutes';
+import routesResultados from './api/routes/resultadosRoutes';
 
 const app = express();
 const port = 4000;
