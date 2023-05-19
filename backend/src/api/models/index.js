@@ -1,11 +1,21 @@
 'use strict';
+/*import{pathImport} from 'path';
+import {sequelize} from 'sequelize';
+import {processImport} from 'process';
+import {configImport} from '__dirname + /../config/config.json';
+import{fsImport} from 'fs';
+const path = pathImport;
+const Sequelize = sequelize;
+const process = processImport;
+const config = configImport[env];
+const fs = fsImport;*/
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+//const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
 let sequelize;

@@ -9,23 +9,25 @@ const {
     Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-    class Tipos_arquivos extends Model {
+    class Noticias extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
         static associate(models) {
-            Tipos_arquivos.belongsTo(models.Arquivos_concursos, {
-                foreignKey: 'tipo_arquivo'
-            });
+            Noticias.hasOne(models.Concursos, {foreignKey: 'concurso'});
         }
     }
-    Tipos_arquivos.init({
-        nome: DataTypes.STRING
+    Noticias.init({
+        titulo: DataTypes.STRING,
+        corpo: DataTypes.STRING,
+        data_postagem: DataTypes.DATE,
+        data_atualizacao: DataTypes.DATE,
+        destaque: DataTypes.BOOLEAN
     }, {
         sequelize,
-        modelName: 'Tipos_arquivos',
+        modelName: 'Noticias',
     });
-    return Tipos_arquivos;
+    return Noticias;
 };

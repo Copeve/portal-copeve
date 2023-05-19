@@ -1,3 +1,9 @@
+/*'use strict';
+import {sequelize} from 'sequelize';
+const {
+    Model
+} = sequelize;
+*/
 'use strict';
 const {
     Model
@@ -10,7 +16,9 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
         static associate(models) {
-            // define association here
+            Tipos_eventos.belongsTo(models.Eventos_concursos, {
+                foreignKey: 'tipo_evento'
+            });
         }
     }
     Tipos_eventos.init({

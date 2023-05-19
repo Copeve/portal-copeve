@@ -1,3 +1,9 @@
+/*'use strict';
+import {sequelize} from 'sequelize';
+const {
+    Model
+} = sequelize;
+*/
 'use strict';
 const {
     Model
