@@ -10,6 +10,7 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             titulo: {
+                allowNull: false,
                 type: Sequelize.STRING
             },
             corpo: {
@@ -26,7 +27,6 @@ module.exports = {
             },
             concurso:{
                 type: Sequelize.INTEGER, 
-                allowNull: false, 
                 references: { model:'Concursos', key: 'id' }
             },
             createdAt: {

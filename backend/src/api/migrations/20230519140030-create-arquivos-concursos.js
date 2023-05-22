@@ -10,13 +10,11 @@ module.exports = {
                 type: Sequelize.INTEGER
             },
             titulo: {
+                allowNull:false,
                 type: Sequelize.STRING
             },
             link: {
                 type: Sequelize.STRING
-            },
-            anexo:{
-                type: Sequelize.INTEGER, 
             },
             concurso:{
                 type: Sequelize.INTEGER, 
