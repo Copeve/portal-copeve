@@ -1,5 +1,5 @@
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: (queryInterface) => {
         return queryInterface.bulkInsert('Eventos_concursos', [
             {
                 evento: 'evento x',
@@ -84,7 +84,7 @@ module.exports = {
         ], {});
     },
 
-    down: (queryInterface, Sequelize) => {
+    down: (queryInterface) => {
         return queryInterface.bulkDelete('Eventos_concursos', null, {});
     }
 };

@@ -1,5 +1,4 @@
 import express from 'express';
-import { Request, Response } from 'express';
 import swaggerSetup from '../middleware/swagger';
 import bodyParser from 'body-parser';
 import routesConcursos from './api/routes/concursosRoutes';

@@ -1,5 +1,5 @@
 module.exports = {
-    up: (queryInterface, Sequelize) => {
+    up: (queryInterface) => {
         return queryInterface.bulkInsert('Tipos_arquivos', [
             {
                 nome: 'pdf',
@@ -24,7 +24,7 @@ module.exports = {
         ], {});
     },
 
-    down: (queryInterface, Sequelize) => {
+    down: (queryInterface) => {
         return queryInterface.bulkDelete('Tipos_arquivos', null, {});
     }
 };
