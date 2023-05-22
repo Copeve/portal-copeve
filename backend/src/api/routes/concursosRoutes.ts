@@ -1,20 +1,21 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
 const router = Router();
+import ConcursoController from '';
 
 //GET
-router.get('/api/concursoos',  (req: Request, res: Response)=>{
+router.get('/api/concursos',  ConcursoController.pegaTodosOsConcursos/*(req: Request, res: Response)=>{
     try {
         res.status(200).json({
             data:{
-                message:'Busca no banco por concursooooos'
+                message:'Busca no banco por concursos'
             }
         });
     } catch (error) {
         res.status(500).json(error);
     }
-});
-router.get('/api/concursos',  (req: Request, res: Response)=>{
+}*/);
+/*router.get('/api/concursos',  (req: Request, res: Response)=>{
     try {
         res.status(200).json({
             data:{
@@ -179,5 +180,5 @@ router.delete('/api/concursos/destaques/:idConcurso', (req: Request, res: Respon
     } catch (error) {
         res.status(500).json(error);
     }
-});
+});*/
 export default router;

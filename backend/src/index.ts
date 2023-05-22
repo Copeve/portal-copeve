@@ -18,9 +18,9 @@ const port = 4000;
  *       200:
  *         description: Resposta de Hello World
  */
-app.get('/example', (req: Request, res: Response) => {
+/*app.get('/example', (req: Request, res: Response) => {
     res.send('Hello World');
-});
+});*/
 
 app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados);
 
