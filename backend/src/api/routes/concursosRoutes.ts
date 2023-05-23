@@ -1,9 +1,9 @@
 import { Router } from 'express';
 const router = Router();
-//import ConcursoController from '';
+import ConcursoController from '../controllers/ConcursoController';
 
 //GET
-/*router.get('/api/concursos',  ConcursoController.pegaTodosOsConcursos(req: Request, res: Response)=>{
+/*router.get('/api/concursos',  ConcursoController.pegaTodosOsConcursos);(req: Request, res: Response)=>{
     try {
         res.status(200).json({
             data:{

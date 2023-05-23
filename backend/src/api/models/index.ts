@@ -3,14 +3,18 @@
 import {sequelize} from 'sequelize';
 import {processImport} from 'process';
 import {configImport} from '__dirname + /../config/config.json';
-import{fsImport} from 'fs';
 const path = pathImport;
 const Sequelize = sequelize;
 const process = processImport;
+import{fsImport} from 'fs';
 const config = configImport[env];
 const fs = fsImport;*/
 const fs = require('fs');
-const path = require('path');
+/*import * as fs from 'fs';
+import * as path from 'path';
+import * as Sequelize from 'sequelize';
+import * as process from 'process';*/
+//const path = require('path');
 const Sequelize = require('sequelize');
 const process = require('process');
 const basename = path.basename(__filename);
