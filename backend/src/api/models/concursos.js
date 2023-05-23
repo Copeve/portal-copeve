@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
             Concursos.belongsTo(models.Arquivos_concursos, {
                 foreignKey: 'concurso'
             });
+            Concursos.belongsTo(models.Arquivos, {
+                foreignKey: 'concurso'
+            });
         }
     }
     Concursos.init({
