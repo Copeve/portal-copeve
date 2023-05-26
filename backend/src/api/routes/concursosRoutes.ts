@@ -1,9 +1,9 @@
-import { Router } from 'express';
-const router = Router();
-import ConcursoController from '../controllers/ConcursoController';
-
+import express from 'express';
+const router = express.Router();
+import {ConcursoController} from '../controllers/ConcursoController';
 //GET
-/*router.get('/api/concursos',  ConcursoController.pegaTodosOsConcursos);(req: Request, res: Response)=>{
+router.get('/api/concursos',  ConcursoController.pegaTodosOsConcursos);
+/*(req: Request, res: Response)=>{
     try {
         res.status(200).json({
             data:{
@@ -13,7 +13,7 @@ import ConcursoController from '../controllers/ConcursoController';
     } catch (error) {
         res.status(500).json(error);
     }
-});*/
+};
 /*router.get('/api/concursos',  (req: Request, res: Response)=>{
     try {
         res.status(200).json({
