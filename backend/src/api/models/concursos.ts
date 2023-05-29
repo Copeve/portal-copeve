@@ -26,9 +26,10 @@ module.exports = (sequelize:any, DataTypes:any) => {
         encerrado!: boolean;
 
         static associate(models:any) {
-            /*Concursos.belongsTo(models.Eventos_concursos, {
+            Concursos.hasOne(models.Eventos, {
                 foreignKey: 'concurso'
             });
+            /*
             Concursos.belongsTo(models.Noticias, {
                 foreignKey: 'concurso'
             });
