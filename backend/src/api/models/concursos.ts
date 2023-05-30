@@ -9,7 +9,8 @@ interface ConcursosAttributes{
   ano: number,
   data_inicio: Date, 
   data_fim: Date, 
-  encerrado: boolean
+  encerrado: boolean, 
+  link_inscricao: string
 }
 
 module.exports = (sequelize:any, DataTypes:any) => {
@@ -24,15 +25,17 @@ module.exports = (sequelize:any, DataTypes:any) => {
         data_inicio!: Date; 
         data_fim!: Date; 
         encerrado!: boolean;
+        link_inscricao!: string;
 
         static associate(models:any) {
             Concursos.hasOne(models.Eventos, {
                 foreignKey: 'concurso'
             });
-            /*
-            Concursos.belongsTo(models.Noticias, {
+            
+            Concursos.hasOne(models.Noticias, {
                 foreignKey: 'concurso'
             });
+            /*
             Concursos.belongsTo(models.Arquivos_concursos, {
                 foreignKey: 'concurso'
             });*/
@@ -46,7 +49,8 @@ module.exports = (sequelize:any, DataTypes:any) => {
         ano: DataTypes.INTEGER,
         data_inicio: DataTypes.DATE,
         data_fim: DataTypes.DATE,
-        encerrado: DataTypes.BOOLEAN
+        encerrado: DataTypes.BOOLEAN, 
+        link_inscricao: DataTypes.STRING
     }, {
         sequelize,
         modelName: 'Concursos',

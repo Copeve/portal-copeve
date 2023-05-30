@@ -2,34 +2,41 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
     async up(queryInterface, Sequelize) {
-        await queryInterface.createTable('Eventos', {
+        await queryInterface.createTable('Noticias', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: Sequelize.INTEGER
             },
-            evento: {
+            titulo: {
                 type: Sequelize.STRING,
                 allowNull: false
             },
-            data: {
-                allowNull:false,
-                type: Sequelize.DATE
+            corpo: {
+                type: Sequelize.STRING,
+                allowNull: false
             },
-            concurso: {
+            data_postagem:{
+                type: Sequelize.DATE, 
+                allowNull: false
+            },
+            data_atualizacao:{
+                type: Sequelize.DATE, 
+                allowNull: false
+            },
+            destaque:{
+                type: Sequelize.BOOLEAN, 
+                allowNull: false
+            },
+            concurso:{
+                allowNull: true,
                 type: Sequelize.INTEGER,
-                allowNull: false, 
                 references: { model:'Concursos', key: 'id' }
             },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
-            },
-            tipo_evento: {
-                type: Sequelize.INTEGER,
-                allowNull: false, 
-                references: { model:'Tipos_eventos', key: 'id' }
             },
             updatedAt: {
                 allowNull: false,
@@ -38,6 +45,6 @@ module.exports = {
         });
     },
     async down(queryInterface, Sequelize) {
-        await queryInterface.dropTable('Eventos');
+        await queryInterface.dropTable('Noticias');
     }
 };

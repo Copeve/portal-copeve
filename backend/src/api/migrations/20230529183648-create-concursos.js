@@ -34,6 +34,10 @@ module.exports = {
                 allowNull: false,
                 references: { model:'Grupos_concursos', key: 'id' }
             },
+            link_inscricao:{
+                allowNull: false,  
+                type: Sequelize.STRING 
+            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE
