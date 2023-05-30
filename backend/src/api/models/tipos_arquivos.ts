@@ -17,6 +17,9 @@ module.exports = (sequelize:any, DataTypes:any) => {
         nome!: string;
         static associate(models:any) {
             // define association here
+            Tipos_arquivos.hasOne(models.Arquivos_concursos, {
+                foreignKey: 'tipo_arquivo'
+            });
         }
     }
     Tipos_arquivos.init({

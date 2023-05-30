@@ -35,10 +35,10 @@ module.exports = (sequelize:any, DataTypes:any) => {
             Concursos.hasOne(models.Noticias, {
                 foreignKey: 'concurso'
             });
-            /*
-            Concursos.belongsTo(models.Arquivos_concursos, {
+            
+            Concursos.hasOne(models.Arquivos_concursos, {
                 foreignKey: 'concurso'
-            });*/
+            });
             Concursos.belongsTo(models.Grupos_concursos, {
                 foreignKey: 'grupo_concurso'
             });
