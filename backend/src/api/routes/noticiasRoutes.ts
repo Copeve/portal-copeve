@@ -1,19 +1,12 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
+import { NoticiasController } from '../controllers/NoticiaController';
 const router = Router();
 
 //GET
 
-router.get('/api/noticias', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(
-            {data:
-                {message:'Busca no banco por noticias'}
-            });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.get('/api/noticias', NoticiasController.pegaTodasAsNoticias);
+
 router.get('/api/noticias/:idNoticia', (req: Request, res: Response)=>{
     const {idNoticia}=req.params;
     try {

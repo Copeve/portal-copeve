@@ -1,18 +1,10 @@
 import { Router } from 'express';
 import { Request, Response } from 'express';
+import { ResultadoController } from '../controllers/ResultadoController';
 const router = Router();
 
 //GET
-router.get('/api/resultados', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(
-            {data:
-                {message:'Busca no banco por resultados'}
-            });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.get('/api/resultados', ResultadoController.pegaTodosOsResultados);
 router.get('/api/resultados/destaques', (req: Request, res: Response)=>{
     try {
         res.status(200).json(
