@@ -3,54 +3,20 @@ const router = express.Router();
 import {ConcursoController} from '../controllers/ConcursoController';
 //GET
 router
-    .get('/api/concursos',  ConcursoController.pegaConcursosAbertos)
+    .get('/api/concursos',  ConcursoController.pegaTodosOsConcursos)
     .get('api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
     .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados)
     .get('/api/concursos/:idConcurso', ConcursoController.PegaConcursoPorId)
     .get('/api/concursos/:idConcurso/eventos', ConcursoController.PegaEventosPorId)
     .get('api/concursos/:idConcurso/arquivos', ConcursoController.pegaArquivosPorId)
-    .get('/api/concursos/:idConcurso/noticias', ConcursoController.pegaNoticiasPorId);
+    .get('/api/concursos/:idConcurso/noticias', ConcursoController.pegaNoticiasPorId)
+    .post('api/concursos', ConcursoController.adicionaConcurso)
+    .post('api/concursos/eventos', ConcursoController.adicionaEventoEmConcurso)
+    .post('api/concursos/noticias', ConcursoController.adicionaNoticiaEmConcurso);
 /*
-router.get('/api/concursos/:idConcurso/noticias',  (req: Request, res: Response)=>{
-    const {idConcurso} = req.params;
-    try {
-        res.status(200).json({
-            data:{
-                message:`Busca no banco por noticias do concurso ${idConcurso}`
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-
 //POST
 
-router.post('/api/concursos', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(req.body);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-
-router.post('/api/concursos/:idConcurso/eventos', (req: Request, res: Response)=>{
-    const {idConcurso}=req.params;
-    try {
-        res.status(200).json({ idConcurso,...req.body});
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.post('/api/concursos/:idConcurso/faq', (req: Request, res: Response)=>{
-    const {idConcurso}=req.params;
-    try {
-        res.status(200).json({ idConcurso,...req.body});
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.post('/api/concursos/:idConcurso/noticias', (req: Request, res: Response)=>{
+router.post('/api/concursos/:idConcurso/arquivos', (req: Request, res: Response)=>{
     const {idConcurso}=req.params;
     try {
         res.status(200).json({ idConcurso,...req.body});

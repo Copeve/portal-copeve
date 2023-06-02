@@ -22,4 +22,11 @@ export default class ConcursosServices extends Services{
     pegaNoticias(id:string){
         return noticiasServices.pegaRegistrosComCondicao({concurso:id});
     }
+
+    adicionaEvento(dados:object){
+        return eventosServices.adicionaRegistro(dados);
+    }
+    adicionaNoticia(dados:object){
+        return noticiasServices.adicionaRegistro(dados);
+    }
 }
