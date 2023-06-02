@@ -4,18 +4,11 @@ import { ResultadoController } from '../controllers/ResultadoController';
 const router = Router();
 
 //GET
-router.get('/api/resultados', ResultadoController.pegaTodosOsResultados);
-router.get('/api/resultados/destaques', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(
-            {data:
-                {message:'Busca no banco por resultados em destaque'}
-            });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/resultados/:idResultado', (req: Request, res: Response)=>{
+router
+    .get('/api/resultados', ResultadoController.pegaTodosOsResultados)
+    .get('/api/resultados/destaques', ResultadoController.pegaResultadosEmDestaque)
+    .get('/api/resultados/:idResultado', ResultadoController.pegaResultadoPorId);
+/*router.get('/api/resultados/:idResultado', (req: Request, res: Response)=>{
     const {idResultado}=req.params;
     try {
         res.status(200).json(
@@ -25,7 +18,7 @@ router.get('/api/resultados/:idResultado', (req: Request, res: Response)=>{
     } catch (error) {
         res.status(500).json(error);
     }
-});
+});*/
 
 
 router.post('/api/resultados', (req: Request, res: Response)=>{
