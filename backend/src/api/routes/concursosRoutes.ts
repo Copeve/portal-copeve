@@ -5,71 +5,11 @@ import {ConcursoController} from '../controllers/ConcursoController';
 router
     .get('/api/concursos',  ConcursoController.pegaConcursosAbertos)
     .get('api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
-    .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados);
+    .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados)
+    .get('/api/concursos/:idConcurso', ConcursoController.PegaConcursoPorId)
+    .get('/api/concursos/:idConcurso/eventos', ConcursoController.PegaEventosPorId);
 /*
-router.get('/api/concursos/fechados',  (req: Request, res: Response)=>{
-    try {
-        res.status(200).json({
-            data:{
-                message:'Busca no banco por concursos fechados'
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/concursos/:idConcurso',  (req: Request, res: Response)=>{
-    console.log(req.params);
-    const {idConcurso} = req.params;
-    try {
-        res.status(200).json({
-            data:{
-                message:`Busca no banco por concurso ${idConcurso}`
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/concursos/:idConcurso',  (req: Request, res: Response)=>{
-    console.log(req.params);
-    const {idConcurso} = req.params;
-    try {
-        res.status(200).json({
-            data:{
-                message:`Busca no banco por concurso ${idConcurso}`
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/concursos/:idConcurso/eventos',  (req: Request, res: Response)=>{
-    console.log(req.params);
-    const {idConcurso} = req.params;
-    try {
-        res.status(200).json({
-            data:{
-                message:`Busca no banco por eventos do concurso ${idConcurso}`
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/concursos/:idConcurso/faq',  (req: Request, res: Response)=>{
-    console.log(req.params);
-    const {idConcurso} = req.params;
-    try {
-        res.status(200).json({
-            data:{
-                message:`Busca no banco por faqs do concurso ${idConcurso}`
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router.get('api/concursos/:idConcurso/arquivos);
 router.get('/api/concursos/:idConcurso/noticias',  (req: Request, res: Response)=>{
     const {idConcurso} = req.params;
     try {

@@ -20,4 +20,7 @@ export default class Services{
     async pegaRegistrosComCondicao(where={}){
         return database[this.modelo].findAll({where: {...where}});
     }
+    async pegaRegistroUnico(where={}){
+        return database[this.modelo].findOne({where: {...where}});
+    }
 }
