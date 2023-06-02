@@ -1,7 +1,19 @@
 import database from '../models/index';
 
 export default class Services{
-    async pegaTodosOsRegistros() : any[]{
-        return 
+    modelo:string;
+    dependecias:string[];
+    constructor(modelo:string, dependencias:string[]){
+        this.modelo=modelo;
+        this.dependecias=dependencias;
+    }
+
+    async pegaTodosOsRegistros(){
+        const includeArray: any[] =[];
+        this.dependecias.forEach((dependecia)=>{
+            includeArray.push(database[dependecia]);
+        });
+        console.log(includeArray);
+        return database[this.modelo].findAll({include: includeArray});
     }
 }

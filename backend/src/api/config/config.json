@@ -1,8 +1,8 @@
 {
      "development": {
       "username": "root",
-      "password": "Jal171005!",
-      "database": "ne_copeve",
+      "password": "Copeve2023!",
+      "database": "site_copeve",
       "host": "127.0.0.1",
       "dialect": "mysql"
     },
