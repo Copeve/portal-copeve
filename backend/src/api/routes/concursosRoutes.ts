@@ -2,40 +2,11 @@ import express from 'express';
 const router = express.Router();
 import {ConcursoController} from '../controllers/ConcursoController';
 //GET
-router.get('/api/concursos',  ConcursoController.pegaTodosOsConcursos);
-/*(req: Request, res: Response)=>{
-    try {
-        res.status(200).json({
-            data:{
-                message:'Busca no banco por concursos'
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-};
-/*router.get('/api/concursos',  (req: Request, res: Response)=>{
-    try {
-        res.status(200).json({
-            data:{
-                message:'Busca no banco por concursos'
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/concursos/abertos',  (req: Request, res: Response)=>{
-    try {
-        res.status(200).json({
-            data:{
-                message:'Busca no banco por concursos abertos'
-            }
-        });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router
+    .get('/api/concursos',  ConcursoController.pegaConcursosAbertos)
+    .get('api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
+    .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados);
+/*
 router.get('/api/concursos/fechados',  (req: Request, res: Response)=>{
     try {
         res.status(200).json({

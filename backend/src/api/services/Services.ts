@@ -16,4 +16,8 @@ export default class Services{
         console.log(includeArray);
         return database[this.modelo].findAll({include: includeArray});
     }
+
+    async pegaRegistrosComCondicao(where={}){
+        return database[this.modelo].findAll({where: {...where}});
+    }
 }

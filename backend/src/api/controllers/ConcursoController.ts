@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import database from '../models/index';
+
 import {  ConcursosServices } from '../services';
 const concursosServices = new ConcursosServices();
 
@@ -12,6 +12,22 @@ class ConcursoController {
             res.status(200).json(todosOsConcursos);
         } catch (error) {
             
+            res.status(500).json(error);
+        }
+    }
+    static async pegaConcursosAbertos(req: Request, res: Response){
+        try {
+            const concursosAbertos:object[] = await concursosServices.pegaRegistrosComCondicao({encerrado:false});
+            res.status(200).json(concursosAbertos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    static async pegaConcursosFechados(req: Request, res: Response){
+        try {
+            const concursosAbertos:object[] = await concursosServices.pegaRegistrosComCondicao({encerrado:true});
+            res.status(200).json(concursosAbertos);
+        } catch (error) {
             res.status(500).json(error);
         }
     }
