@@ -26,6 +26,8 @@ router.get('/api/resultados/:idResultado', (req: Request, res: Response)=>{
         res.status(500).json(error);
     }
 });
+
+
 router.post('/api/resultados', (req: Request, res: Response)=>{
     try {
         res.status(200).json(req.body);

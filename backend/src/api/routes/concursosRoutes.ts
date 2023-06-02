@@ -7,9 +7,10 @@ router
     .get('api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
     .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados)
     .get('/api/concursos/:idConcurso', ConcursoController.PegaConcursoPorId)
-    .get('/api/concursos/:idConcurso/eventos', ConcursoController.PegaEventosPorId);
+    .get('/api/concursos/:idConcurso/eventos', ConcursoController.PegaEventosPorId)
+    .get('api/concursos/:idConcurso/arquivos', ConcursoController.pegaArquivosPorId)
+    .get('/api/concursos/:idConcurso/noticias', ConcursoController.pegaNoticiasPorId);
 /*
-router.get('api/concursos/:idConcurso/arquivos);
 router.get('/api/concursos/:idConcurso/noticias',  (req: Request, res: Response)=>{
     const {idConcurso} = req.params;
     try {

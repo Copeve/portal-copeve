@@ -5,29 +5,10 @@ const router = Router();
 
 //GET
 
-router.get('/api/noticias', NoticiasController.pegaTodasAsNoticias);
-
-router.get('/api/noticias/:idNoticia', (req: Request, res: Response)=>{
-    const {idNoticia}=req.params;
-    try {
-        res.status(200).json(
-            {data:
-                {message:`Busca no banco por noticia de id ${idNoticia}`}
-            });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.get('/api/noticias/destaques', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(
-            {data:
-                {message:'testando'}
-            });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+router
+    .get('/api/noticias', NoticiasController.pegaTodasAsNoticias)
+    .get('/api/noticias/:idNoticia', NoticiasController.pegaNoticiaPorId)
+    .get('/api/noticias/destaques', NoticiasController.pegaNoticiasEmDestaque);
 
 //POST
 router.post('/api/noticias', (req: Request, res: Response)=>{

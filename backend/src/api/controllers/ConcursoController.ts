@@ -53,6 +53,26 @@ class ConcursoController {
             res.status(500).json(error);
         }
     }
+
+    static async pegaArquivosPorId(req: Request, res: Response){
+        const {idConcurso} = req.params;
+        const arquivos = await concursosServices.pegaArquivos(idConcurso);
+        try {
+            res.status(200).json(arquivos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async pegaNoticiasPorId(req: Request, res: Response){
+        const {idConcurso} = req.params;
+        const arquivos = await concursosServices.pegaNoticias(idConcurso);
+        try {
+            res.status(200).json(arquivos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 }
 
 export { ConcursoController };
