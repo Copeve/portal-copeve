@@ -63,6 +63,29 @@ class NoticiasController {
             res.status(500).json(error);
         }
     }
+
+    static async tiraNoticiaDeDestaque(req: Request, res: Response): Promise<void> {
+        try {
+            const {idNoticia} = req.params;
+            const atualizacao={'destaque':false};
+            await noticiasServices.atualizaRegistro(idNoticia, atualizacao);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async colocaNoticiaEmDestaque(req: Request, res: Response): Promise<void>{
+        try {
+            const {idNoticia} = req.params;
+            const atualizacao={'destaque':true};
+            await noticiasServices.atualizaRegistro(idNoticia, atualizacao);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 }
+
 
 export { NoticiasController };
