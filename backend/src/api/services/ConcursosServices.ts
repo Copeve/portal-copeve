@@ -14,11 +14,9 @@ export default class ConcursosServices extends Services{
     pegaEventos(id:string){
         return eventosServices.pegaRegistrosComCondicao({concurso: id});
     }
-
     pegaArquivos(id:string){
         return arquivosServices.pegaRegistrosComCondicao({concurso:id});
     }
-
     pegaNoticias(id:string){
         return noticiasServices.pegaRegistrosComCondicao({concurso:id});
     }
@@ -31,5 +29,16 @@ export default class ConcursosServices extends Services{
     }
     adicionaArquivo(dados:object){
         return arquivosServices.adicionaRegistro(dados);
+    }
+
+
+    deletaEvento(idEvento:string){
+        return eventosServices.deletaRegistro(idEvento);
+    }
+    deletaNoticia(idNoticia:string){
+        return noticiasServices.deletaRegistro(idNoticia);
+    }
+    deletaArquivo(idArquivo:string){
+        return arquivosServices.deletaRegistro(idArquivo);
     }
 }

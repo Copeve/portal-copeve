@@ -10,7 +10,7 @@ const noticiasServices= new NoticiasServices();
 class ConcursoController {
     static async pegaTodosOsConcursos(req: Request, res: Response): Promise<void> {
         try {
-            const todosOsConcursos: object[] = await noticiasServices.pegaTodosOsRegistros();
+            const todosOsConcursos: object[] = await concursosServices.pegaTodosOsRegistros();
             res.status(200).json(todosOsConcursos);
         } catch (error) {
             
@@ -124,6 +124,36 @@ class ConcursoController {
         try {
             const {idConcurso} = req.params;
             await concursosServices.deletaRegistro(idConcurso);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async deletaEventoDeConcurso(req: Request, res: Response): Promise<void>{
+        try {
+            const {idEvento} = req.params;
+            console.log(`idEvento: ${idEvento}`);
+            await concursosServices.deletaEvento(idEvento);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    
+    static async deletaNoticiaDeConcurso(req: Request, res: Response): Promise<void>{
+        try {
+            const {idNoticia} = req.params;
+            await concursosServices.deletaNoticia(idNoticia);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    static async deletaArquivoDeConcurso(req: Request, res: Response): Promise<void>{
+        try {
+            const {idArquivo} = req.params;
+            await concursosServices.deletaArquivo(idArquivo);
             res.status(200).json();
         } catch (error) {
             res.status(500).json(error);

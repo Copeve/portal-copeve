@@ -54,6 +54,15 @@ class ResultadoController {
             res.status(500).json(error);
         }
     }
+
+    static async deletaResultado(req: Request, res: Response): Promise<void> {
+        try {
+            const {idResultado} = req.params;
+            await resultadosServices.deletaRegistro(idResultado);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 }
 
 export { ResultadoController };

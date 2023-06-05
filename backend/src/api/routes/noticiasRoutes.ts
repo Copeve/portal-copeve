@@ -10,17 +10,11 @@ router
     .get('/api/noticias/:idNoticia', NoticiasController.pegaNoticiaPorId)
     .get('/api/noticias/destaques', NoticiasController.pegaNoticiasEmDestaque)
     .post('/api/noticias', NoticiasController.adicionaNoticia)
-    .post('/api/noticias/destaques', NoticiasController.adicionaNoticiaDestaque);
+    .post('/api/noticias/destaques', NoticiasController.adicionaNoticiaDestaque)
+    .delete('/api/noticias/:idNoticia', NoticiasController.apagaNoticia);
 
 
-//DELETE
-router.delete('/api/noticias/:idNoticia', (req: Request, res: Response)=>{
-    const {idNoticia}=req.params;
-    try {
-        res.status(200).json(idNoticia);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+
+//put destaque
 
 export default router;

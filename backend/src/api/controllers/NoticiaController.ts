@@ -54,6 +54,15 @@ class NoticiasController {
             res.status(500).json(error);
         }
     }
+
+    static async apagaNoticia(req: Request, res: Response): Promise<void> {
+        try {
+            const {idNoticia} = req.params;
+            await noticiasServices.deletaRegistro(idNoticia);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 }
 
 export { NoticiasController };
