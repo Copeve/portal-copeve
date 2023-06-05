@@ -11,7 +11,8 @@ router
     .post('/api/resultados', ResultadoController.adicionaResultado)
     .post('/api/resultados/destaques', ResultadoController.adicionaResultadoDestaque)
     .delete('/api/resultados/:idResultado', ResultadoController.deletaResultado)
-    .put('/api/resultados/:idEvento/tiraDestaque', res);
+    .get('/api/resultados/:idResultado/tiraDestaque', ResultadoController.tiraResultadoDeDestaque)
+    .get('/api/resultados/:idResultado/colocaDestaque', ResultadoController.colocaResultadoEmDestaque);
 
 //put destaque
 export default router;

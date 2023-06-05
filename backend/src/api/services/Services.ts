@@ -32,4 +32,14 @@ export default class Services{
         console.log('foi');
         return database[this.modelo].destroy({where:{id:Number(id)}});
     }
+    async atualizaRegistro(id:string, dados:object){
+        try {
+            const resultado = await database[this.modelo].update(dados,{where:{id: Number(id)}});
+            console.log('Linhas atualizadas:', resultado[0]);
+            
+        } catch (error) {
+            console.log(error);
+        }
+        console.log('passer');
+    }
 }

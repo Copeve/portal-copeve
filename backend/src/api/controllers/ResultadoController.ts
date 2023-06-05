@@ -59,6 +59,29 @@ class ResultadoController {
         try {
             const {idResultado} = req.params;
             await resultadosServices.deletaRegistro(idResultado);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async tiraResultadoDeDestaque(req: Request, res: Response): Promise<void> {
+        try {
+            const {idResultado} = req.params;
+            const atualizacao={'destaque':false};
+            await resultadosServices.atualizaRegistro(idResultado, atualizacao);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async colocaResultadoEmDestaque(req: Request, res: Response): Promise<void>{
+        try {
+            const {idResultado} = req.params;
+            const atualizacao={'destaque':true};
+            await resultadosServices.atualizaRegistro(idResultado, atualizacao);
+            res.status(200).json();
         } catch (error) {
             res.status(500).json(error);
         }
