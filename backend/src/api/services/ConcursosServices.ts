@@ -29,4 +29,7 @@ export default class ConcursosServices extends Services{
     adicionaNoticia(dados:object){
         return noticiasServices.adicionaRegistro(dados);
     }
+    adicionaArquivo(dados:object){
+        return arquivosServices.adicionaRegistro(dados);
+    }
 }

@@ -28,4 +28,7 @@ export default class Services{
     async adicionaRegistro(dados:object){
         return database[this.modelo].create(dados);
     }
+    async deletaRegistro(idConcurso:string){
+        return database[this.modelo].destroy({where:{id:Number(idConcurso)}});
+    }
 }

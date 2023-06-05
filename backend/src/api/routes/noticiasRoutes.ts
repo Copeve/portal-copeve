@@ -8,16 +8,11 @@ const router = Router();
 router
     .get('/api/noticias', NoticiasController.pegaTodasAsNoticias)
     .get('/api/noticias/:idNoticia', NoticiasController.pegaNoticiaPorId)
-    .get('/api/noticias/destaques', NoticiasController.pegaNoticiasEmDestaque);
+    .get('/api/noticias/destaques', NoticiasController.pegaNoticiasEmDestaque)
+    .post('/api/noticias', NoticiasController.adicionaNoticia)
+    .post('/api/noticias/destaques', NoticiasController.adicionaNoticiaDestaque);
 
-//POST
-router.post('/api/noticias', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(req.body);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+
 //DELETE
 router.delete('/api/noticias/:idNoticia', (req: Request, res: Response)=>{
     const {idNoticia}=req.params;

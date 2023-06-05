@@ -4,26 +4,18 @@ import {ConcursoController} from '../controllers/ConcursoController';
 //GET
 router
     .get('/api/concursos',  ConcursoController.pegaTodosOsConcursos)
-    .get('api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
+    .get('/api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
     .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados)
     .get('/api/concursos/:idConcurso', ConcursoController.PegaConcursoPorId)
     .get('/api/concursos/:idConcurso/eventos', ConcursoController.PegaEventosPorId)
-    .get('api/concursos/:idConcurso/arquivos', ConcursoController.pegaArquivosPorId)
+    .get('/api/concursos/:idConcurso/arquivos', ConcursoController.pegaArquivosPorId)
     .get('/api/concursos/:idConcurso/noticias', ConcursoController.pegaNoticiasPorId)
-    .post('api/concursos', ConcursoController.adicionaConcurso)
-    .post('api/concursos/eventos', ConcursoController.adicionaEventoEmConcurso)
-    .post('api/concursos/noticias', ConcursoController.adicionaNoticiaEmConcurso);
+    .post('/api/concursos', ConcursoController.adicionaConcurso)
+    .post('/api/concursos/eventos', ConcursoController.adicionaEventoEmConcurso)
+    .post('/api/concursos/noticias', ConcursoController.adicionaNoticiaEmConcurso)
+    .post('/api/concursos/arquivos', ConcursoController.adicionaArquivoEmConcurso)
+    .delete('/api/concursos/:idConcurso', ConcursoController.deletaConcurso);
 /*
-//POST
-
-router.post('/api/concursos/:idConcurso/arquivos', (req: Request, res: Response)=>{
-    const {idConcurso}=req.params;
-    try {
-        res.status(200).json({ idConcurso,...req.body});
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
 
 //DELETE
 router.delete('/api/concursos/:idConcurso', (req: Request, res: Response)=>{

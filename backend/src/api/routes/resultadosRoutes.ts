@@ -7,35 +7,10 @@ const router = Router();
 router
     .get('/api/resultados', ResultadoController.pegaTodosOsResultados)
     .get('/api/resultados/destaques', ResultadoController.pegaResultadosEmDestaque)
-    .get('/api/resultados/:idResultado', ResultadoController.pegaResultadoPorId);
-/*router.get('/api/resultados/:idResultado', (req: Request, res: Response)=>{
-    const {idResultado}=req.params;
-    try {
-        res.status(200).json(
-            {data:
-                {message: `Busca no banco por resultados id ${idResultado}`}
-            });
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});*/
-
-
-router.post('/api/resultados', (req: Request, res: Response)=>{
-    try {
-        res.status(200).json(req.body);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.post('/api/resultados/destaques/:idResultado', (req: Request, res: Response)=>{
-    const {idResultado}=req.params;
-    try {
-        res.status(200).json({idResultado,...req.body});
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
+    .get('/api/resultados/:idResultado', ResultadoController.pegaResultadoPorId)
+    .post('/api/resultados', ResultadoController.adicionaResultado)
+    .post('/api/resultados/destaques', ResultadoController.adicionaResultadoDestaque);
+    
 router.delete('/api/resultados/:idResultado', (req: Request, res: Response)=>{
     const {idResultado}=req.params;
     try {

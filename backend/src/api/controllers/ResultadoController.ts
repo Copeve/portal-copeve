@@ -31,6 +31,29 @@ class ResultadoController {
             res.status(500).json(error);
         }
     }
+
+    static async adicionaResultado(req: Request, res: Response): Promise<void> {
+        try {
+            const dados= req.body;
+            await resultadosServices.adicionaRegistro(dados);
+            res.status(200).json(dados);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    static async adicionaResultadoDestaque(req: Request, res: Response): Promise<void> {
+        try {
+            const dados= req.body;
+            if(dados.destaque){
+                await resultadosServices.adicionaRegistro(dados);
+                res.status(200).json(dados);
+            }else{
+                res.status(500).json({message: 'O atributo destaque deve ser true'});
+            }
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 }
 
 export { ResultadoController };

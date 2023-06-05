@@ -30,6 +30,30 @@ class NoticiasController {
             res.status(500).json(error);
         }
     }
+
+    static async adicionaNoticia(req: Request, res: Response): Promise<void> {
+        try {
+            const dados= req.body;
+            await noticiasServices.adicionaRegistro(dados);
+            res.status(200).json(dados);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async adicionaNoticiaDestaque(req: Request, res: Response): Promise<void> {
+        try {
+            const dados= req.body;
+            if(dados.destaque){
+                await noticiasServices.adicionaRegistro(dados);
+                res.status(200).json(dados);
+            }else{
+                res.status(500).json({message: 'É necessário que o valor do atributo destaque seja true'});
+            }
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
 }
 
 export { NoticiasController };

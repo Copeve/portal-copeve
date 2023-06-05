@@ -2,8 +2,7 @@ import { Request, Response } from 'express';
 
 import {  ConcursosServices } from '../services';
 const concursosServices = new ConcursosServices();
-import {  EventosServices } from '../services';
-const eventosServices = new EventosServices();
+
 import {NoticiasServices} from '../services';
 const noticiasServices= new NoticiasServices();
 
@@ -109,6 +108,26 @@ class ConcursoController {
             res.status(500).json(error);
         }
     }
-}
 
-export { ConcursoController };
+    static async adicionaArquivoEmConcurso(req: Request, res: Response): Promise<void>{
+        try {
+            const dados = req.body;
+            concursosServices.adicionaArquivo(dados);
+            console.log(req.body);
+            res.status(200).json(req.body);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    static async deletaConcurso(req: Request, res: Response): Promise<void>{
+        try {
+            const {idConcurso} = req.params;
+            await concursosServices.deletaRegistro(idConcurso);
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+}
+export  {ConcursoController};
