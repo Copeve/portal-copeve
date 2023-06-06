@@ -29,7 +29,6 @@ export default class Services{
         return database[this.modelo].create(dados);
     }
     async deletaRegistro(id:string){
-        console.log('foi');
         return database[this.modelo].destroy({where:{id:Number(id)}});
     }
     async atualizaRegistro(id:string, dados:object){
@@ -40,6 +39,5 @@ export default class Services{
         } catch (error) {
             console.log(error);
         }
-        console.log('passer');
     }
 }

@@ -41,4 +41,23 @@ export default class ConcursosServices extends Services{
     deletaArquivo(idArquivo:string){
         return arquivosServices.deletaRegistro(idArquivo);
     }
+
+
+    async deltaConcursoEDpendencias(id:string){
+        const eventosDoConcurso = await eventosServices.pegaRegistrosComCondicao({concurso:Number(id)});
+        const noticiasDoConcurso = await noticiasServices.pegaRegistrosComCondicao({concurso: Number(id)});
+        const arquivosDoConcurso = await arquivosServices.pegaRegistrosComCondicao({concurso: Number(id)});
+
+        eventosDoConcurso.forEach((evento:any)=>{
+            this.deletaEvento(evento.id);
+        });
+        noticiasDoConcurso.forEach((noticia:any)=>{
+            this.deletaNoticia(noticia.id);
+        });
+        arquivosDoConcurso.forEach((arquivo:any)=>{
+            this.deletaArquivo(arquivo.id);
+        });
+
+        this.deletaRegistro(id);
+    }
 }

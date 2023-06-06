@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { Request, Response } from 'express';
+
 import { NoticiasController } from '../controllers/NoticiaController';
 const router = Router();
 
@@ -14,9 +14,5 @@ router
     .delete('/api/noticias/:idNoticia', NoticiasController.apagaNoticia)
     .get('/api/noticias/:idNoticia/tiraDestaque', NoticiasController.tiraNoticiaDeDestaque)
     .get('/api/noticias/:idNoticia/colocaDestaque', NoticiasController.colocaNoticiaEmDestaque);
-
-
-
-//put destaque
 
 export default router;

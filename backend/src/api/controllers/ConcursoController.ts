@@ -3,8 +3,6 @@ import { Request, Response } from 'express';
 import {  ConcursosServices } from '../services';
 const concursosServices = new ConcursosServices();
 
-import {NoticiasServices} from '../services';
-const noticiasServices= new NoticiasServices();
 
 
 class ConcursoController {
@@ -123,9 +121,10 @@ class ConcursoController {
     static async deletaConcurso(req: Request, res: Response): Promise<void>{
         try {
             const {idConcurso} = req.params;
-            await concursosServices.deletaRegistro(idConcurso);
+            await concursosServices.deltaConcursoEDpendencias(idConcurso);
             res.status(200).json();
         } catch (error) {
+            console.log(error);
             res.status(500).json(error);
         }
     }

@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { Request, Response } from 'express';
 import { ResultadoController } from '../controllers/ResultadoController';
 const router = Router();
 
@@ -14,5 +13,5 @@ router
     .get('/api/resultados/:idResultado/tiraDestaque', ResultadoController.tiraResultadoDeDestaque)
     .get('/api/resultados/:idResultado/colocaDestaque', ResultadoController.colocaResultadoEmDestaque);
 
-//put destaque
+
 export default router;
