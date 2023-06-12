@@ -3,7 +3,7 @@ const router = express.Router();
 import {ConcursoController} from '../controllers/ConcursoController';
 //GET
 router
-    .delete('/api/concursos/:idConcurso', ConcursoController.deletaConcurso)
+    .get('/api/concursos', ConcursoController.pegaTodosOsConcursos)
     .get('/api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
     .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados)
     .get('/api/concursos/:idConcurso', ConcursoController.PegaConcursoPorId)

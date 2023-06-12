@@ -4,7 +4,17 @@ import Image from 'next/image';
 import Link from "next/link";
 import Rodape from "../components/Rodape";
 
+async function pegaConcursos(){
+    const concursos= await fetch('http://localhost:4000/api/concursos', {method: "GET"});
+    if(concursos.ok){
+        const data = await concursos.json();
+        console.log("foi"+data);
+    }
+    console.log(concursos);
+}
+
 export default function HomeScreen(){
+    pegaConcursos();
     return (
         <>
         <Cabecalho/>
