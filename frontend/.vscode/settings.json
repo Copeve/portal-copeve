@@ -1,0 +1,10 @@
+{ 
+ "scss.lint.unknownAtRules": "ignore",
+ "emmet.includeLanguages": {
+     "javascript": "javascriptreact"
+ },
+ "emmet.syntaxProfiles": {
+     "javascript": "jsx"
+ },
+
+}

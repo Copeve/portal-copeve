@@ -17,32 +17,4 @@ router
     .delete('/api/concursos/:idConcurso', ConcursoController.deletaConcurso)
     .delete('/api/concursos/eventos/:idEvento', ConcursoController.deletaEventoDeConcurso)
     .delete('/api/concursos/arquivos/:idArquivo', ConcursoController.deletaArquivoDeConcurso);
-/*
-
-//DELETE
-
-router.delete('/api/concursos/:idConcurso/eventos/:idEventos', (req: Request, res: Response)=>{
-    const {idConcurso, idEventos}=req.params;
-    try {
-        res.status(200).json({idConcurso, idEventos});
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.delete('/api/concursos/:idConcurso/faq/:idFaq', (req: Request, res: Response)=>{
-    const {idConcurso, idEventos}=req.params;
-    try {
-        res.status(200).json({idConcurso, idEventos});
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});
-router.delete('/api/concursos/destaques/:idConcurso', (req: Request, res: Response)=>{
-    const {idConcurso}=req.params;
-    try {
-        res.status(200).json(idConcurso);
-    } catch (error) {
-        res.status(500).json(error);
-    }
-});*/
 export default router;
