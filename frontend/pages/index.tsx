@@ -5,7 +5,7 @@ import Link from "next/link";
 import Rodape from "../components/Rodape";
 import { data } from "autoprefixer";
 
-async function pegaConcursos(){
+async function pegaConcursosEmDestaque(){
     const concursos= await fetch('http://localhost:4000/api/concursos/destaques', {method: "GET"});
     if(concursos.ok){
         const data = await concursos.json();
@@ -13,11 +13,35 @@ async function pegaConcursos(){
     }
 }
 
+async function pegaNoticiasEmDestaque(){
+    const noticias= await fetch('http://localhost:4000/api/noticias/destaques', {method: "GET"});
+    if(noticias.ok){
+        const data = await noticias.json();
+        return data
+    }
+}
+
+async function pegaResultadosEmDestaque(){
+    const resultados= await fetch('http://localhost:4000/api/resultados/destaques', {method: "GET"});
+    if(resultados.ok){
+        const data = await resultados.json();
+        console.log(data);
+        return data
+    }
+}
+
 export default function HomeScreen(){
     const [concursosDestaque, setConcursosDestaque]= useState<any[]>([]);
+    const [noticiasDestaque, setNoticiasDestaque]= useState<any[]>([]);
+    const [resultadosDestaque, setResultadosDestaque]= useState<any[]>([]);
     useEffect(()=>{
-        pegaConcursos().then(data=>setConcursosDestaque(data));
+        pegaConcursosEmDestaque().then(data=>setConcursosDestaque(data));
+        pegaNoticiasEmDestaque().then(data=>setNoticiasDestaque(data));
     }, []);
+    useEffect(()=>{
+        pegaResultadosEmDestaque().then(data=>setResultadosDestaque(data));
+    }, []);
+  
     return (
         <>
         <Cabecalho/>
@@ -38,6 +62,7 @@ export default function HomeScreen(){
                 }
             </section>
 
+
             <section>
                 <h2>Noticias em Destaque</h2>
                 <ul>
@@ -48,6 +73,7 @@ export default function HomeScreen(){
                 </ul>
             </section>
             <section>
+                
                 <h2>Resultados</h2>
                 <div>
                     <h3>X</h3>
