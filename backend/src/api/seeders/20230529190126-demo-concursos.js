@@ -1,7 +1,7 @@
 module.exports = {
     up: (queryInterface) => {
         return queryInterface.bulkInsert('Concursos', [
-            {
+            /*{
                 nome: 'concurso1',
                 ano: 2023,
                 data_inicio: new Date(),
@@ -55,7 +55,7 @@ module.exports = {
                 link_inscricao: 'https://concurso5.com.br',
                 createdAt: new Date(),
                 updatedAt: new Date()
-            },
+            },*/
         ], {});
     },
 

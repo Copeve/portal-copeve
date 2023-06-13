@@ -10,7 +10,8 @@ interface ConcursosAttributes{
   data_inicio: Date, 
   data_fim: Date, 
   encerrado: boolean, 
-  link_inscricao: string
+  link_inscricao: string, 
+  destaque: boolean
 }
 
 module.exports = (sequelize:any, DataTypes:any) => {
@@ -26,6 +27,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
         data_fim!: Date; 
         encerrado!: boolean;
         link_inscricao!: string;
+        destaque!: boolean;
 
         static associate(models:any) {
             Concursos.hasOne(models.Eventos, {
@@ -50,7 +52,8 @@ module.exports = (sequelize:any, DataTypes:any) => {
         data_inicio: DataTypes.DATE,
         data_fim: DataTypes.DATE,
         encerrado: DataTypes.BOOLEAN, 
-        link_inscricao: DataTypes.STRING
+        link_inscricao: DataTypes.STRING, 
+        destaque: DataTypes.BOOLEAN,
     }, {
         sequelize,
         modelName: 'Concursos',

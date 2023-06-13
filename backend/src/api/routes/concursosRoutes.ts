@@ -4,6 +4,7 @@ import {ConcursoController} from '../controllers/ConcursoController';
 //GET
 router
     .get('/api/concursos', ConcursoController.pegaTodosOsConcursos)
+    .get('/api/concursos/destaques', ConcursoController.pegaConcursosEmDestaque)
     .get('/api/concursos/abertos', ConcursoController.pegaConcursosAbertos)
     .get('/api/concursos/fechados', ConcursoController.pegaConcursosFechados)
     .get('/api/concursos/:idConcurso', ConcursoController.PegaConcursoPorId)

@@ -15,6 +15,14 @@ class ConcursoController {
             res.status(500).json(error);
         }
     }
+    static async pegaConcursosEmDestaque(req: Request, res: Response): Promise<void>{
+        try {
+            const concursosAbertos:object[] = await concursosServices.pegaRegistrosComCondicao({destaque:true});
+            res.status(200).json(concursosAbertos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
     static async pegaConcursosAbertos(req: Request, res: Response): Promise<void>{
         try {
             const concursosAbertos:object[] = await concursosServices.pegaRegistrosComCondicao({encerrado:false});
