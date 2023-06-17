@@ -6,7 +6,7 @@ export default function Cabecalho(){
         <header className={styles.cabecalho}>
             <Image src="/images/ufmg-social.jpg" alt="imagem logo" width={200} height={150} />
             <nav>
-                <Link href="#">Concursos</Link>
+                <Link href="http://localhost:3000/ConcursosEmAndamento">Concursos</Link>
                 <Link href="#">Calendário</Link>
                 <Link href="#">Notícias</Link>
                 <Link href="#">Processos Seletivos Anteriores</Link>

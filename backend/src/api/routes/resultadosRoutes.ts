@@ -6,7 +6,7 @@ const router = Router();
 router
     .get('/api/resultados', ResultadoController.pegaTodosOsResultados)
     .get('/api/resultados/destaques', ResultadoController.pegaResultadosEmDestaque)
-    .get('/api/resultados/:idResultado', ResultadoController.pegaResultadoPorId)
+    .get('/api/resultados/resultado/:idResultado', ResultadoController.pegaResultadoPorId)
     .post('/api/resultados', ResultadoController.adicionaResultado)
     .post('/api/resultados/destaques', ResultadoController.adicionaResultadoDestaque)
     .delete('/api/resultados/:idResultado', ResultadoController.deletaResultado)

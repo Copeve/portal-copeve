@@ -7,7 +7,7 @@ const router = Router();
 
 router
     .get('/api/noticias', NoticiasController.pegaTodasAsNoticias)
-    .get('/api/noticias/:idNoticia', NoticiasController.pegaNoticiaPorId)
+    .get('/api/noticias/noticia/:idNoticia', NoticiasController.pegaNoticiaPorId)
     .get('/api/noticias/destaques', NoticiasController.pegaNoticiasEmDestaque)
     .post('/api/noticias', NoticiasController.adicionaNoticia)
     .post('/api/noticias/destaques', NoticiasController.adicionaNoticiaDestaque)
