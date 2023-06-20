@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import {UsuariosServices} from '../services';
-import jwt from 'jsonwebtoken';
+import jwt, {JwtPayload} from 'jsonwebtoken';
 const usuariosServices = new UsuariosServices();
 const SECRET = 'segredoCopeve';
 
@@ -22,14 +22,17 @@ class UsuarioController{
     }
 
     static async confereToken(req: Request, res: Response): Promise<void> {
+        const token= req.headers['x-access-token'];
+        if(!token){
+            res.status(401).json({message:'Token não fornecido'});
+        }
         try {
-            const token= req.headers['x-access-token'];
-            if (token !==null){
-                const resultado = jwt.verify(token, SECRET);
+            if (typeof token === 'string'){
+                const resultado = jwt.verify(token, SECRET) as JwtPayload;
+                res.status(200).json(resultado);
             }
-            console.log(token);
         } catch (error) {
-            res.status(500).json(error);
+            res.status(401).json({message: 'token inválido'});
         }
     }
 }
