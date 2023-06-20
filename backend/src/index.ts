@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import routesConcursos from './api/routes/concursosRoutes';
 import routesNoticias from './api/routes/noticiasRoutes';
 import routesResultados from './api/routes/resultadosRoutes';
+import routesUsuarios from './api/routes/usuariosRoutes';
 import cors from 'cors';
 
 const app = express();
@@ -12,7 +13,7 @@ const port = 4000;
 app.use(cors());
 
 
-app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados);
+app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados, routesUsuarios);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);
