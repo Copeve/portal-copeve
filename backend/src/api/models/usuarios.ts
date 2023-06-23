@@ -5,14 +5,14 @@ import {
 
 interface UsuariosAttributes {
   nome:string,
-  login:string,
+  usuario:string,
   senha:string 
 }
 
 module.exports = (sequelize:any, DataTypes:any) => {
     class Usuarios extends Model<UsuariosAttributes> implements UsuariosAttributes {
         nome!:string;
-        login!:string;
+        usuario!:string;
         senha!:string;
         /**
      * Helper method for defining associations.
@@ -27,7 +27,7 @@ module.exports = (sequelize:any, DataTypes:any) => {
     }
     Usuarios.init({
         nome: DataTypes.STRING, 
-        login: DataTypes.STRING, 
+        usuario: DataTypes.STRING, 
         senha: DataTypes.STRING
     }, {
         sequelize,

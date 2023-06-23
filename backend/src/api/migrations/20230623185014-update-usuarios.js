@@ -7,6 +7,9 @@ module.exports = {
             allowNull: false,  
             type: Sequelize.BOOLEAN
         });
+        await queryInterface.changeColumn('Usuarios', 'senha', {
+            type: Sequelize.STRING,
+        });
     },
     async down(queryInterface, Sequelize) {
         await queryInterface.removeColumn('Concursos', 'usuario');

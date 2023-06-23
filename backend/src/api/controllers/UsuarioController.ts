@@ -25,9 +25,10 @@ class UsuarioController{
 
     static async salvaUsuario(req: Request, res: Response): Promise<void> {
         try {
-            const {usuario, senha, tipo_usuario} = req.body;
+            const {usuario, senha, tipo_usuario, nome} = req.body;
             const passwordHash = await bcrypt.hash(senha, 0);
-            usuariosServices.adicionaRegistro({usuario:usuario, senha:passwordHash, tipo_usuario: tipo_usuario});
+            const user=usuariosServices.adicionaRegistro({usuario:usuario, senha:passwordHash, tipo_usuario: tipo_usuario, nome:nome});
+            res.status(200).json(user);
         } catch (error) {
             res.status(500).json(error);
         }
