@@ -1,23 +1,37 @@
 import { Request, Response } from 'express';
 import {UsuariosServices} from '../services';
-import jwt, {JwtPayload} from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import * as bcrypt from 'bcrypt';
 const usuariosServices = new UsuariosServices();
-const SECRET = 'segredoCopeve';
+const SECRET = '9f897b45f749a10f27c07d2a98798758';
 
 class UsuarioController{
     static async confereLogin(req: Request, res: Response): Promise<void> {
         try {
-            const dados= req.body;
-            const usuario=await usuariosServices.pegaRegistroUnico({login: dados.login, senha: dados.senha});
+            const {usuario, senha}=req.body;
+            const user = await usuariosServices.pegaRegistroUnico({usuario:usuario});
             
-            /*
-            if(usuario === null){
-                res.status(401).json({message: 'login ou senha incorretos'});
+
+            if(user !==null){
+                if(await bcrypt.compare(senha, user.senha)){
+                    const token = jwt.sign({id: user.id}, SECRET, {expiresIn:'1d'});
+
+                    const data = {
+                        id:user.id, 
+                        name:user.usuario, 
+                        token: token
+                    };
+                    res.status(200).json(data);
+                }else{
+                    res.status(401).json({message: 'user not found'});
+                }
+
             }else{
-                const token = jwt.sign({userId: usuario.id}, SECRET, {expiresIn:300});
-                res.status(200).json({auth:true, token});
-            }*/
+
+                res.status(401).json({message: 'user not found'});
+            }
+
+
         } catch (error) {
             res.status(500).json(error);
         }
@@ -42,7 +56,7 @@ class UsuarioController{
         }
         try {
             if (typeof token === 'string'){
-                const resultado = jwt.verify(token, SECRET) as JwtPayload;
+                //const resultado = jwt.verify(token, SECRET) as JwtPayload;
                 res.status(200).json({autenticado:true});
             }
         } catch (error) {
