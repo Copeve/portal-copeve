@@ -5,6 +5,7 @@ import routesConcursos from './api/routes/concursosRoutes';
 import routesNoticias from './api/routes/noticiasRoutes';
 import routesResultados from './api/routes/resultadosRoutes';
 import routesUsuarios from './api/routes/usuariosRoutes';
+import './api/config/env';
 import cors from 'cors';
 
 const app = express();

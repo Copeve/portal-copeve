@@ -3,7 +3,7 @@ module.exports = {
         return queryInterface.bulkInsert('Usuarios', [
             {
                 nome: 'usuarioTeste1',
-                login: 'teste1', 
+                usuario: 'teste1', 
                 senha: '1234', 
                 tipo_usuario: 2,
                 createdAt: new Date(),
@@ -11,7 +11,7 @@ module.exports = {
             }, 
             {
                 nome: 'usuarioTeste2',
-                login: 'teste2', 
+                usuario: 'teste2', 
                 senha: '4321', 
                 tipo_usuario: 1,
                 createdAt: new Date(),
@@ -19,7 +19,7 @@ module.exports = {
             }, 
             {
                 nome: 'usuarioTeste3',
-                login: 'teste3', 
+                usuario: 'teste3', 
                 senha: '12345', 
                 tipo_usuario: 3,
                 createdAt: new Date(),
@@ -27,7 +27,7 @@ module.exports = {
             }, 
             {
                 nome: 'usuarioTeste4',
-                login: 'teste4', 
+                usuario: 'teste4', 
                 senha: '54321', 
                 tipo_usuario: 3,
                 createdAt: new Date(),
