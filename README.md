@@ -41,7 +41,10 @@ Set-ExecutionPolicy Unrestricted
 
 Instale o Git
 
- 1) Siga as instruçãoe do site: https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git
+ 1) Siga as instruçãoe do site:
+ ```batch
+ https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git
+ ```
 
 Instale o Yarn
 
@@ -56,4 +59,4 @@ Faça chreckout nesse projeto
  1) no VSCode acesse o Source Control
  2) Faça o checkout
 
-Bora Codar!
+##### Bora Codar!
