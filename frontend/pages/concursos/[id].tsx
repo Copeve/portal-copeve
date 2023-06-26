@@ -1,7 +1,7 @@
 import { useRouter, Router } from "next/router";
-import Cabecalho from "../../../components/Cabecalho";
-import Rodape from "../../../components/Rodape";
-import fazRequisição from "../../../services/fazRequisicao";
+import Cabecalho from "../../components/Cabecalho";
+import Rodape from "../../components/Rodape";
+import fazRequisição from "../../services/fazRequisicao";
 import { useEffect, useState } from "react";
 
 interface Concurso {
@@ -29,11 +29,11 @@ export default function Teste(){
             setArquivosDoConcurso(data);
         });
       }, []);
-      console.log(router.query.id);
     return (
         <>
+        {router.query.id}
         <Cabecalho/>
-        <h1>{concurso.nome}</h1>
+        <h1>{concurso?.nome}</h1>
         {arquivosDoConcurso.map((arquivo)=>{
             return(
                 <h1 key={arquivo.id}>{arquivo.caminho}</h1>
