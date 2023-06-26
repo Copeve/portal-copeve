@@ -7,15 +7,12 @@ import routesResultados from './api/routes/resultadosRoutes';
 import routesUsuarios from './api/routes/usuariosRoutes';
 import './api/config/env';
 import cors from 'cors';
-import auth from '../middleware/auth';
 
 const app = express();
 const port = 4000;
 
 app.use(cors());
-app.use(bodyParser.json(), routesUsuarios);
-app.use(auth);
-app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados);
+app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados, routesUsuarios);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`);

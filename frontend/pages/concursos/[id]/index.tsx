@@ -29,11 +29,11 @@ export default function Teste(){
             setArquivosDoConcurso(data);
         });
       }, []);
-
+      console.log(router.query.id);
     return (
         <>
         <Cabecalho/>
-        <h1>{concurso?.nome}</h1>
+        <h1>{concurso.nome}</h1>
         {arquivosDoConcurso.map((arquivo)=>{
             return(
                 <h1 key={arquivo.id}>{arquivo.caminho}</h1>
