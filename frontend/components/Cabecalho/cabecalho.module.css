@@ -4,10 +4,9 @@
 }
 .headerBrand, .headerAccessibility{
     box-sizing: border-box;
-    float: left;
+    /*float: left;*/
     position: relative
 }
-
 .container{
     text-align: center
 }
@@ -15,7 +14,32 @@
     position: relative
 }
 .iconUfmgM:before {
-    content: "Ó§å"
+    content: "\e90c"
 }
+.headerAccessibility{
+    box-sizing: border-box;
+    /*float: left;*/
+    position: relative
+}
+.iconAccessibility:before{
+    content: "\e900"
+}
+
+.iconContrast:before {
+    content: "\e901";
+}
+li.onlyDesk{
+    display: none;
+}
+li.onlyMobile{
+    display: none;
+}
+.iconSearch:before{
+    content: "Ó§â"
+}
+/*
+.contrastToggle{
+não achei, está no ícone de contraste
+}*/
 
             
