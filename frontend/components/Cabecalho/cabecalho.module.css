@@ -1,0 +1,21 @@
+/* Header and footer */
+.header {
+    background: #1F3748;
+}
+.headerBrand, .headerAccessibility{
+    box-sizing: border-box;
+    float: left;
+    position: relative
+}
+
+.container{
+    text-align: center
+}
+.headerContainer{
+    position: relative
+}
+.iconUfmgM:before {
+    content: "Ó§å"
+}
+
+            

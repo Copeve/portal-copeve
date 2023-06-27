@@ -1,19 +1,18 @@
 import styles from './cabecalho.module.css';
-import Image from 'next/image';
-import Link from 'next/link';
+
 export default function Cabecalho(){
+    const classesDiv = `${styles.container}, ${styles.headerContainer}`
     return(
-        <header className={styles.cabecalho}>
-            <Image src="/images/ufmg-social.jpg" alt="imagem logo" width={200} height={150} />
-            <nav>
-                <Link href="http://localhost:3000/ConcursosEmAndamento">Concursos</Link>
-                <Link href="#">Calendário</Link>
-                <Link href="#">Notícias</Link>
-                <Link href="#">Processos Seletivos Anteriores</Link>
-                <Link href="#">A COPEVE</Link>
-                <Link href="#">UFMG</Link>
-            </nav>
-            <input type="search" name="busca" id="busca" />
+        <>
+        <header className={styles.header}>
+            
+            <div className={classesDiv}>
+                <h1 className={styles.headerBrand}>
+                <i className={styles.iconUfmgM}></i>
+                    <span>Incubadora – Template de órgão</span>
+                </h1>
+            </div>
         </header>
+        </>
     )
 }

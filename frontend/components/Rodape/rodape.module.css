@@ -1,0 +1,9 @@
+.header-brand a,
+.header-accessibility a,
+.footerSign p {
+    color: #ffffff;
+}
+.header,
+.footerSign {
+    background: #1F3748;
+}
