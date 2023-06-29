@@ -12,12 +12,12 @@ export default function Cabecalho(){
         <p className={styles.cabecalhoBarra}>|</p>
         <h1 className={styles.cabecalhoTitulo}>COPEVE</h1>
         <ul className={styles.cabecalhoLista}>
-            <li className={styles.listaItem}><Link href="/">Concursos</Link></li>
-            <li className={styles.listaItem}><Link href="/">Notícias</Link></li>
-            <li className={styles.listaItem}><Link href="/">Contato</Link></li>
-            <li className={styles.listaItem}><Link href="/">Concursos Anteriores</Link></li>
-            <li className={styles.listaItem}><Link href="/">A COPEVE</Link></li>
-            <li className={styles.listaItem}><Link href="/">UFMG</Link></li>
+            <li><Link className={styles.listaItem} href="/">Concursos</Link></li>
+            <li ><Link className={styles.listaItem} href="/">Notícias</Link></li>
+            <li ><Link className={styles.listaItem} href="/">Contato</Link></li>
+            <li ><Link className={styles.listaItem} href="/">Concursos Anteriores</Link></li>
+            <li ><Link className={styles.listaItem} href="/">A COPEVE</Link></li>
+            <li ><Link className={styles.listaItem} href="/">UFMG</Link></li>
         
      
         </ul>
