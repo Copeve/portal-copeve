@@ -1,0 +1,73 @@
+/* reset.css */
+
+/* Box sizing rules */
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    box-sizing: inherit;
+  }
+  
+  /* Remove default margin */
+  body,
+  h1, h2, h3, h4, h5, h6,
+  p, figure, blockquote, dl, dd {
+    margin: 0;
+  }
+  
+  /* Remove default padding */
+  ul[class], ol[class] {
+    padding: 0;
+  }
+  
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Remove list styles on ul, ol elements */
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* Remove anchor text decoration */
+  a {
+    text-decoration: none;
+  }
+  
+  /* Remove button border */
+  button {
+    border: none;
+    outline: none;
+  }
+  
+  /* Remove input border */
+  input {
+    border: none;
+    outline: none;
+  }
+  
+  /* Remove textarea border */
+  textarea {
+    border: none;
+    outline: none;
+  }
+  
+  /* Reset form elements */
+  button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+  
+  /* Reset media elements */
+  img, video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  

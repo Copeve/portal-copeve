@@ -1,45 +1,68 @@
-/* Header and footer */
-.header {
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.cabecalho{
     background: #1F3748;
+    box-shadow: 0px 4px 6px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    width: 100%;
+    height: 80px;
+    padding: 0px 10%;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
-.headerBrand, .headerAccessibility{
-    box-sizing: border-box;
-    /*float: left;*/
-    position: relative
+.cabecalhoLogo{
+    width: 90px;
 }
-.container{
-    text-align: center
+.cabecalhoBarra{ 
+    width: 2px; 
+    font-size: 3em; 
+    color: #ffffff; 
+    margin: 20px;
 }
-.headerContainer{
-    position: relative
+.cabecalhoTitulo{
+    color: #FFF;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
 }
-.iconUfmgM:before {
-    content: "\e90c"
+.cabecalhoLista{
+    margin: 20px;
+    display: inline-flex;
+    gap: 20px;
 }
-.headerAccessibility{
-    box-sizing: border-box;
-    /*float: left;*/
-    position: relative
-}
-.iconAccessibility:before{
-    content: "\e900"
-}
+.listaItem{
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
 
-.iconContrast:before {
-    content: "\e901";
 }
-li.onlyDesk{
-    display: none;
+.pesquisar{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
 }
-li.onlyMobile{
-    display: none;
+.cabecalhoPesquisar{
+    height: 48px;
+    padding: 15px 79px 15px 20px;
+    flex-shrink: 0;
+    border-radius: 30px;
 }
-.iconSearch:before{
-    content: "Ó§â"
+.cabecalhoPesquisar::placeholder{
+    color: black;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
 }
-/*
-.contrastToggle{
-não achei, está no ícone de contraste
-}*/
-
-            
+.pesquisarLupa{
+    position: absolute;
+    right: 20px;
+    font-size: 30px;
+}

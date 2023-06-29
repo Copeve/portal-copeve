@@ -3,6 +3,7 @@ import Cabecalho from '../components/Cabecalho';
 import Rodape from "../components/Rodape";
 import fazRequisição from "../services/fazRequisicao";
 
+
 export default function HomeScreen(){
     const [concursosDestaque, setConcursosDestaque]= useState<any[]>([]);
     const [noticiasDestaque, setNoticiasDestaque]= useState<any[]>([]);
