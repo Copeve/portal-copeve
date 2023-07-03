@@ -29,12 +29,22 @@ export default function Cabecalho(){
                     <p className={styles.constrasteEscrito}>Contraste</p>
                 </div>
                 <p className={styles.mapa}>Mapa do site</p>
+                <form action="/" className={styles.pesquisar}>
+                    <input className={styles.cabecalhoPesquisar} type="search" name='pesquisa' id='pesquisa' placeholder='Pesquisar'/>
+                    <p className={styles.pesquisarLupa}><BiSearch/></p>
+                </form>
             </div>
-            <form action="/" className={styles.pesquisar}>
-                <input className={styles.cabecalhoPesquisar} type="search" name='pesquisa' id='pesquisa' placeholder='Pesquisar'/>
-                <label className={styles.pesquisarLupa} htmlFor="pesquisa"><BiSearch/></label>
-            </form>
         </header>
+        <div className={styles.cabecalhoMobile}>
+            <p className={styles.iconeMenu}><FaBars/></p>
+            <div className={styles.icones}>
+                <p className={styles.acessibilidadeLogoMobile}>
+                            <RxAccessibility />
+                        </p>
+                <p className={styles.contrasteLogoMobile}><RiContrastFill/></p>
+                <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
+            </div>
+        </div>
         </>
     )
 }

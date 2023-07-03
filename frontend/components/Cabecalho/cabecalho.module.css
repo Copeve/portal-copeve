@@ -45,7 +45,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 24px;
-    width: 20%;
+    width: 10%;
 }
 .cabecalhoAcessibilidade{
     display: flex;
@@ -81,7 +81,7 @@
     display: inline-flex;
     align-items: center;
     position: relative;
-    width: 25%;
+    width: 45%;
 }
 .cabecalhoPesquisar{
     height: 48px;
@@ -106,9 +106,13 @@
 .iconePesquisar{
     display: none;
 }
+.cabecalhoMobile{
+    display: none;
+}
 @media screen and (max-width: 900px){
     .cabecalho{
     justify-content: space-between;
+    gap: 0;
     }
     .cabecalhoLogo{
         width:25%;
@@ -138,9 +142,56 @@
     .pesquisarLupa{
         color: #FFF;
         font-size: 30px;
+        position: initial;
     }
 }
 
 @media screen and (max-width: 480px){
-  
+    .cabecalho{
+        position: relative;
+        height: 50px;
+    }
+    .cabecalhoTitulo{
+        position: absolute;
+        left: 0;
+    }
+    .tituloEscrito{
+        font-size: 14px;
+    }
+    .pesquisarLupa{
+        display: none;
+    }
+    .contrasteLogo{
+        display: none;
+    }
+    .acessibilidadeLogo{
+        display: none;
+    }
+    .cabecalhoLogo{
+        width: 20px;
+    }
+    .tituloLogo{
+        width: 60px;
+    }
+    .tituloBarra{ 
+        width: 2px; 
+        font-size: 2.5em; 
+        color: #ffffff; 
+    }
+   .iconeMenu{
+    font-size: 22px;
+   }
+    .cabecalhoMobile{
+        display: initial;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5em;
+        box-shadow:0px 1px 1px 1px rgb(143, 143, 143);
+    }
+    .icones{
+        display: flex;
+        gap: 20px;
+        font-size: 22px;
+    }
 }
