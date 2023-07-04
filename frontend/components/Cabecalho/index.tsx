@@ -57,7 +57,7 @@ export default function Cabecalho(){
                 <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
             </div>
         </div>
-        <Menu/>
+      
         </>
     )
 }
