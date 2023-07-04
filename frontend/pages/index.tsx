@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cabecalho from '../components/Cabecalho';
 import Rodape from "../components/Rodape";
+import Menu from "../components/Menu";
 import fazRequisição from "../services/fazRequisicao";
 
 
@@ -18,12 +19,12 @@ export default function HomeScreen(){
     return (
         <>
         <Cabecalho/>
+        <Menu/>
         <main>
             <section>
                 <h2>Concursos em Destaque</h2>
                 {
                     concursosDestaque.map((concurso)=>{
-                        console.log("a"+concurso)
                         return(
                         <div key={concurso.id}>
                             <h3>{concurso.nome}</h3>

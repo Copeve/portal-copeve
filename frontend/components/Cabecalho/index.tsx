@@ -5,10 +5,22 @@ import {BiSearch} from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa';
 import { RxAccessibility } from 'react-icons/rx';
 import { RiContrastFill } from 'react-icons/ri';
+import Menu from '../Menu';
+import { useRef } from 'react';
 
 
 export default function Cabecalho(){
-    
+    const elementoRef = useRef<HTMLDivElement>();
+
+    const handleClick = () => {
+        if(elementoRef.current){
+            elementoRef.current?.classList.add('menuMobile');
+            console.log(elementoRef);
+            console.log("a");
+
+        }
+    };
+  
     return(
         <>
         <header className={styles.cabecalho}>
@@ -36,7 +48,7 @@ export default function Cabecalho(){
             </div>
         </header>
         <div className={styles.cabecalhoMobile}>
-            <p className={styles.iconeMenu}><FaBars/></p>
+            <p className={styles.iconeMenu} onClick={handleClick}><FaBars/></p>
             <div className={styles.icones}>
                 <p className={styles.acessibilidadeLogoMobile}>
                             <RxAccessibility />
@@ -45,6 +57,7 @@ export default function Cabecalho(){
                 <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
             </div>
         </div>
+        <Menu/>
         </>
     )
 }

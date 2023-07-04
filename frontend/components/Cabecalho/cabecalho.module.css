@@ -144,6 +144,20 @@
         font-size: 30px;
         position: initial;
     }
+    .cabecalhoMobile{
+        display: initial;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.4em 0.5em;
+        box-shadow: 0px 1px 1px 1px rgb(143, 143, 143);
+    }
+    .iconeMenu{
+        font-size: 28px;
+       }
+    .icones{
+        display: none;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -181,17 +195,4 @@
    .iconeMenu{
     font-size: 22px;
    }
-    .cabecalhoMobile{
-        display: initial;
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        padding: 0.4em 0.5em;
-        box-shadow:0px 1px 1px 1px rgb(143, 143, 143);
-    }
-    .icones{
-        display: flex;
-        gap: 20px;
-        font-size: 22px;
-    }
 }
