@@ -1,0 +1,29 @@
+.teste{
+    color: black;
+}
+.botao{
+    background-color: black;
+}
+#prevArrow{
+    display: "block";
+
+    background-color: "red";
+     position:'absolute';
+     top: '40%';
+     right: '50%';
+
+}
+#nextArrow{
+    display: "block";
+     background-color: "green";
+     position:'absolute';
+     top: '20%';
+     left: '50%';
+
+}
+
+
+
+
+
+  

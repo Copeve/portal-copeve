@@ -1,4 +1,4 @@
-import Link from 'next/link';
+
 import styles from './cabecalho.module.css';
 import Image from 'next/image';
 import {BiSearch} from 'react-icons/bi';
@@ -9,18 +9,16 @@ import Menu from '../Menu';
 import { useRef } from 'react';
 
 
+var elementoRef;
+
+function handleClick() {
+    elementoRef = useRef<HTMLDivElement>(null);
+}
+export {elementoRef:RefObject<HTMLDivElement>}
+
 export default function Cabecalho(){
-    const elementoRef = useRef<HTMLDivElement>();
 
-    const handleClick = () => {
-        if(elementoRef.current){
-            elementoRef.current?.classList.add('menuMobile');
-            console.log(elementoRef);
-            console.log("a");
 
-        }
-    };
-  
     return(
         <>
         <header className={styles.cabecalho}>
@@ -57,7 +55,6 @@ export default function Cabecalho(){
                 <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
             </div>
         </div>
-      
         </>
     )
 }

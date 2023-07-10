@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Image from 'next/image';
 import Cabecalho from '../components/Cabecalho';
 import Rodape from "../components/Rodape";
-import Menu from "../components/Menu";
+
 import styles from '../styles/paginaIndex.module.css';
 import fazRequisição from "../services/fazRequisicao";
 import Carrossel from "../components/Carrossel";
+import Menu from "../components/Menu";
 
 
 export default function HomeScreen(){
@@ -36,8 +37,6 @@ export default function HomeScreen(){
                     })
                 }
             </section>
-
-
             <section>
                 <h2>Noticias em Destaque</h2>
                 <ul>

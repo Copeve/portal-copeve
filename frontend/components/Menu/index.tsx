@@ -1,9 +1,10 @@
 import styles from './menu.module.css';
 import Link from 'next/link';
+import { elementoRef } from '../Cabecalho';
 export default function Menu(){
     return(
         <>
-        <div className={styles.menu}>
+        <div className={styles.menu} ref={elementoRef}>
             <ul className={styles.menuLista}>
                 <li className={styles.listaItem}>
                     <Link href='/' className={styles.itemLink}>início</Link>
