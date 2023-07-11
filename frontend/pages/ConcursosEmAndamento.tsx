@@ -4,6 +4,7 @@ import Rodape from "../components/Rodape";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import fazRequisição from "../services/fazRequisicao";
+import Menu from "../components/Menu";
 
 export default function PaginaConcursosEmAndamento() {
   const [ConcursosEmAndamento, setConcursosEmAndamento] = useState<any[]>([]);
@@ -19,8 +20,8 @@ export default function PaginaConcursosEmAndamento() {
 
   return (
     <>
-
-      <Cabecalho />
+  <Menu/>
+    
       <h1>Concursos em andamento</h1>
         {ConcursosEmAndamento.map((concurso)=>{
             return(

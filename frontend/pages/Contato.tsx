@@ -1,16 +1,16 @@
+import Cabecalho from "../components/Cabecalho"
+import Menu from "../components/Menu";
+import Rodape from "../components/Rodape";
+import Contato from "../components/Contato";
+import styles from './styles.module.css';
 export default function PaginaContato(){
     return(
         <>
-        <h1>Contato</h1>
-        <h2>Sede Administrativa</h2>
-        <p>Local: Unidade Administrativa III (2º andar) - Campus Pampulha. </p>
-        <p>Endereço: Av. Antônio Carlos, 6627 - Bairro Pampulha, Belo Horizonte/MG.</p>
-        <p>Telefones:</p>
-        <ul>
-            <li>(31) 3409-4408</li>
-            <li>(31) 3409-4409</li>
-        </ul>
-        <p>E-mail: executivo@copeve.ufmg.br</p>
+        <div className={styles.pagina}>
+        <Menu/>
+        <Contato/>  
+        </div>
+        <Rodape/>
         </>
     )
         

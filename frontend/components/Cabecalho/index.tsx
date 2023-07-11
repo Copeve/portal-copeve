@@ -5,20 +5,15 @@ import {BiSearch} from 'react-icons/bi';
 import { FaBars } from 'react-icons/fa';
 import { RxAccessibility } from 'react-icons/rx';
 import { RiContrastFill } from 'react-icons/ri';
-import Menu from '../Menu';
-import { useRef } from 'react';
+import { useRef, MutableRefObject } from 'react';
+import { elementoRef } from '../Menu';
 
-
-var elementoRef;
-
-function handleClick() {
-    elementoRef = useRef<HTMLDivElement>(null);
-}
-export {elementoRef:RefObject<HTMLDivElement>}
 
 export default function Cabecalho(){
-
-
+    const handleClick=()=>{
+        elementoRef.current.classList.add("teste");
+        
+    }
     return(
         <>
         <header className={styles.cabecalho}>

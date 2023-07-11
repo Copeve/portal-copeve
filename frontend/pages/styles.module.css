@@ -1,0 +1,6 @@
+.pagina{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-areas: "secao-menu secao-main secao-main";
+}

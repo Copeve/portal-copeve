@@ -32,7 +32,6 @@ export default function Teste(){
     return (
         <>
         {router.query.id}
-        <Cabecalho/>
         <h1>{concurso?.nome}</h1>
         {arquivosDoConcurso.map((arquivo)=>{
             return(

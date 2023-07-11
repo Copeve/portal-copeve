@@ -1,10 +1,13 @@
 import styles from './menu.module.css';
 import Link from 'next/link';
-import { elementoRef } from '../Cabecalho';
+import { MutableRefObject, useRef } from 'react';
+
+
 export default function Menu(){
+
     return(
         <>
-        <div className={styles.menu} ref={elementoRef}>
+        <div className={styles.menu}>
             <ul className={styles.menuLista}>
                 <li className={styles.listaItem}>
                     <Link href='/' className={styles.itemLink}>início</Link>

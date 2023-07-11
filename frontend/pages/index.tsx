@@ -22,9 +22,7 @@ export default function HomeScreen(){
   
     return (
         <>
-        <Cabecalho/>
-        <Carrossel/>
-        <Menu/>
+          <Menu/>
         <main>
             <section>
                 <h2>Concursos em Destaque</h2>

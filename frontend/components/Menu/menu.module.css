@@ -1,5 +1,6 @@
 .menu{
     width: 246px;
+    grid-area: secao-menu;
 }.menuLista{
     display: flex;
     width: 100%;
@@ -27,6 +28,9 @@
     font-weight: 700;
     line-height: 24px;
     text-transform: uppercase;
+}
+.teste{
+    background-color: red;
 }
 
 @media screen and (max-width: 900px){
