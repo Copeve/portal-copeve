@@ -1,13 +1,13 @@
 import styles from './menu.module.css';
 import Link from 'next/link';
-import { MutableRefObject, forwardRef, useRef } from 'react';
+import { ForwardedRef, MutableRefObject, forwardRef, useRef } from 'react';
 
 
-const Menu:any=forwardRef<HTMLDivElement>((props:any, ref:any)=>{
+const Menu:any=forwardRef<HTMLDivElement>((props, ref:ForwardedRef<HTMLDivElement>)=>{
     return(
         <>
-        <div className={styles.menu} >
-            <ul className={styles.menuLista} ref={ref}>
+        <div className={styles.menu} ref={ref}>
+            <ul className={styles.menuLista} >
                 <li className={styles.listaItem}>
                     <Link href='/' className={styles.itemLink}>início</Link>
                 </li>

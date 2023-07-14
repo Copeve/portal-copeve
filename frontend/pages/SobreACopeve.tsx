@@ -12,7 +12,5 @@ export default function PaginaSobreACopeve(){
         </div>
         <Rodape/>
         </>
-
     )
-
 }

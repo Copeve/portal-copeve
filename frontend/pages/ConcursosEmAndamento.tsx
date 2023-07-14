@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import Cabecalho from "../components/Cabecalho";
 import Rodape from "../components/Rodape";
-import { useRouter } from "next/router";
 import Link from "next/link";
 import fazRequisição from "../services/fazRequisicao";
 import Menu from "../components/Menu";

@@ -1,5 +1,3 @@
-import Cabecalho from "../components/Cabecalho"
-import Menu from "../components/Menu";
 import Rodape from "../components/Rodape";
 import Contato from "../components/Contato";
 import styles from './styles.module.css';
@@ -7,7 +5,6 @@ export default function PaginaContato(){
     return(
         <>
         <div className={styles.pagina}>
-        <Menu/>
         <Contato/>  
         </div>
         <Rodape/>
