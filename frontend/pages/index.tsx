@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
-import Image from 'next/image';
-import Cabecalho from '../components/Cabecalho';
+import React, { useEffect, useRef, useState } from "react";
 import Rodape from "../components/Rodape";
-
-import styles from '../styles/paginaIndex.module.css';
 import fazRequisição from "../services/fazRequisicao";
-import Carrossel from "../components/Carrossel";
-import Menu from "../components/Menu";
+
 
 
 export default function HomeScreen(){
@@ -22,7 +17,6 @@ export default function HomeScreen(){
   
     return (
         <>
-          <Menu/>
         <main>
             <section>
                 <h2>Concursos em Destaque</h2>

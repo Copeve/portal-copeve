@@ -6,15 +6,25 @@ import { FaBars } from 'react-icons/fa';
 import { RxAccessibility } from 'react-icons/rx';
 import { RiContrastFill } from 'react-icons/ri';
 import { useRef, MutableRefObject } from 'react';
-import { elementoRef } from '../Menu';
+import Menu from '../Menu';
 
 
-export default function Cabecalho(){
-    const handleClick=()=>{
-        elementoRef.current.classList.add("teste");
-        
-    }
+export default function Cabecalho(props:any){
+    // Crie uma ref usando o hook useRef()
+    const menuRef = useRef<HTMLDivElement>(null);
+    const handleClick=() =>{
+        console.log("aaa");
+      if (menuRef.current) {
+        console.log("bbb");
+        menuRef.current.style.color = 'red';
+        menuRef.current.classList.add("menuMobile");
+        console.log(menuRef.current.classList)
+      }
+    };
+
+  // Use a ref para acessar o elemento desejado
     return(
+
         <>
         <header className={styles.cabecalho}>
             <div className={styles.cabecalhoTitulo}>
@@ -40,7 +50,7 @@ export default function Cabecalho(){
                 </form>
             </div>
         </header>
-        <div className={styles.cabecalhoMobile}>
+        <div className={styles.cabecalhoMobile} >
             <p className={styles.iconeMenu} onClick={handleClick}><FaBars/></p>
             <div className={styles.icones}>
                 <p className={styles.acessibilidadeLogoMobile}>
@@ -50,6 +60,7 @@ export default function Cabecalho(){
                 <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
             </div>
         </div>
+        <Menu ref={menuRef}/>
         </>
     )
 }
