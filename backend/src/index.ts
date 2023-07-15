@@ -1,22 +1,18 @@
-import express from 'express';
-import swaggerSetup from '../middleware/swagger';
-import bodyParser from 'body-parser';
-import routesConcursos from './api/routes/concursosRoutes';
-import routesNoticias from './api/routes/noticiasRoutes';
-import routesResultados from './api/routes/resultadosRoutes';
-import routesUsuarios from './api/routes/usuariosRoutes';
-import './api/config/env';
-import cors from 'cors';
+export default {
+  /**
+   * An asynchronous register function that runs before
+   * your application is initialized.
+   *
+   * This gives you an opportunity to extend code.
+   */
+  register(/*{ strapi }*/) {},
 
-const app = express();
-const port = 4000;
-
-app.use(cors());
-app.use(bodyParser.json(), routesConcursos, routesNoticias, routesResultados, routesUsuarios);
-
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`);
-});
-
-swaggerSetup(app);
-export {app};
+  /**
+   * An asynchronous bootstrap function that runs before
+   * your application gets started.
+   *
+   * This gives you an opportunity to set up your data model,
+   * run jobs, or perform some special logic.
+   */
+  bootstrap(/*{ strapi }*/) {},
+};

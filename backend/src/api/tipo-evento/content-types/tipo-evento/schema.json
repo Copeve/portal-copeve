@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipo_eventos",
+  "info": {
+    "singularName": "tipo-evento",
+    "pluralName": "tipo-eventos",
+    "displayName": "Tipo Evento"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

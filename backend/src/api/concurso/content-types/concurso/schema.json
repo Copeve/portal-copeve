@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "concursos",
+  "info": {
+    "singularName": "concurso",
+    "pluralName": "concursos",
+    "displayName": "Concurso",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "ano": {
+      "type": "integer",
+      "required": true
+    },
+    "data_inicio": {
+      "type": "datetime",
+      "required": true
+    },
+    "data_fim": {
+      "type": "datetime",
+      "required": true
+    },
+    "encerrado": {
+      "type": "boolean",
+      "required": true
+    },
+    "link_incricao": {
+      "type": "string",
+      "required": true
+    },
+    "destaque": {
+      "type": "boolean",
+      "required": true
+    },
+    "tipo_concurso": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tipo-concurso.tipo-concurso"
+    }
+  }
+}

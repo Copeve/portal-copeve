@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipo_concursos",
+  "info": {
+    "singularName": "tipo-concurso",
+    "pluralName": "tipo-concursos",
+    "displayName": "Tipo Concurso",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

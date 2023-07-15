@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipo_arquivos",
+  "info": {
+    "singularName": "tipo-arquivo",
+    "pluralName": "tipo-arquivos",
+    "displayName": "Tipo Arquivo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nome": {
+      "type": "string",
+      "required": true
+    },
+    "descricao": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

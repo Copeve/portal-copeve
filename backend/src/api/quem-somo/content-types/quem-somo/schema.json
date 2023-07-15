@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "quem_somos",
+  "info": {
+    "singularName": "quem-somo",
+    "pluralName": "quem-somos",
+    "displayName": "Quem Somos"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "historia": {
+      "type": "richtext",
+      "required": true
+    },
+    "missao": {
+      "type": "richtext",
+      "required": true
+    },
+    "o_que_faz": {
+      "type": "richtext",
+      "required": true
+    },
+    "visao": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

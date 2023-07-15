@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tipo_noticias",
+  "info": {
+    "singularName": "tipo-noticia",
+    "pluralName": "tipo-noticias",
+    "displayName": "Tipo Noticia"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "descricao": {
+      "type": "string"
+    }
+  }
+}

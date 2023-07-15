@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "noticias",
+  "info": {
+    "singularName": "noticia",
+    "pluralName": "noticias",
+    "displayName": "Noticia",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Titulo": {
+      "type": "string"
+    },
+    "Corpo": {
+      "type": "string"
+    },
+    "tipo_noticia": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tipo-noticia.tipo-noticia"
+    }
+  }
+}
