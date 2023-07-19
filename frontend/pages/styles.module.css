@@ -2,10 +2,10 @@
     width: 60%;
     margin: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 0.5fr 1fr 1fr ;
     grid-template-areas: "secao-menu secao-main secao-main";
 }
-.tituloConcursos{
+.tituloConteudo{
     font-size: 1.5em;
     font-family: Open Sans;
     font-weight: bolder;
@@ -20,6 +20,12 @@
     grid-area: secao-main;
     display: flex;
     flex-direction: column;
+}
+.noticiasDestaque{
+    display:flex;
+    gap: 1.5em;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 @media screen and (max-width: 900px){

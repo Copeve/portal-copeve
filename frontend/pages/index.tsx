@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import Rodape from "../components/Rodape";
 import fazRequisição from "../services/fazRequisicao";
-import Card from "../components/Card";
+import Card from "../components/CardConcurso";
 import styles from './styles.module.css';
 import Menu from "../components/Menu";
+import CardNoticia from "../components/CardNoticia";
 
 
 export default function HomeScreen(){
@@ -22,7 +23,7 @@ export default function HomeScreen(){
         <main className={styles.pagina}>
             <Menu/>
             <section className={styles.paginaConteudo}>
-                    <h2 className={styles.tituloConcursos}>Concursos em Destaque</h2>
+                    <h2 className={styles.tituloConteudo}>Concursos em Destaque</h2>
                     <div className={styles.concursosDestaque}>
                     {
                         concursosDestaque.map((concurso)=>{
@@ -37,14 +38,18 @@ export default function HomeScreen(){
                         })
                     }
                     </div>
-                <section>
-                    <h2>Noticias em Destaque</h2>
-                        {noticiasDestaque.map((noticia)=>{
-                                return(
-                                <a href="#" key={noticia.id}>
-                                    <h3>{noticia.titulo}</h3>
-                                </a>)
-                            })}
+                <section className={styles.noticiasEmDestaque}>
+                    <h2 className={styles.tituloConteudo}>Noticias em Destaque</h2>
+                        <div className={styles.noticiasDestaque}>
+                            {noticiasDestaque.map((noticia)=>{
+                                    return(
+                                        <>
+                                        <CardNoticia titulo={noticia.titulo} data={noticia.data_atualizacao}/>
+                                        </>
+                                    )
+                                })}
+                            
+                        </div>
                 </section>
                 <section>
                 

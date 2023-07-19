@@ -16,8 +16,10 @@
     color: white;
     font-size: 100px;
 }
-@media screen and (max-width: 900px){
-    
+@media screen and (max-width: 1000px){
+    .card{
+        width: 47%;
+    }
 }
 
 @media screen and (max-width: 600px){
