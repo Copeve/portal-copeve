@@ -1,5 +1,5 @@
 .menu{
-    width: 246px;
+    width: 70%;
     grid-area: secao-menu;
 }.menuLista{
     display: flex;

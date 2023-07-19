@@ -109,6 +109,9 @@
 .cabecalhoMobile{
     display: none;
 }
+.menuCabecalho ul{
+    display: none;
+}
 @media screen and (max-width: 900px){
     .cabecalho{
     justify-content: space-between;

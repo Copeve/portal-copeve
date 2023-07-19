@@ -1,7 +1,28 @@
 .card{
-    background: #0693E3;
-    width:40%
+    background: rgb(14, 119, 180);
+    width:30%;
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .titulo{
+    font-family: Open Sans;
+    font-size: 20px;
+    color: white;
+
+}
+.icone{
+    color: white;
+    font-size: 100px;
+}
+@media screen and (max-width: 900px){
+    .card{
+
+    }
+
+ }
+ 
+ @media screen and (max-width: 600px){
 
 }

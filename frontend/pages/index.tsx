@@ -22,17 +22,21 @@ export default function HomeScreen(){
         <main className={styles.pagina}>
             <Menu/>
             <section className={styles.paginaConteudo}>
-                <section >
                     <h2 className={styles.tituloConcursos}>Concursos em Destaque</h2>
                     <div className={styles.concursosDestaque}>
                     {
                         concursosDestaque.map((concurso)=>{
-                            return(
-                                <Card titulo={concurso.nome} key={concurso.id}/>);
-                    })
-                }
+                                return(
+                                    <Card titulo={concurso.nome} key={concurso.id}/>);
+                        })
+                    }
+                     {
+                        concursosDestaque.map((concurso)=>{
+                                return(
+                                    <Card titulo={concurso.nome} key={concurso.id}/>);
+                        })
+                    }
                     </div>
-                </section>
                 <section>
                     <h2>Noticias em Destaque</h2>
                         {noticiasDestaque.map((noticia)=>{

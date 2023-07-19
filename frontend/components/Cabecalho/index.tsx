@@ -24,7 +24,6 @@ export default function Cabecalho(props:any){
 
   // Use a ref para acessar o elemento desejado
     return(
-
         <>
         <header className={styles.cabecalho}>
             <div className={styles.cabecalhoTitulo}>
@@ -60,7 +59,9 @@ export default function Cabecalho(props:any){
                 <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
             </div>
         </div>
-        <Menu ref={menuRef}/>
+        <div className={styles.menuCabecalho}>
+            <Menu ref={menuRef}/>
+        </div>
         </>
     )
 }
