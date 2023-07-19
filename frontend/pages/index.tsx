@@ -5,6 +5,8 @@ import Card from "../components/CardConcurso";
 import styles from './styles.module.css';
 import Menu from "../components/Menu";
 import CardNoticia from "../components/CardNoticia";
+import CardResultado from "../components/CardResultado";
+
 
 
 export default function HomeScreen(){
@@ -51,16 +53,27 @@ export default function HomeScreen(){
                             
                         </div>
                 </section>
-                <section>
+                <section className={styles.resultadosEmDestaques}>
                 
-                    <h2>Resultados</h2>
-                    {resultadosDestaque.map((resultado)=>{
-                            return(
-                            <div key={resultado.id}>
-                                <h3>{resultado.numero}</h3>
-                                <p>{resultado.descricao}</p>
-                            </div>)
-                        })}
+                    <h2 className={styles.tituloConteudo}>Resultados</h2>
+                    <div className={styles.resultadosDestaques}>
+                        {resultadosDestaque.map((resultado)=>{
+                                return(
+                                    <CardResultado key={resultado.id} titulo={resultado.numero} descricao={resultado.descricao}/>
+                                )
+                            })}
+                              {resultadosDestaque.map((resultado)=>{
+                                return(
+                                    <CardResultado key={resultado.id} titulo={resultado.numero} descricao={resultado.descricao}/>
+                                )
+                            })}
+                              {resultadosDestaque.map((resultado)=>{
+                                return(
+                                    <CardResultado key={resultado.id} titulo={resultado.numero} descricao={resultado.descricao}/>
+                                )
+                            })}
+                              
+                    </div>
                 
                 </section>
             </section>

@@ -27,10 +27,14 @@
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.resultadosDestaques{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
 
 @media screen and (max-width: 1200px){
     .pagina{
-
         width: 90%;
     }
     .paginaConteudo{
