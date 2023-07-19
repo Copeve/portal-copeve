@@ -2,7 +2,7 @@
     width: 60%;
     margin: auto;
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr ;
+    grid-template-columns: 0.7fr 1fr 1fr ;
     grid-template-areas: "secao-menu secao-main secao-main";
 }
 .tituloConteudo{
@@ -28,17 +28,22 @@
     justify-content: space-around;
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: 1200px){
     .pagina{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+
+        width: 90%;
     }
     .paginaConteudo{
         width: 90%;
         margin: auto;
     }
 
+ }
+ @media screen and (max-width: 900px){
+    .pagina{
+        display: flex;
+        flex-direction: column;
+    }
  }
  
  @media screen and (max-width: 600px){

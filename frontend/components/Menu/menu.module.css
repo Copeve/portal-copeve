@@ -1,6 +1,7 @@
 .menu{
-    width: 87%;
+    width: 86%;
     grid-area: secao-menu;
+    margin-right: 1em;
 }.menuLista{
     display: flex;
     width: 100%;
