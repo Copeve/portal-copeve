@@ -5,6 +5,7 @@ import Menu from "../components/Menu";
 import Card from "../components/CardConcurso";
 import styles from './styles.module.css'
 import { Link } from "react-bootstrap-icons";
+import { Router, useRouter } from "next/router";
 
 export default function PaginaConcursosEmAndamento() {
   const [ConcursosEmAndamento, setConcursosEmAndamento] = useState<any[]>([]);
@@ -14,12 +15,11 @@ export default function PaginaConcursosEmAndamento() {
         setConcursosEmAndamento(data);
     });
   }, []);
-  ConcursosEmAndamento.map((concurso)=>{
-    console.log(concurso);
-  })
-
+  const router = useRouter();
+  console.log(router);
   return (
     <>
+    <p><a href="/">Inicio</a>{router.pathname}</p>
       <section className={styles.pagina}>
         <Menu/>
         <section className={styles.paginaConteudo} >
@@ -27,9 +27,9 @@ export default function PaginaConcursosEmAndamento() {
           <div className={styles.concursosDestaque}>
   
               {ConcursosEmAndamento.map((concurso)=>{
-                                        return(
-                                            <Card titulo={concurso.nome} key={concurso.id}/>);
-                                })}
+                return(
+                  <Card link={`/concursos/${concurso.id}`} titulo={concurso.nome} key={concurso.id}/>);
+                    })}
            
           </div>
         </section>

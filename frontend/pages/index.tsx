@@ -29,11 +29,11 @@ export default function HomeScreen(){
                     <div className={styles.concursosDestaque}>
                     {concursosDestaque.map((concurso)=>{
                                 return(
-                                    <Card titulo={concurso.nome} key={concurso.id}/>);
+                                    <Card link={`/concursos/${concurso.id}`} titulo={concurso.nome} key={concurso.id}/>);
                         })}
                      {concursosDestaque.map((concurso)=>{
                                 return(
-                                    <Card titulo={concurso.nome} key={concurso.id}/>);
+                                    <Card link={`/concursos/${concurso.id}`} titulo={concurso.nome} key={concurso.id}/>);
                         })}
                     </div>
                 <section className={styles.noticiasEmDestaque}>
