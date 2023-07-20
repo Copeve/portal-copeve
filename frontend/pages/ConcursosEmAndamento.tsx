@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Rodape from "../components/Rodape";
-import Link from "next/link";
 import fazRequisição from "../services/fazRequisicao";
 import Menu from "../components/Menu";
+import Card from "../components/CardConcurso";
+import styles from './styles.module.css'
+import { Link } from "react-bootstrap-icons";
 
 export default function PaginaConcursosEmAndamento() {
   const [ConcursosEmAndamento, setConcursosEmAndamento] = useState<any[]>([]);
@@ -18,16 +20,20 @@ export default function PaginaConcursosEmAndamento() {
 
   return (
     <>
-  <Menu/>
-    
-      <h1>Concursos em andamento</h1>
-        {ConcursosEmAndamento.map((concurso)=>{
-            return(
-                <div key={concurso.id}>
-                    <Link href={`http://localhost:3000/concursos/${concurso.id}`}> <h2>{concurso.nome}</h2></Link>
-                </div>
-            )
-        })}
+      <section className={styles.pagina}>
+        <Menu/>
+        <section className={styles.paginaConteudo} >
+        <h1 className={styles.tituloConteudo}>Concursos em andamento</h1>
+          <div className={styles.concursosDestaque}>
+  
+              {ConcursosEmAndamento.map((concurso)=>{
+                                        return(
+                                            <Card titulo={concurso.nome} key={concurso.id}/>);
+                                })}
+           
+          </div>
+        </section>
+      </section>
       <Rodape />
     </>
   );
