@@ -2,7 +2,7 @@
     width: 86%;
     grid-area: secao-menu;
     margin-right: 1em;
-    margin-top: 2em;
+
 }.menuLista{
     display: flex;
     width: 100%;
@@ -32,22 +32,40 @@
     text-transform: uppercase;
 }
 .teste{
+    display: initial;
     background-color: red;
+}
+.barraFina{
+    background-color: rgb(170, 170, 170);
+    height: 1px; 
+    width: 100%; 
+    margin: 2em 0;
+}
+.iconesSocias{
+    display: flex;
+    justify-content: space-around;
+}
+.iconesLink{
+    font-size: 2em;
+    color: rgb(54, 54, 54);
 }
 
 @media screen and (max-width: 900px){
-    .menuLista{
+    .menu{
         display: none;
     }
-    .menuMobile{
+    #menuMobile{
         width: 300px;
         display: initial;
         position: absolute;
         left: 0;    
     }
+    .barraFina{
+        display: none;
+    }
+    .iconesSocias{
+        display: none;
+    }
 
  }
  
- @media screen and (max-width: 600px){
-
-}

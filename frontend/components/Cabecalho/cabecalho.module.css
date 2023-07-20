@@ -109,9 +109,6 @@
 .cabecalhoMobile{
     display: none;
 }
-.menuCabecalho ul{
-    display: none;
-}
 @media screen and (max-width: 900px){
     .cabecalho{
     justify-content: space-between;
@@ -161,7 +158,15 @@
     .icones{
         display: none;
     }
+    .menuCabecalho{
+        width: 300px;
+        position: absolute;
+        left: 0;   
+        z-index: 9999; 
+        margin-top: 2em;
+    }
 }
+
 
 @media screen and (max-width: 600px){
     .cabecalho{
@@ -198,4 +203,6 @@
    .iconeMenu{
     font-size: 22px;
    }
+   
+
 }

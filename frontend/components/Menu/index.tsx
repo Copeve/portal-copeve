@@ -1,6 +1,8 @@
 import styles from './menu.module.css';
 import Link from 'next/link';
-import { ForwardedRef, MutableRefObject, forwardRef, useRef } from 'react';
+import { ForwardedRef, forwardRef } from 'react';
+import {BiLogoInstagram, BiLogoFacebook, 
+    BiLogoTwitter} from "react-icons/bi";
 
 
 const Menu:any=forwardRef<HTMLDivElement>((props, ref:ForwardedRef<HTMLDivElement>)=>{
@@ -30,6 +32,12 @@ const Menu:any=forwardRef<HTMLDivElement>((props, ref:ForwardedRef<HTMLDivElemen
                         <Link href='/' className={styles.itemLink}>ufmg</Link>
                     </li>
             </ul>
+            <div className={styles.barraFina}></div>
+        <div className={styles.iconesSocias}>
+            <a  href="#">< BiLogoInstagram className={styles.iconesLink}/></a>
+            <a  href="#"><BiLogoFacebook className={styles.iconesLink}/></a>
+            <a href="#"><BiLogoTwitter className={styles.iconesLink}/></a>
+        </div>
         </div>
         </>
     )

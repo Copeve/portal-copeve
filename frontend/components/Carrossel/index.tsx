@@ -46,8 +46,8 @@ const Carrossel: React.FC<CarrosselProps> = () => {
     };
     
     const images = [
-        'images/banner.jpg',
-        'images/banner.jpg',
+        '/images/banner.jpg',
+        '/images/banner.jpg',
       ];
     return (
           <div >

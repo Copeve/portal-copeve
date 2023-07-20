@@ -27,18 +27,14 @@ export default function HomeScreen(){
             <section className={styles.paginaConteudo}>
                     <h2 className={styles.tituloConteudo}>Concursos em Destaque</h2>
                     <div className={styles.concursosDestaque}>
-                    {
-                        concursosDestaque.map((concurso)=>{
+                    {concursosDestaque.map((concurso)=>{
                                 return(
                                     <Card titulo={concurso.nome} key={concurso.id}/>);
-                        })
-                    }
-                     {
-                        concursosDestaque.map((concurso)=>{
+                        })}
+                     {concursosDestaque.map((concurso)=>{
                                 return(
                                     <Card titulo={concurso.nome} key={concurso.id}/>);
-                        })
-                    }
+                        })}
                     </div>
                 <section className={styles.noticiasEmDestaque}>
                     <h2 className={styles.tituloConteudo}>Noticias em Destaque</h2>
@@ -50,11 +46,9 @@ export default function HomeScreen(){
                                         </>
                                     )
                                 })}
-                            
                         </div>
                 </section>
                 <section className={styles.resultadosEmDestaques}>
-                
                     <h2 className={styles.tituloConteudo}>Resultados</h2>
                     <div className={styles.resultadosDestaques}>
                         {resultadosDestaque.map((resultado)=>{

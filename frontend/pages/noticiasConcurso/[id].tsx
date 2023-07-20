@@ -1,6 +1,7 @@
 import { Router, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import fazRequisição from "../../services/fazRequisicao";
+import Menu from "../../components/Menu";
 
 export default function PaginaNoticiasDoConcurso(){
     const router = useRouter();
@@ -11,13 +12,14 @@ export default function PaginaNoticiasDoConcurso(){
             setNoticiasDoConcurso(data);
         });
       }, []);
-      noticiasDoConcurso.map((noticia)=>{
-        console.log(noticia);
-    })
+
       return(
         <>
+        <h1>Notícias</h1>
         {noticiasDoConcurso.map((noticia)=>{
-            <h2>{noticia.titulo}</h2>
+          return(
+            <h2 key={noticia.id}>{noticia.corpo}</h2>
+          )
         })}
         </>
       )

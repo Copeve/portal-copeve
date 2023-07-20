@@ -13,12 +13,12 @@ export default function Cabecalho(props:any){
     // Crie uma ref usando o hook useRef()
     const menuRef = useRef<HTMLDivElement>(null);
     const handleClick=() =>{
-        console.log("aaa");
       if (menuRef.current) {
-        console.log("bbb");
-        menuRef.current.style.color = 'red';
-        menuRef.current.classList.add("menuMobile");
-        console.log(menuRef.current.classList)
+        if( menuRef.current.style.display=="block"){
+            menuRef.current.style.display="none"
+        }else{
+            menuRef.current.style.display="block"
+        }
       }
     };
 
@@ -58,9 +58,9 @@ export default function Cabecalho(props:any){
                 <p className={styles.contrasteLogoMobile}><RiContrastFill/></p>
                 <p className={styles.pesquisarLupaMobile}><BiSearch/></p>
             </div>
-        </div>
         <div className={styles.menuCabecalho}>
-            <Menu ref={menuRef}/>
+            <Menu ref={menuRef} />
+        </div>
         </div>
         </>
     )
