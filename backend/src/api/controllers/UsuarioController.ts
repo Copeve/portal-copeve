@@ -11,7 +11,7 @@ class UsuarioController{
             const {usuario, senha}=req.body;
             const user = await usuariosServices.pegaRegistroUnico({usuario:usuario});
         
-            console.log(user);
+        
             if(user !==null){
                 if(await bcrypt.compare(senha, user.senha)){
                     const token = jwt.sign({id: user.id}, SECRET, {expiresIn:'1d'});

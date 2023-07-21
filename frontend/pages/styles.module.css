@@ -33,6 +33,11 @@
     flex-wrap: wrap;
     gap: 1.5em;
 }
+.busca{
+    margin: 2em 0;
+    padding: 0.5em;
+    font-family: Open Sans;
+}
 
 @media screen and (max-width: 1200px){
     .pagina{
@@ -40,7 +45,7 @@
     }
     .paginaConteudo{
         width: 90%;
-        margin: auto;
+        margin-bottom: 3em;
     }
 
  }

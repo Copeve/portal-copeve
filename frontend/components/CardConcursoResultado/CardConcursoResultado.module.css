@@ -1,0 +1,32 @@
+.card{
+    background: rgb(14, 119, 180);
+    width:30%;
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titulo{
+    font-family: Open Sans;
+    font-size: 20px;
+    color: white;
+
+}
+.icone{
+    color: white;
+    font-size: 100px;
+}
+@media screen and (max-width: 1250px){
+    .card{
+        width: 46%;
+        padding: 1em 0;
+    }
+}
+
+@media screen and (max-width: 600px){
+     .card{
+     width: 100%;
+     margin: auto;
+     }
+
+}

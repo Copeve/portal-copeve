@@ -18,6 +18,7 @@ export default class Services{
     }
 
     async pegaRegistrosComCondicao(where={}){
+        
         return database[this.modelo].findAll({where: {...where}});
     }
 

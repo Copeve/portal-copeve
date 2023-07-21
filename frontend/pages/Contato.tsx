@@ -1,10 +1,12 @@
 import Rodape from "../components/Rodape";
 import Contato from "../components/Contato";
 import styles from './styles.module.css';
+import Menu from "../components/Menu";
 export default function PaginaContato(){
     return(
         <>
         <div className={styles.pagina}>
+            <Menu/>
         <Contato/>  
         </div>
         <Rodape/>

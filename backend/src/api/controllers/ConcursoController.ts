@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 
 import { ConcursosServices } from '../services';
+import GruposConcursosServices from '../services/GruposConcursosServices';
 const concursosServices = new ConcursosServices();
+const gruposServices = new GruposConcursosServices();
 
 // Teste
 
@@ -77,6 +79,24 @@ class ConcursoController {
         const arquivos = await concursosServices.pegaNoticias(idConcurso);
         try {
             res.status(200).json(arquivos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    static async buscaPorNomeGrupoConcurso (req: Request, res: Response): Promise<void>{
+        try {
+            const { nomeGrupoConcurso } = req.params;
+            const resultadoBusca = await gruposServices.pegaRegistroUnico({nome: nomeGrupoConcurso});
+            const resultadosConcursos= await concursosServices.pegaRegistrosComCondicao({grupo_concurso: resultadoBusca.id});
+            res.status(200).json(resultadosConcursos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+    static async pegaGruposConcursos(req: Request, res: Response): Promise<void>{
+        try {
+            const todosOsGrupos= await gruposServices.pegaTodosOsRegistros();
+            res.status(200).json(todosOsGrupos);
         } catch (error) {
             res.status(500).json(error);
         }
