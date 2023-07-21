@@ -2,8 +2,10 @@ import { Request, Response } from 'express';
 
 import { ConcursosServices } from '../services';
 import GruposConcursosServices from '../services/GruposConcursosServices';
+import ArquivosServices from '../services/ArquivosServices';
 const concursosServices = new ConcursosServices();
 const gruposServices = new GruposConcursosServices();
+const arquivosServices = new ArquivosServices();
 
 // Teste
 
@@ -24,6 +26,30 @@ class ConcursoController {
         } catch (error) {
             res.status(500).json(error);
         }
+    }
+    static async baixaArquivo(req: Request, res: Response): Promise<void> {
+       
+        try {
+            const arquivoId = req.params.idArquivo;
+            const arquivo = await arquivosServices.pegaRegistroUnico({id:arquivoId});
+          
+            if (!arquivo) {
+                res.status(404).send('Arquivo não encontrado.');
+            }
+          
+            // Verifique se o arquivo é privado, se necessário
+        
+            // Defina o cabeçalho de conteúdo apropriado para o download
+            res.setHeader('Content-Disposition', `attachment; filename="${arquivo.nome}${arquivo.extensao}"`);
+            res.setHeader('Content-Type', arquivo.mime_type);
+            console.log(arquivo.path);
+            // Envie o conteúdo binário do arquivo
+            res.sendFile(arquivo.path);
+        } catch (error) {
+            console.error('Erro ao recuperar o arquivo para download:', error);
+            res.status(500).send('Erro ao recuperar o arquivo para download.');
+        }
+          
     }
     static async pegaConcursosAbertos(req: Request, res: Response): Promise<void> {
         try {
@@ -102,6 +128,15 @@ class ConcursoController {
         }
     }
 
+    static async pegaTodosOsArquivos(req: Request, res: Response): Promise<void>{
+        try {
+            const todosOsArquivos= await arquivosServices.pegaTodosOsRegistros();
+            console.log(todosOsArquivos);
+            res.status(200).json(todosOsArquivos);
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
     static async adicionaConcurso(req: Request, res: Response): Promise<void> {
         try {
             const dados = req.body;

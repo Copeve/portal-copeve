@@ -19,7 +19,6 @@ export default function PaginaConcursosEmAndamento() {
   console.log(router);
   return (
     <>
-    <p><a href="/">Inicio</a>{router.pathname}</p>
       <section className={styles.pagina}>
         <Menu/>
         <section className={styles.paginaConteudo} >

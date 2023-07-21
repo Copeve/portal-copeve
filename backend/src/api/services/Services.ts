@@ -12,13 +12,13 @@ export default class Services{
         const includeArray: any[] =[];
         this.dependecias.forEach((dependecia)=>{
             includeArray.push(database[dependecia]);
+            console.log(database[dependecia]);
         });
         console.log(includeArray);
         return database[this.modelo].findAll({include: includeArray});
     }
 
     async pegaRegistrosComCondicao(where={}){
-        
         return database[this.modelo].findAll({where: {...where}});
     }
 

@@ -14,6 +14,8 @@ router
     .get('/api/concursos/concurso/:idConcurso/noticias', ConcursoController.pegaNoticiasPorId)
     .get('/api/concursos/buscaGrupoConcurso/:nomeGrupoConcurso', ConcursoController.buscaPorNomeGrupoConcurso)
     .get('/api/concursos/GruposConcursos/', ConcursoController.pegaGruposConcursos)
+    .get('/api/concursos/arquivos', ConcursoController.pegaTodosOsArquivos)
+    .get('/api/arquivos/download/:idArquivo', ConcursoController.baixaArquivo)
     .post('/api/concursos', ConcursoController.adicionaConcurso)
     .post('/api/concursos/eventos', auth, ConcursoController.adicionaEventoEmConcurso)
     .post('/api/concursos/noticias', auth, ConcursoController.adicionaNoticiaEmConcurso)
