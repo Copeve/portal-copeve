@@ -27,6 +27,9 @@ module.exports = (sequelize:any, DataTypes:any) => {
             Noticias.belongsTo(models.Concursos, {
                 foreignKey: 'concurso'
             });
+            Noticias.belongsTo(models.Arquivos_concursos, {
+                foreignKey: 'imagem'
+            });
             // define association here
         }
     }

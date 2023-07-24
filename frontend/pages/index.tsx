@@ -42,7 +42,8 @@ export default function HomeScreen(){
                             {noticiasDestaque.map((noticia)=>{
                                     return(
                                         <>
-                                        <CardNoticia titulo={noticia.titulo} data={noticia.data_atualizacao}/>
+                                        {console.log(noticia)}
+                                        <CardNoticia imagem={noticia.imagem} titulo={noticia.titulo} data={noticia.data_atualizacao}/>
                                         </>
                                     )
                                 })}

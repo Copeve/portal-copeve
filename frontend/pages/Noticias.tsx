@@ -2,16 +2,16 @@ import { useEffect, useState } from "react";
 import Rodape from "../components/Rodape";
 import fazRequisição from "../services/fazRequisicao";
 import Menu from "../components/Menu";
-import Card from "../components/CardConcurso";
+import Card from "../components/CardNoticia";
 import styles from './styles.module.css'
 import { Router, useRouter } from "next/router";
 
 export default function PaginaConcursosEmAndamento() {
-  const [ConcursosEmAndamento, setConcursosEmAndamento] = useState<any[]>([]);
+  const [noticias, setNoticias] = useState<any[]>([]);
 
   useEffect(() => {
-    fazRequisição('http://localhost:4000/api/concursos/abertos', 'GET').then((data) => {
-        setConcursosEmAndamento(data);
+    fazRequisição('http://localhost:4000/api/noticias', 'GET').then((data) => {
+        setNoticias(data);
     });
   }, []);
   const router = useRouter();
@@ -21,13 +21,17 @@ export default function PaginaConcursosEmAndamento() {
       <section className={styles.pagina}>
         <Menu/>
         <section className={styles.paginaConteudo} >
-        <h1 className={styles.tituloConteudo}>Concursos em andamento</h1>
+        <h1 className={styles.tituloConteudo}>Noticias</h1>
           <div className={styles.concursosDestaque}>
   
-              {ConcursosEmAndamento.map((concurso)=>{
-                return(
-                  <Card link={`/concursos/${concurso.id}`} titulo={concurso.nome} key={concurso.id}/>);
-                    })}
+          {noticias.map((noticia)=>{
+                                    return(
+                                        <>
+                                        {console.log(noticia)}
+                                        <Card imagem={noticia.imagem} titulo={noticia.titulo} data={noticia.data_atualizacao}/>
+                                        </>
+                                    )
+                                })}
            
           </div>
         </section>

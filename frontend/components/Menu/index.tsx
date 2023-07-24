@@ -17,7 +17,7 @@ const Menu:any=forwardRef<HTMLDivElement>((props, ref:ForwardedRef<HTMLDivElemen
                         <Link href='/ConcursosEmAndamento' className={styles.itemLink}>concursos</Link>
                     </li>
                     <li className={styles.listaItem}>
-                        <Link href='/' className={styles.itemLink}>notícias</Link>
+                        <Link href='/Noticias' className={styles.itemLink}>notícias</Link>
                     </li>
                     <li className={styles.listaItem}>
                         <Link href='/Contato' className={styles.itemLink}>contato</Link>
