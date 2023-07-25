@@ -29,14 +29,14 @@ const Menu:any=forwardRef<HTMLDivElement>((props, ref:ForwardedRef<HTMLDivElemen
                         <Link href='/SobreACopeve' className={styles.itemLink}>a copeve</Link>
                     </li>
                     <li className={styles.listaItem}>
-                        <Link href='/' className={styles.itemLink}>ufmg</Link>
+                        <Link href='https://ufmg.br/' className={styles.itemLink}>ufmg</Link>
                     </li>
             </ul>
             <div className={styles.barraFina}></div>
         <div className={styles.iconesSocias}>
-            <a  href="#">< BiLogoInstagram className={styles.iconesLink}/></a>
-            <a  href="#"><BiLogoFacebook className={styles.iconesLink}/></a>
-            <a href="#"><BiLogoTwitter className={styles.iconesLink}/></a>
+            <a  href="https://www.instagram.com/ufmg/" target='_blank'>< BiLogoInstagram className={styles.iconesLink} /></a>
+            <a  href="https://www.facebook.com/ufmgbr" target='_blank'><BiLogoFacebook className={styles.iconesLink}/></a>
+            <a href="https://twitter.com/ufmg"><BiLogoTwitter className={styles.iconesLink}/></a>
         </div>
         </div>
         </>

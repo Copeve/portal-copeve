@@ -31,7 +31,7 @@ export default function HomeScreen(){
                                 return(
                                     <Card link={`/concursos/${concurso.id}`} titulo={concurso.nome} key={concurso.id}/>);
                         })}
-                     {concursosDestaque.map((concurso)=>{
+                         {concursosDestaque.map((concurso)=>{
                                 return(
                                     <Card link={`/concursos/${concurso.id}`} titulo={concurso.nome} key={concurso.id}/>);
                         })}

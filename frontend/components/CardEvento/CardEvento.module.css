@@ -1,0 +1,17 @@
+.evento{
+    border: 0.5px rgb(155, 155, 155) solid;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em 2em;
+}
+.data{
+    background-color: #0693E3;
+    width: 94px;
+    font-family: Open Sans;
+    border-radius: 5px;
+    padding: 0.2em;
+}
+.descricao{
+    font-family: Open Sans;
+}

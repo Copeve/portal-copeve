@@ -4,7 +4,7 @@ import fazRequisição from "../services/fazRequisicao";
 import Menu from "../components/Menu";
 import Card from "../components/CardNoticia";
 import styles from './styles.module.css'
-import { Router, useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 export default function PaginaConcursosEmAndamento() {
   const [noticias, setNoticias] = useState<any[]>([]);

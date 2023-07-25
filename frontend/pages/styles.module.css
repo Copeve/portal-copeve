@@ -38,6 +38,34 @@
     padding: 0.5em;
     font-family: Open Sans;
 }
+.paginaConcursos{
+    width: 60%;
+    margin: auto;
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 0.7fr 1fr 1fr ;
+    grid-template-areas: "secao-menu secao-linhaCronológica secao-arquivos";
+}
+.linhaCronologica{
+    grid-area: secao-linhaCronológica ;
+}
+.arquivos{
+    grid-area: secao-arquivos;
+}
+.arquivosConteudo{
+    border: 0.5px rgb(155, 155, 155) solid;
+    margin-top: 2em;
+
+}
+.linhaCronologicaConteudo{
+    border: 0.5px rgb(155, 155, 155) solid;
+}
+.tituloCards{
+    font-family: Open Sans;
+    background: #035888;
+    color: white;
+    padding: 0.2em;
+}
 
 @media screen and (max-width: 1200px){
     .pagina{
@@ -47,9 +75,17 @@
         width: 90%;
         margin-bottom: 3em;
     }
+    .paginaConcursos{
+        width: 90%;
+    }
 
- }
- @media screen and (max-width: 900px){
+}
+@media screen and (max-width: 900px){
+    .paginaConcursos{
+        width: 80%;
+        display: flex;
+        flex-direction: column;
+    }
     .pagina{
         display: flex;
         flex-direction: column;
