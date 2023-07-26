@@ -29,7 +29,7 @@ export default function PaginaNoticiasDoConcurso(){
             <div className={styles.concursosDestaque}>
               {noticiasDoConcurso.map((noticia)=>{
                 return(
-                  <CardNoticia key={noticia.id}imagem={noticia.imagem} titulo={noticia.titulo} data={noticia.data_atualizacao}/>
+                  <CardNoticia id={noticia.id}  key={noticia.id}imagem={noticia.imagem} titulo={noticia.titulo} data={noticia.data_atualizacao}/>
                 )
               })}
             </div>

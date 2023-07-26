@@ -43,7 +43,7 @@ export default function HomeScreen(){
                                     return(
                                         <>
                                         {console.log(noticia)}
-                                        <CardNoticia imagem={noticia.imagem} titulo={noticia.titulo} data={noticia.data_atualizacao}/>
+                                        <CardNoticia id={noticia.id} imagem={noticia.imagem} titulo={noticia.titulo} data={noticia.data_atualizacao}/>
                                         </>
                                     )
                                 })}

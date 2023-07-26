@@ -66,7 +66,10 @@
     color: white;
     padding: 0.2em;
 }
-
+.texto{
+    font-family: Open Sans;
+    
+}
 @media screen and (max-width: 1200px){
     .pagina{
         width: 90%;
