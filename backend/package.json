@@ -11,16 +11,16 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-documentation": "^4.11.5",
-    "@strapi/plugin-graphql": "^4.11.5",
-    "@strapi/plugin-i18n": "4.11.5",
-    "@strapi/plugin-users-permissions": "4.11.5",
-    "@strapi/strapi": "4.11.5",
+    "@strapi/plugin-documentation": "^4.11.7",
+    "@strapi/plugin-graphql": "^4.11.7",
+    "@strapi/plugin-i18n": "4.11.7",
+    "@strapi/plugin-users-permissions": "4.11.7",
+    "@strapi/strapi": "4.11.7",
     "mysql": "2.18.1",
     "mysql2": "^3.5.1"
   },
   "author": {
-    "name": "A Strapi developer"
+    "name": "André Oliveira"
   },
   "strapi": {
     "uuid": "d612dc4e-c3fb-4463-b201-53dc5d0eeb7b"
