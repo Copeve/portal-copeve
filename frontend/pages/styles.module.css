@@ -39,11 +39,11 @@
     font-family: Open Sans;
 }
 .paginaConcursos{
-    width: 60%;
+    width: 80%;
     margin: auto;
     display: grid;
     gap: 1em;
-    grid-template-columns: 0.7fr 1fr 1fr ;
+    grid-template-columns: 0.7fr 2fr 1fr ;
     grid-template-areas: "secao-menu secao-linhaCronológica secao-arquivos";
 }
 .linhaCronologica{
@@ -68,7 +68,7 @@
 }
 .texto{
     font-family: Open Sans;
-    
+
 }
 @media screen and (max-width: 1200px){
     .pagina{

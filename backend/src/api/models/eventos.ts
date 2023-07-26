@@ -7,7 +7,7 @@ import {
 interface EventosAttributes{
   evento:string, 
   data: Date, 
-
+  link_evento:string,
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
@@ -19,6 +19,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
      */
         evento!:string; 
         data!: Date; 
+        link_evento!: string;
         static associate(models:any) {
             Eventos.belongsTo(models.Tipos_eventos, {
                 foreignKey: 'tipo_evento'
@@ -30,7 +31,8 @@ module.exports = (sequelize: any, DataTypes: any) => {
     }
     Eventos.init({
         data: DataTypes.DATE,
-        evento: DataTypes.STRING
+        evento: DataTypes.STRING, 
+        link_evento: DataTypes.STRING
     }, {
         sequelize,
         modelName: 'Eventos',

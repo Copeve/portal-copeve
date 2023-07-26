@@ -68,9 +68,9 @@ export default function Teste(){
                         <h2 className={styles.tituloCards}>Linha Cronológica</h2>
                             {eventosDoConcurso.map((evento)=>{
                                 return(
-                        
-                                        <CardEvento  key={evento.id} descricao={evento.evento} data = {evento.data}/>
-                        
+
+                                        <CardEvento  link={evento.link_evento}key={evento.id} descricao={evento.evento} data = {evento.data}/>
+    
                                 )
                             })}
                     </div>

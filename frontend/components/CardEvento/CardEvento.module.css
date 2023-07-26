@@ -1,17 +1,47 @@
 .evento{
     border: 0.5px rgb(155, 155, 155) solid;
     width: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 2fr;
     justify-content: space-between;
     padding: 1em 2em;
+    gap: 1em;
 }
 .data{
     background-color: #0693E3;
-    width: 94px;
     font-family: Open Sans;
     border-radius: 5px;
     padding: 0.2em;
+    color: white;
+    margin: auto;
+}
+.data p {
+    margin: auto;
 }
 .descricao{
     font-family: Open Sans;
+}
+.icone{
+    color: white;
+    margin: 0.2em;
+}
+.link{
+    background-color: #0693E3;
+    font-family: Open Sans;
+    border-radius: 5px;
+    padding: 0.2em 0.5em; 
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.link a{
+    text-decoration: none;
+    color: white;
+}
+
+
+@media screen and (max-width: 1200px){
+    .evento{
+        grid-template-columns: 0.5fr 2fr 2fr;
+    }
 }
