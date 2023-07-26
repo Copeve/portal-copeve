@@ -10,7 +10,7 @@ router
     .get('/api/noticias', NoticiasController.pegaTodasAsNoticias)
     .get('/api/noticias/noticia/:idNoticia', NoticiasController.pegaNoticiaPorId)
     .get('/api/noticias/destaques', NoticiasController.pegaNoticiasEmDestaque)
-    .post('/api/noticias', auth, NoticiasController.adicionaNoticia)
+    .post('/api/noticias', NoticiasController.adicionaNoticia)
     .post('/api/noticias/destaques', auth, NoticiasController.adicionaNoticiaDestaque)
     .delete('/api/noticias/:idNoticia', auth, NoticiasController.apagaNoticia)
     .get('/api/noticias/:idNoticia/tiraDestaque', auth, NoticiasController.tiraNoticiaDeDestaque)
