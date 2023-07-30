@@ -12,7 +12,7 @@ import {
 	AccordionItem,
 	AccordionTrigger
 } from '../../components/accordion';
-import { Spacer } from '../../components/home-page/spacer';
+import { Spacer } from '../../components/spacer';
 
 type Props = {
 	params: { slug: string };
@@ -25,7 +25,7 @@ export default function Concursos({ params }: Props) {
 				{'Processo Seletivo Técnico em Linguagem de Sinais'}
 			</h1>
 
-			
+
 
 			<ul className="my-8 mt-16 space-y-3">
 				<li className="flex items-center gap-2 text-lg">

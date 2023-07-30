@@ -71,7 +71,7 @@ export function ContestsHighlight() {
 			className="max-w-full"
 		>
 			{concursos.map((item) => (
-				<div key={item.id} className="px-2">
+				<div key={item.id}>
 					<div className="flex min-h-[380px] flex-1 flex-col gap-1 overflow-hidden border border-b-[12px] border-yellow_1 p-4 transition-colors duration-500 hover:border-title_blue">
 						<Link
 							prefetch={false}
@@ -112,9 +112,8 @@ function CustomArrow({ dir = 'next', onClick }: CustomArrowProps) {
 	return (
 		<button
 			onClick={onClick}
-			className={`absolute ${
-				dir === 'next' ? '-right-16' : '-left-16'
-			} top-[45%]`}
+			className={`absolute ${dir === 'next' ? '-right-16' : '-left-16'
+				} top-[45%]`}
 		>
 			{dir === 'next' ? (
 				<MdChevronRight className={'h-12 w-12'} />

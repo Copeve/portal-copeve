@@ -20,10 +20,10 @@ module.exports = {
 				18: '4.5rem'
 			},
 			maxWidth: {
-				web: '1048px'
+				web: '1090px'
 			},
 			screens: {
-				mobileG: '500px'
+				mG: '500px'
 			},
 			aspectRatio: {
 				'4/3': '4 / 3'

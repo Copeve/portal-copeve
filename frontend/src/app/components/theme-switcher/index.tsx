@@ -1,6 +1,8 @@
+'use client';
 import { useEffect, useState } from 'react';
 import * as ToggleUI from '@radix-ui/react-toggle';
 import { IoMdContrast } from 'react-icons/io';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
 	className?: string;
@@ -22,12 +24,13 @@ const ThemeSwitcher = ({ className }: Props): React.ReactElement => {
 			aria-label={'Habilitar modo escuro'}
 			pressed={pressed}
 			onPressedChange={setPressed}
-			className={`${className} aspect-square h-full transition-all`}
+			className={twMerge('text-white text-sm flex flex-col gap-y-2 items-center justify-center', className)}
 		>
 			<IoMdContrast
-				className="darK:fill-black m-auto fill-icon_blue md:fill-white"
-				style={{ width: '35px', height: '35px' }}
+				className="darK:fill-black fill-icon_blue mG:fill-white w-[30px] h-[30px]"
 			/>
+
+			Contraste
 		</ToggleUI.Root>
 	);
 };

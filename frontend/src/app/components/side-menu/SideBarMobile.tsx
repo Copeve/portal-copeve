@@ -1,16 +1,17 @@
-import { NavButton } from './NavButton';
+'use client';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import * as Dialog from '@radix-ui/react-dialog';
 import { navButtons } from '../../../configs/main-nav-menu';
+import { NavButton } from './NavButton';
 
-const SideMenu = (): React.ReactElement => {
+const SideMenuMobile = (): React.ReactElement => {
 	return (
 		<div>
 			<Dialog.Root modal>
 				<Dialog.Trigger asChild>
 					<button
-						className="group flex h-18 w-18 flex-col items-center justify-center gap-1 bg-white data-[state=open]:bg-secondary md:bg-secondary md:data-[state=closed]:opacity-[0.92] md:dark:bg-black"
+						className="lg:hidden group flex h-12 w-14 flex-col items-center justify-center gap-1 data-[state=open]:bg-secondary md:data-[state=closed]:opacity-[0.92] lg:dark:bg-black"
 						aria-label="Menu de navegação"
 					>
 						<Burger />
@@ -18,9 +19,9 @@ const SideMenu = (): React.ReactElement => {
 				</Dialog.Trigger>
 
 				<Dialog.Portal>
-					<Dialog.Overlay className="fixed inset-0 top-36 bg-black opacity-0 transition-opacity data-[state=open]:opacity-50 md:top-18" />
+					<Dialog.Overlay className="fixed inset-0 top-0 bg-black opacity-0 transition-opacity data-[state=open]:opacity-50" />
 
-					<Dialog.Content className="fixed bottom-0 left-0 top-36 bg-secondary focus:outline-none data-[state=closed]:animate-slideOut data-[state=open]:animate-slideIn md:top-18">
+					<Dialog.Content className="fixed bottom-0 left-0 top-[100px] bg-secondary focus:outline-none data-[state=closed]:animate-slideOut data-[state=open]:animate-slideIn">
 						<ScrollArea.Root
 							scrollHideDelay={200}
 							className="h-full w-full overflow-hidden"
@@ -34,9 +35,6 @@ const SideMenu = (): React.ReactElement => {
 													href={item.link}
 													text={item.title}
 													prefetch={false}
-													className={
-														'mouse-over p flex gap-1 border-b-2 border-white border-opacity-10 p-3 py-3 pl-5 pr-12 text-lg font-bold text-white'
-													}
 												/>
 											</NavigationMenu.Item>
 										))}
@@ -63,31 +61,31 @@ const Burger = () => {
 		<>
 			<div
 				className={
-					'h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:scale-x-0 md:bg-white'
+					'h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:scale-x-0'
 				}
 			/>
 			<div
 				className={
-					'h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:scale-x-0 md:bg-white'
+					'h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:scale-x-0'
 				}
 			/>
 			<div
 				className={
-					'h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:scale-x-0 md:bg-white'
+					'h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:scale-x-0'
 				}
 			/>
 			<div
 				className={
-					'absolute h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-white md:bg-white'
+					'absolute h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:rotate-45 group-data-[state=open]:bg-white'
 				}
 			/>
 			<div
 				className={
-					'absolute h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:-rotate-45 group-data-[state=open]:bg-white md:bg-white'
+					'absolute h-1 w-[26px] bg-icon_blue transition-transform duration-300 group-data-[state=open]:-rotate-45 group-data-[state=open]:bg-white'
 				}
 			/>
 		</>
 	);
 };
 
-export { SideMenu };
+export { SideMenuMobile };

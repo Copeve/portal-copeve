@@ -8,30 +8,35 @@ export const navButtons: NavButtons[] = [
 	{
 		id: '1',
 		link: '/',
-		title: 'Concursos'
+		title: 'Início'
 	},
 	{
 		id: '2',
 		link: '/',
-		title: 'Calendário/Notícias'
+		title: 'Concursos'
 	},
 	{
 		id: '3',
 		link: '/',
-		title: 'Contato'
+		title: 'Calendário/Notícias'
 	},
 	{
 		id: '4',
 		link: '/',
-		title: 'Processos Seletivos Anteriores'
+		title: 'Contato'
 	},
 	{
 		id: '5',
 		link: '/',
-		title: 'A COPEVE'
+		title: 'Processos Seletivos Anteriores'
 	},
 	{
 		id: '6',
+		link: '/',
+		title: 'A COPEVE'
+	},
+	{
+		id: '7',
 		link: '/',
 		title: 'A UFMG'
 	}
