@@ -15,13 +15,14 @@
     "Titulo": {
       "type": "string"
     },
-    "Corpo": {
-      "type": "string"
-    },
     "tipo_noticia": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::tipo-noticia.tipo-noticia"
+    },
+    "Corpo": {
+      "type": "richtext",
+      "required": true
     }
   }
 }
