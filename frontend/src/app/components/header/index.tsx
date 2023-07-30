@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 export function Header() {
 	return (
-		<header className="sticky top-0 z-40 flex w-full flex-wrap-reverse bg-white lg:bg-primary mG:dark:bg-black">
+		<header className="sticky top-0 z-40 flex w-full flex-wrap-reverse bg-white lg:bg-primary mG:dark:bg-black drop-shadow-lg lg:drop-shadow-none">
 			<SideMenuMobile />
 
 			<div className="max-w-web flex w-full flex-wrap items-center lg:flex-1 mx-auto md:px-4 bg-primary dark:bg-black ">

@@ -75,7 +75,7 @@ export default function Home() {
 				<Spacer />
 
 				<Section title="Notícias">
-					<ol className="grid grid-cols-1 gap-4 mG:grid-cols-2 lg:grid-cols-4">
+					<ol className="grid grid-cols-1 gap-4 mG:grid-cols-2 lg:grid-cols-2">
 						{new Array(4).fill('').map((_, index) => (
 							<li key={String(index)} className="w-full">
 								<NewsBox
@@ -101,8 +101,6 @@ export default function Home() {
 						<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
 					</Link>
 				</Section>
-
-				<Spacer />
 			</div>
 		</main>
 	);

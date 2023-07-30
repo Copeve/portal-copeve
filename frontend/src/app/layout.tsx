@@ -13,6 +13,7 @@ import { InstagramButton } from './components/social-medias/instagram';
 import { TwitterButton } from './components/social-medias/twitter';
 import { FacebookButton } from './components/social-medias/facebook';
 import { TiktokButton } from './components/social-medias/tiktok';
+import { twMerge } from 'tailwind-merge';
 
 export const metadata: Metadata = {
 	title: 'Copeve: Comissão permanente do vestibular',
@@ -41,51 +42,42 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				<div className="flex h-full min-h-screen flex-col bg-white dark:bg-black">
-					{/* Header */}
 					<Header />
 
 					<LadingSlider />
 
 					<Spacer />
 
-					{/* Main */}
 					<div className='px-4'>
 						<div className="flex flex-1 max-w-web mx-auto gap-x-9">
-							<div>
+							<div className='lg:block hidden'>
 								<SideBar />
-
-								<div className='border-t border-icon_blue hidden lg:flex mt-10 pt-8 gap-4 justify-between px-2'>
-
-									<InstagramButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-
-									<TwitterButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-
-									<FacebookButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-
-									<TiktokButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-								</div>
-
+								<SocialMediasSection />
 							</div>
 							{children}
 						</div>
 					</div>
 
+					<SocialMediasSection className='bg-[#f2f2f2] flex lg:hidden justify-around gap-10 py-14 px-14 max-w-full flex-wrap border-0' />
 
-					<div className='bg-[#f2f2f2] border-icon_blue flex lg:hidden py-14 gap-28 justify-around px-10 max-w-full flex-wrap'>
-
-						<InstagramButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-
-						<TwitterButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-
-						<FacebookButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-
-						<TiktokButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
-					</div>
-
-					{/* Footer */}
 					<Footer />
 				</div>
 			</body>
 		</html>
 	);
+}
+
+function SocialMediasSection({ className }: { className?: string }) {
+	return (
+		<div className={twMerge('border-t border-icon_blue flex mt-10 pt-8 gap-4 justify-between px-2', className)}>
+
+			<InstagramButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+
+			<TwitterButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+
+			<FacebookButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+
+			<TiktokButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+		</div>
+	)
 }
