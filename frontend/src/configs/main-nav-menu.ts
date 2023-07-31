@@ -12,32 +12,32 @@ export const navButtons: NavButtons[] = [
 	},
 	{
 		id: '2',
-		link: '/',
+		link: '/concursos/test-concurso',
 		title: 'Concursos'
 	},
 	{
 		id: '3',
-		link: '/',
+		link: '/noticias',
 		title: 'Calendário/Notícias'
 	},
 	{
 		id: '4',
-		link: '/',
+		link: '/contato',
 		title: 'Contato'
 	},
 	{
 		id: '5',
-		link: '/',
+		link: '/processos-seletivos-anteriores',
 		title: 'Processos Seletivos Anteriores'
 	},
 	{
 		id: '6',
-		link: '/',
+		link: '/copeve',
 		title: 'A COPEVE'
 	},
 	{
 		id: '7',
-		link: '/',
+		link: '/ufmg',
 		title: 'A UFMG'
 	}
 ];

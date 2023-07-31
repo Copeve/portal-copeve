@@ -20,7 +20,7 @@ export default function Home() {
 		<main className="flex flex-1 flex-col pb-20 max-w-full">
 			<div className="max-w-full self-center">
 				<Section title="Concurso Destaques">
-					{/* <ContestsHighlight /> */}
+					<ContestsHighlight />
 				</Section>
 
 				<Spacer />
