@@ -32,12 +32,12 @@ export const navButtons: NavButtons[] = [
 	},
 	{
 		id: '6',
-		link: '/copeve',
+		link: '/a-copeve',
 		title: 'A COPEVE'
 	},
 	{
 		id: '7',
-		link: '/ufmg',
+		link: 'https://ufmg.br/',
 		title: 'A UFMG'
 	}
 ];

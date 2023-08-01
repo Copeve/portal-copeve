@@ -53,6 +53,8 @@ export default function RootLayout({
 							<div className='lg:block hidden'>
 								<SideBar />
 								<SocialMediasSection />
+
+								<Spacer />
 							</div>
 							{children}
 						</div>
@@ -69,15 +71,15 @@ export default function RootLayout({
 
 function SocialMediasSection({ className }: { className?: string }) {
 	return (
-		<div className={twMerge('border-t border-icon_blue flex mt-10 pt-8 gap-4 justify-between px-2', className)}>
+		<div className={twMerge('border-t border-icon_blue dark:border-white flex mt-10 pt-8 gap-4 justify-between px-2', className)}>
 
-			<InstagramButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+			<InstagramButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
 
-			<TwitterButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+			<TwitterButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
 
-			<FacebookButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+			<FacebookButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
 
-			<TiktokButton className='border-icon_blue h-10 w-10' iconColor='fill-icon_blue' />
+			<TiktokButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
 		</div>
 	)
 }

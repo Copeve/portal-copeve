@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { IoIosArrowDropright } from 'react-icons/io';
 import { AiOutlineFilePdf } from 'react-icons/ai';
 import { LuClipboardSignature } from 'react-icons/lu';
+import { LiaExternalLinkAltSolid } from 'react-icons/lia';
 
 import { TwitterButton } from '../../components/social-medias/twitter';
 import { FacebookButton } from '../../components/social-medias/facebook';
@@ -20,31 +21,29 @@ type Props = {
 
 export default function Concursos({ params }: Props) {
 	return (
-		<main className="mx-auto w-full max-w-web p-4">
-			<h1 className="mt-8 text-4xl">
+		<main className="mx-auto w-full max-w-web">
+			<h1 className="text-4xl ">
 				{'Processo Seletivo Técnico em Linguagem de Sinais'}
 			</h1>
 
-
-
-			<ul className="my-8 mt-16 space-y-3">
+			<ul className="my-8 mt-18 space-y-5">
 				<li className="flex items-center gap-2 text-lg">
-					<IoIosArrowDropright className="h-6 w-6 fill-title_blue" />{' '}
-					<h2 className="flex items-center gap-2 text-lg">
+					<IoIosArrowDropright className="h-8 w-8 fill-title_blue" />{' '}
+					<h2 className="flex items-center gap-2 text-xl">
 						Período de inscrição:{' '}
-						<strong>05 a 24 de julho de 2023</strong>
+						<strong className='font-semibold'>05 a 24 de julho de 2023</strong>
 					</h2>
 				</li>
 
-				<li className="flex items-center gap-2 text-lg">
-					<IoIosArrowDropright className="h-6 w-6 fill-title_blue" />{' '}
-					<Link href={'/'} className="mouse-over underline">
+				<li className="flex items-center gap-2 text-xl">
+					<LiaExternalLinkAltSolid className="h-8 w-8 fill-title_blue" />{' '}
+					<Link href={'/'} className="mouse-over underline underline-offset-2">
 						Área do Candidato
 					</Link>
 				</li>
 			</ul>
 
-			<div className="mb-10 flex gap-2">
+			<div className="mb-20 flex gap-2 mt-10">
 				<TwitterButton
 					className="flex gap-4 border-icon_blue dark:border-white"
 					iconColor="fill-icon_blue dark:fill-white"

@@ -7,9 +7,9 @@ type Props = {
 	params: { slug: string };
 };
 
-export default function Noticia({ params }: Props) {
+export default function NewsContent({ params }: Props) {
 	return (
-		<div>
+		<main>
 			<h1 className="text-5xl pb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit</h1>
 
 			<p className="text-lg pb-8">
@@ -32,6 +32,6 @@ export default function Noticia({ params }: Props) {
 			<p className="whitespace-pre-line text-justify text-lg mt-8 leading-8">{'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit.\n\nLaborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate.\n\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate.\n\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate.'}</p>
 
 			<Spacer />
-		</div>
+		</main>
 	)
 }

@@ -4,7 +4,7 @@
 
 @layer base {
 	.mouse-over {
-		@apply transition-colors hover:brightness-75 cursor-pointer;
+		@apply transition-all hover:brightness-75 cursor-pointer;
 	}
 
 	*,

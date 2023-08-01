@@ -5,7 +5,7 @@ import { Spacer } from "../components/spacer";
 
 export default function NewsList() {
 	return (
-		<div>
+		<main>
 			<h1 className="text-5xl pb-4">Notícias</h1>
 
 			{
@@ -23,7 +23,7 @@ export default function NewsList() {
 			}
 
 			<Spacer />
-		</div>
+		</main>
 	)
 }
 
