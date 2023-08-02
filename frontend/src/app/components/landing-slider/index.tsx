@@ -34,12 +34,12 @@ export function LadingSlider() {
 			}}
 			className="max-w-full"
 		>
-			{new Array(3).fill('').map((_, index) => (
-				<div key={String(index)}>
+			{ladingImages.map((item) => (
+				<div key={item.id}>
 					<Image
-						src={'/banner.jpg'}
+						src={item.link}
 						width={1920}
-						height={410}
+						height={564}
 						alt={'Reitoria UFMG'}
 						className="h-[564px] w-full min-w-[1080px] object-cover sm:min-w-[1920px]"
 					/>
@@ -48,3 +48,9 @@ export function LadingSlider() {
 		</Slider>
 	)
 }
+
+const ladingImages = [
+	{ id: '1', link: 'https://live.staticflickr.com/7050/6990116376_e68aa898f3_k.jpg' },
+	{ id: '2', link: 'https://live.staticflickr.com/7102/7136201683_29e038f48d_b.jpg', },
+	{ id: '3', link: 'https://live.staticflickr.com/8165/7136205487_c02a251e51_b.jpg', }
+]

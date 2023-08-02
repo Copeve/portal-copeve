@@ -27,66 +27,15 @@ export default function Home() {
 
 				<Spacer />
 
-				<Section title="Galeria">
-					<ul className="pt-4 grid grid-cols-2 gap-x-2 gap-y-8 mG:grid-cols-3">
-						<li>
-							<GalleryButton href="/" title="Departamentos">
-								<MdOutlineDashboardCustomize />
-							</GalleryButton>
-						</li>
-						<li>
-							<GalleryButton
-								href="/"
-								title="Editais"
-								color="stroke"
-							>
-								<LuNewspaper />
-							</GalleryButton>
-						</li>
-						<li>
-							<GalleryButton href="/" title="Serviços">
-								<MdMiscellaneousServices />
-							</GalleryButton>
-						</li>
-						<li>
-							<GalleryButton
-								href="/"
-								title="Manuais"
-								color="stroke"
-							>
-								<LuFiles />
-							</GalleryButton>
-						</li>
-						<li>
-							<GalleryButton
-								href="/"
-								title="Transparência"
-								color="stroke"
-							>
-								<HiOutlineDocumentChartBar />
-							</GalleryButton>
-						</li>
-						<li>
-							<GalleryButton href="/" title="Formulários">
-								<AiOutlineForm />
-							</GalleryButton>
-						</li>
-					</ul>
-				</Section>
-
-				<Spacer />
-
 				<Section title="Notícias">
-					<ol className="grid grid-cols-1 gap-4 mG:grid-cols-2 lg:grid-cols-2">
+					<ol className="grid grid-cols-1 gap-4 gap-y-10 mG:grid-cols-2 lg:grid-cols-2">
 						{new Array(4).fill('').map((_, index) => (
 							<li key={String(index)} className="w-full">
 								<NewsBox
-									imageUrl="/banner.jpg"
+									imageUrl={newsDataImage[index]}
 									imgAlt="Lorem ipsum dolor sit"
 									title={
-										index % 2 === 0
-											? 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde eveniet corporis consequatur ipsum magnam, veritatis ea quas fuga necessitatibus, nostrum aliquid explicabo suscipit? Ducimus unde veritatis maxime omnis ullam eos.'
-											: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.'
+										'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde eveniet corporis consequatur ipsum magnam, veritatis ea quas fuga necessitatibus, nostrum aliquid explicabo suscipit? Ducimus unde veritatis maxime omnis ullam eos.'
 									}
 									date={new Date('2023-07-18')}
 								/>
@@ -97,7 +46,7 @@ export default function Home() {
 					<Link
 						href="/noticias"
 						prefetch={false}
-						className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
+						className="ml-auto mt-4 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
 					>
 						Ver todas as notícias{' '}
 						<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
@@ -140,3 +89,10 @@ function ShowResults({ end, duration = 8, title }: ShowResultsProps) {
 		</div>
 	)
 }
+
+const newsDataImage = [
+	'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
+	'https://live.staticflickr.com/7090/7171706600_4d420fdbab_b.jpg',
+	'https://live.staticflickr.com/7099/7136201181_73d3a8926d_3k.jpg',
+	'https://live.staticflickr.com/7101/6990120534_03ec7c28cb_b.jpg'
+]
