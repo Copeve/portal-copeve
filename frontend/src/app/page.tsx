@@ -2,19 +2,11 @@
 import React from 'react';
 import Link from 'next/link';
 import { HiChevronRight } from 'react-icons/hi';
-import { HiOutlineDocumentChartBar } from 'react-icons/hi2';
-import { LuNewspaper, LuFiles } from 'react-icons/lu';
-import {
-	MdMiscellaneousServices,
-	MdOutlineDashboardCustomize
-} from 'react-icons/md';
-import { AiOutlineForm } from 'react-icons/ai';
 import CountUp from 'react-countup';
 
 import { NewsBox } from './components/home-page/newsbox';
 import { Section } from './components/home-page/section/indext';
 import { Spacer } from './components/spacer';
-import { GalleryButton } from './components/home-page/gallery-button';
 import { ContestsHighlight } from './components/contests-highlight';
 
 export default function Home() {

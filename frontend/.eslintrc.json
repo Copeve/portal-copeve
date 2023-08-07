@@ -1,13 +1,13 @@
 {
     "env": {
         "browser": true,
-		"es2021": true,
-		"node": true,
-		"jest": true
+        "es2021": true,
+        "node": true,
+        "jest": true
     },
     "extends": [
-		"next",
-		"prettier"
+        "next",
+        "prettier"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -19,25 +19,31 @@
         "prettier"
     ],
     "rules": {
-		"prettier/prettier": "warn",
+        "prettier/prettier": "warn",
         "indent": [
             "warn",
             "tab"
         ],
         "linebreak-style": 0,
-		"operator-linebreak": ["warn", "before"],
+        "operator-linebreak": [
+            "warn",
+            "before"
+        ],
         "quotes": [
             "warn",
             "single",
-			{ "avoidEscape": true }
+            {
+                "avoidEscape": true
+            }
         ],
         "semi": [
-            "error",
+            // "error",
+            "warn",
             "always"
         ],
-		"no-unused-vars": "off",
-		"@typescript-eslint/no-unused-vars": "warn",
-		"no-template-curly-in-string": "warn",
-		"prefer-template": "warn"
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-template-curly-in-string": "warn",
+        "prefer-template": "warn"
     }
 }

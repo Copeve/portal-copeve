@@ -14,6 +14,7 @@ import { TwitterButton } from './components/social-medias/twitter';
 import { FacebookButton } from './components/social-medias/facebook';
 import { TiktokButton } from './components/social-medias/tiktok';
 import { twMerge } from 'tailwind-merge';
+import { Breadcrumbs } from './components/breadcrumbs';
 
 export const metadata: Metadata = {
 	title: 'Copeve: Comissão permanente do vestibular',
@@ -48,19 +49,23 @@ export default function RootLayout({
 
 					<Spacer />
 
-					<div className='px-4'>
-						<div className="flex flex-1 max-w-web mx-auto gap-x-9">
-							<div className='lg:block hidden'>
+					<div className="px-4">
+						<div className="mx-auto flex max-w-web flex-1 gap-x-9">
+							<div className="hidden lg:block">
 								<SideBar />
 								<SocialMediasSection />
 
 								<Spacer />
 							</div>
-							{children}
+							<div className="flex flex-1 flex-col relative">
+								<div className='h-0 w-0 absolute -top-32' id={'content-page-focus'} />
+								<Breadcrumbs />
+								{children}
+							</div>
 						</div>
 					</div>
 
-					<SocialMediasSection className='bg-[#f2f2f2] flex lg:hidden justify-around gap-10 py-14 px-14 max-w-full flex-wrap border-0' />
+					<SocialMediasSection className="flex max-w-full flex-wrap justify-around gap-10 border-0 bg-[#f2f2f2] px-14 py-14 lg:hidden" />
 
 					<Footer />
 				</div>
@@ -71,15 +76,31 @@ export default function RootLayout({
 
 function SocialMediasSection({ className }: { className?: string }) {
 	return (
-		<div className={twMerge('border-t border-icon_blue dark:border-white flex mt-10 pt-8 gap-4 justify-between px-2', className)}>
+		<div
+			className={twMerge(
+				'mt-10 flex justify-between gap-4 border-t border-icon_blue px-2 pt-8 dark:border-white',
+				className
+			)}
+		>
+			<InstagramButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
 
-			<InstagramButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
+			<TwitterButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
 
-			<TwitterButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
+			<FacebookButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
 
-			<FacebookButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
-
-			<TiktokButton className='border-icon_blue dark:border-white h-10 w-10' iconColor='fill-icon_blue dark:fill-white' />
+			<TiktokButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
 		</div>
-	)
+	);
 }

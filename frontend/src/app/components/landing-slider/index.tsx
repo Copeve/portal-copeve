@@ -46,11 +46,20 @@ export function LadingSlider() {
 				</div>
 			))}
 		</Slider>
-	)
+	);
 }
 
 const ladingImages = [
-	{ id: '1', link: 'https://live.staticflickr.com/7050/6990116376_e68aa898f3_k.jpg' },
-	{ id: '2', link: 'https://live.staticflickr.com/7102/7136201683_29e038f48d_b.jpg', },
-	{ id: '3', link: 'https://live.staticflickr.com/8165/7136205487_c02a251e51_b.jpg', }
-]
+	{
+		id: '1',
+		link: 'https://live.staticflickr.com/7050/6990116376_e68aa898f3_k.jpg'
+	},
+	{
+		id: '2',
+		link: 'https://live.staticflickr.com/7102/7136201683_29e038f48d_b.jpg'
+	},
+	{
+		id: '3',
+		link: 'https://live.staticflickr.com/8165/7136205487_c02a251e51_b.jpg'
+	}
+];

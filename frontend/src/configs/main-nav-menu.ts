@@ -12,7 +12,7 @@ export const navButtons: NavButtons[] = [
 	},
 	{
 		id: '2',
-		link: '/concursos/test-concurso',
+		link: '/concursos',
 		title: 'Concursos'
 	},
 	{

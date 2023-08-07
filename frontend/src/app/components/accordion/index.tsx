@@ -27,7 +27,7 @@ const AccordionItem = React.forwardRef<
 >(function AccordionItem({ children, className, ...props }, forwardedRef) {
 	return (
 		<AccordionUI.Item
-			className={twMerge('mt-5 first:mt-0 border border-zinc-300 rounded-lg', className)}
+			className={twMerge('mt-5 first:mt-0 border border-zinc-300 rounded-lg overflow-hidden', className)}
 			{...props}
 			ref={forwardedRef}
 		>
@@ -47,7 +47,7 @@ const AccordionTrigger = React.forwardRef<
 		<AccordionUI.Header className="flex">
 			<AccordionUI.Trigger
 				className={twMerge(
-					'mouse-over group flex flex-1 items-center justify-between px-8 py-5 text-xl leading-none outline-none ring-gray_text ring-offset-2 focus-visible:ring-2 dark:bg-black dark:text-white text-title_blue font-semibold',
+					'mouse-over group flex flex-1 items-center justify-between px-8 py-5 text-xl leading-none outline-none ring-gray_text ring-offset-2 focus-visible:ring-2 dark:bg-black dark:text-white text-title_blue font-semibold gap-2',
 					className
 				)}
 				{...props}
