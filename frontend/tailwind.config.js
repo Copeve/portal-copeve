@@ -60,6 +60,9 @@ module.exports = {
 				yellow_1: '#fdb813',
 				icon_blue: '#627680',
 				title_blue: '#4eb1da'
+			},
+			boxShadow: {
+				'allDir': '0 0 15px rgba(0, 0, 0, 0.15)',
 			}
 		}
 	}

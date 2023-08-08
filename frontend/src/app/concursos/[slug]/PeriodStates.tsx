@@ -1,15 +1,18 @@
 import { format, formatDistanceToNow, isAfter } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { ArrowDropright } from '../../components/Icons';
+import { twMerge } from 'tailwind-merge';
 
 type Props = {
 	period: {
 		inicio: Date;
 		fim?: Date;
 	} | undefined;
+	className?: string;
+	textClassName?: string;
 }
 
-export function PeriodStates({ period }: Props) {
+export function PeriodStates({ className, textClassName, period }: Props) {
 	const formatOptions = { locale: ptBR };
 	let outOfDateMessage = '';
 
@@ -26,10 +29,10 @@ export function PeriodStates({ period }: Props) {
 	}
 
 	return (
-		<div className="flex flex-wrap mb-6">
+		<div className={twMerge("flex flex-wrap mb-6", className)}>
 			<div className='flex gap-x-4 items-center'>
 				<ArrowDropright className="h-8 w-8 min-w-[32px] min-h-[32px] fill-title_blue" />{' '}
-				<h2 className="flex gap-2 items-center text-xl">
+				<h2 className={twMerge("flex gap-2 items-center text-xl", textClassName)}>
 					Período de inscrição:
 					{
 						period
