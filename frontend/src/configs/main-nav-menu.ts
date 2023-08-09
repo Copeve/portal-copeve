@@ -2,6 +2,7 @@ type NavButtons = {
 	id: string;
 	link: string;
 	title: string;
+	uriAs?: string;
 };
 
 export const navButtons: NavButtons[] = [
@@ -27,12 +28,12 @@ export const navButtons: NavButtons[] = [
 	},
 	{
 		id: '5',
-		link: '/processos-seletivos-anteriores',
+		link: '/processos_seletivos_anteriores',
 		title: 'Processos Seletivos Anteriores'
 	},
 	{
 		id: '6',
-		link: '/a-copeve',
+		link: '/a_copeve',
 		title: 'A COPEVE'
 	},
 	{

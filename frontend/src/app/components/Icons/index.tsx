@@ -1,7 +1,7 @@
 import { IconBaseProps } from 'react-icons';
 import { IoIosArrowDropright } from 'react-icons/io';
 import { AiOutlineFilePdf, AiOutlineLink } from 'react-icons/ai';
-import { FiArrowUpRight } from 'react-icons/fi';
+import { FiArrowUpRight, FiChevronUp, FiChevronDown, FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { LuFileText } from 'react-icons/lu';
 import { PiNewspaperClippingLight } from 'react-icons/pi';
 
@@ -14,6 +14,10 @@ export const ArrowDropright = (props: IconBaseProps) => <IoIosArrowDropright {..
 
 //Fi
 export const ArrowUpRight = (props: IconBaseProps) => <FiArrowUpRight {...props} />
+export const ChevronUp = (props: IconBaseProps) => <FiChevronUp {...props} />
+export const ChevronDown = (props: IconBaseProps) => <FiChevronDown {...props} />
+export const ChevronLeft = (props: IconBaseProps) => <FiChevronLeft {...props} />
+export const ChevronRight = (props: IconBaseProps) => <FiChevronRight {...props} />
 
 //Lu
 export const FileText = (props: IconBaseProps) => <LuFileText {...props} />

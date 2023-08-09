@@ -17,6 +17,7 @@ export const SideBar = () => {
 								prefetch={false}
 								key={item.id}
 								href={item.link}
+								as={item.uriAs}
 								text={item.title}
 								className={`border-b-0 dark:bg-black dark:border dark:border-white ${new RegExp(`^${item.link}`).test(pathname) ? 'bg-secondary' : 'bg-primary'}`}
 							/>

@@ -14,7 +14,8 @@ module.exports = {
 			},
 			width: {
 				18: '4.5rem',
-				web: '1048px'
+				web: '1048px',
+				selectTrigger: 'var(--radix-select-trigger-width)'
 			},
 			spacing: {
 				18: '4.5rem'
