@@ -4,17 +4,16 @@ import { twMerge } from 'tailwind-merge';
 
 import { ChevronDown, ChevronUp } from '../Icons';
 
-type Props = {
+type Props = SelectUI.SelectProps & {
 	children: React.ReactNode;
-	rootProps?: SelectUI.SelectProps;
 	triggerProps?: SelectUI.SelectTriggerProps & {
 		placeholder?: string;
 	};
 }
 
-const Select = ({ children, rootProps, triggerProps }: Props) => {
+const Select = ({ children, triggerProps, ...rootProps }: Props) => {
 	return (
-		<SelectUI.Root {...rootProps}>
+		<SelectUI.Root {...rootProps} >
 			<SelectUI.Trigger
 				className="border rounded px-4 py-2 w-full flex gap-2 justify-between items-center"
 				{...triggerProps}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import * as AccordionUI from '@radix-ui/react-accordion';
-import { HiPlusSmall } from 'react-icons/hi2';
+import { HiPlusSmall, HiMinusSmall } from 'react-icons/hi2';
 import { IconBaseProps } from 'react-icons';
 
 type Props = {
@@ -54,17 +54,26 @@ const AccordionTrigger = React.forwardRef<
 				ref={forwardedRef}
 			>
 				{children}
-
-				<HiPlusSmall
-					className={twMerge(
-						'h-6 w-6 transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180 dark:fill-white',
-						iconProps?.className
-					)}
-					aria-hidden
-					{...iconProps}
-				/>
+				<div className='h-6 w-6 relative'>
+					<HiPlusSmall
+						className={twMerge(
+							'h-6 w-6 transition-transform duration-300 group-data-[state=open]:scale-y-0 dark:fill-white absolute',
+							iconProps?.className
+						)}
+						aria-hidden
+						{...iconProps}
+					/>
+					<HiMinusSmall
+						className={twMerge(
+							'h-6 w-6 scale-y-0 transition-transform duration-300 group-data-[state=open]:scale-y-100 dark:fill-white absolute',
+							iconProps?.className
+						)}
+						aria-hidden
+						{...iconProps}
+					/>
+				</div>
 			</AccordionUI.Trigger>
-		</AccordionUI.Header>
+		</AccordionUI.Header >
 	);
 });
 

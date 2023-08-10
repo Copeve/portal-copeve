@@ -8,13 +8,14 @@ import { NewsBox } from './components/home-page/newsbox';
 import { Section } from './components/home-page/section/indext';
 import { Spacer } from './components/spacer';
 import { ContestsHighlight } from './components/contests-highlight';
+import { twMerge } from 'tailwind-merge';
 
 export default function Home() {
 	return (
 		<main className="flex flex-1 flex-col pb-20 max-w-full">
 			<div className="max-w-full self-center">
 				<Section title="Concurso Destaques">
-					<ContestsHighlight />
+					{/* <ContestsHighlight /> */}
 				</Section>
 
 				<Spacer />
@@ -48,10 +49,10 @@ export default function Home() {
 				<Spacer />
 
 				<Section title="Resultados">
-					<div className='flex justify-between py-16'>
-						<ShowResults end={81} title='Concursos Abertos' />
-						<ShowResults end={20050} title='Concursos Concluídos' />
-						<ShowResults end={489} title='Concursos Cancelado' />
+					<div className='flex justify-between py-16 flex-wrap gap-16 flex-col sm:flex-row'>
+						<ShowResults className='flex-1' end={81} title='Concursos Abertos' />
+						<ShowResults className='flex-1' end={20050} title='Concursos Concluídos' />
+						<ShowResults className='flex-1' end={489} title='Concursos Cancelado' />
 					</div>
 				</Section>
 
@@ -65,11 +66,12 @@ type ShowResultsProps = {
 	end: number;
 	duration?: number;
 	title?: string;
+	className?: string;
 }
 
-function ShowResults({ end, duration = 8, title }: ShowResultsProps) {
+function ShowResults({ end, duration = 8, title, className }: ShowResultsProps) {
 	return (
-		<div className='flex flex-col items-center justify-center gap-6'>
+		<div className={twMerge('flex flex-col items-center justify-center gap-6', className)}>
 			<h3 className='text-xl text-center' >{title}</h3>
 			<CountUp
 				end={end}

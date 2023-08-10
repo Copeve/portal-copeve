@@ -1,9 +1,29 @@
 'use client';
+import { useCallback, useState } from 'react';
 import * as Label from '@radix-ui/react-label';
+import { addHours } from 'date-fns';
+
 import { PageTitle } from '../components/page-title';
 import { Select, SelectItem } from '../components/select';
+import { Spacer } from '../components/spacer';
+import { ContestBox, TContests } from '../components/contest-box';
 
 export default function PreviousContests() {
+	const [group, setGroup] = useState('');
+	const [name, setName] = useState<TContests>();
+
+	const handleNameSelection = useCallback((titulo: string) => {
+		setName({
+			titulo: titulo.substring(2),
+			periodoInscricao: {
+				inicio: new Date('2023-05-23'),
+				fim: addHours(new Date(), 4)
+			},
+			imagem: 'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
+			imagemAlt: 'Imagem do concurso'
+		})
+	}, []);
+
 	return (
 		<main>
 			<PageTitle title="Processos Seletivos Anteriores" />
@@ -23,6 +43,7 @@ export default function PreviousContests() {
 						id: 'selectContestGroup',
 						placeholder: "Selecione o grupo..."
 					}}
+					onValueChange={setGroup}
 				>
 					{
 						groups.map((item, idx) => (
@@ -37,7 +58,7 @@ export default function PreviousContests() {
 				</Select>
 			</div>
 
-			<div className='mt-6 flex flex-col gap-1'>
+			<div className='mt-6 flex flex-col gap-1 mb-16'>
 				<Label.Root className="ml-1" htmlFor="selectContestName">
 					Selecione o nome
 				</Label.Root>
@@ -48,6 +69,7 @@ export default function PreviousContests() {
 						id: 'selectContestName',
 						placeholder: "Selecione o nome..."
 					}}
+					onValueChange={handleNameSelection}
 				>
 					{
 						names.map((item, idx) => (
@@ -61,6 +83,10 @@ export default function PreviousContests() {
 					}
 				</Select>
 			</div>
+
+			{name && group && <ContestBox type={'2'} data={[name]} />}
+
+			<Spacer />
 		</main>
 	);
 }
@@ -81,4 +107,4 @@ const names = [
 	'Concursos para Técnicos Administrativos UFMG',
 	'Formação Intercultural para Educadores Indígenas',
 	'Habilidades'
-]
+];
