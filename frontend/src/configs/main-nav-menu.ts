@@ -2,7 +2,6 @@ type NavButtons = {
 	id: string;
 	link: string;
 	title: string;
-	uriAs?: string;
 };
 
 export const navButtons: NavButtons[] = [

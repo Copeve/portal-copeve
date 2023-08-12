@@ -41,10 +41,10 @@ type Props = {
 const ContestBox = ({ type, data, defaultValue }: Props): React.ReactElement => {
 	if (type === '1') {
 		return (
-			<ol className="grid grid-cols-1 px-8 sm:px-0 sm:grid-cols-2 gap-8">
+			<ol className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 				{
 					data.map((item, idx) => (
-						<li className="group flex flex-col border border-title_blue p-4 pb-10 rounded">
+						<li key={`item-${idx}`} className="group flex flex-col border border-title_blue p-4 pb-10 rounded">
 
 							<div className="flex flex-col items-center gap-4 w-full pb-4 flex-1">
 								<div className="h-52 w-full bg-slate-200 rounded flex items-center justify-center overflow-hidden">
@@ -116,7 +116,7 @@ const ContestBox = ({ type, data, defaultValue }: Props): React.ReactElement => 
 		<Accordion type="single" defaultValue={defaultValue} collapsible>
 			{
 				data.map((item, idx) => (
-					<AccordionItem value={`item-${idx}`} className="group rounded border border-title_blue">
+					<AccordionItem key={`item-${idx}`} value={`item-${idx}`} className="group rounded border border-title_blue">
 						<AccordionTrigger className="text-left leading-7 p-4 hover:brightness-100">
 							<div className="flex gap-4 w-full">
 								<div className="h-36 min-w-[240px] w-60 bg-slate-200 rounded overflow-hidden flex items-center justify-center">

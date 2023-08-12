@@ -41,7 +41,7 @@ export function Header() {
 
 				<div className='flex mG:h-full gap-2 lg:gap-4 pr-8 lg:pr-4 mG:static absolute bottom-0 right-0'>
 					<Link
-						href={'/'}
+						href={'/acessibilidade'}
 						prefetch={false}
 						className="text-[0px] lg:text-sm aspect-square mG:aspect-auto transition-all hover:brightness-75 h-12 mG:h-full text-white flex flex-col items-center justify-center gap-y-2"
 					>
@@ -54,7 +54,7 @@ export function Header() {
 					<ThemeSwitcher className="hover:brightness-75 h-12 text-[0px] lg:text-sm mG:h-full aspect-square" />
 
 					<Link
-						href={'/'}
+						href={'/mapa_do_site'}
 						prefetch={false}
 						className="text-[0px] lg:text-sm aspect-square mG:aspect-auto transition-all hover:brightness-75 h-12 mG:h-full text-white lg:flex flex-col items-center justify-center gap-y-2 text-center hidden"
 					>

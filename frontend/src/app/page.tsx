@@ -7,15 +7,59 @@ import CountUp from 'react-countup';
 import { NewsBox } from './components/home-page/newsbox';
 import { Section } from './components/home-page/section/indext';
 import { Spacer } from './components/spacer';
-import { ContestsHighlight } from './components/contests-highlight';
 import { twMerge } from 'tailwind-merge';
+import { ContestBox, TContests } from './components/contest-box';
+import { addHours } from 'date-fns';
+
+const contestsData: TContests[] = [
+	{
+		titulo: 'Processo Seletivo Técnico em Linguagem de Sinais',
+		periodoInscricao: {
+			inicio: new Date('2023-05-23'),
+			fim: addHours(new Date(), 4)
+		},
+		imagem: 'https://live.staticflickr.com/7099/7136201181_73d3a8926d_3k.jpg'
+	},
+	{
+		titulo: 'Lorem ipsum - dolor sit (amet), consecteturadipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla',
+		periodoInscricao: {
+			inicio: new Date('2023-05-23'),
+			fim: addHours(new Date(), 4)
+		},
+		imagem: 'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
+		imagemAlt: 'Imagem do concurso'
+	},
+	{
+		titulo: 'Colégio Técnico 2024 - Cursos Subsequentes',
+		periodoInscricao: {
+			inicio: new Date('2023-05-23'),
+			fim: addHours(new Date(), 4)
+		},
+		imagem: 'https://live.staticflickr.com/7101/6990120534_03ec7c28cb_b.jpg'
+	},
+	{
+		titulo: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla velit repellat atque quod, totam minima fuga consequatur officiis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla velit repellat atque quod, totam minima fuga consequatur officiis!',
+		periodoInscricao: {
+			inicio: new Date('2023-05-23'),
+			fim: addHours(new Date(), 4)
+		}
+	},
+];
 
 export default function Home() {
 	return (
 		<main className="flex flex-1 flex-col pb-20 max-w-full">
 			<div className="max-w-full self-center">
 				<Section title="Concurso Destaques">
-					{/* <ContestsHighlight /> */}
+					<ContestBox data={contestsData} type='1' />
+					<Link
+						href="/concursos"
+						prefetch={false}
+						className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
+					>
+						Ver todos os concursos{' '}
+						<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
+					</Link>
 				</Section>
 
 				<Spacer />
@@ -28,7 +72,7 @@ export default function Home() {
 									imageUrl={newsDataImage[index]}
 									imgAlt="Lorem ipsum dolor sit"
 									title={
-										'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde eveniet corporis consequatur ipsum magnam, veritatis ea quas fuga necessitatibus, nostrum aliquid explicabo suscipit? Ducimus unde veritatis maxime omnis ullam eos.'
+										'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde eveniet corporis consequatur ipsum magnam.'
 									}
 									date={new Date('2023-07-18')}
 								/>
@@ -39,7 +83,7 @@ export default function Home() {
 					<Link
 						href="/noticias"
 						prefetch={false}
-						className="ml-auto mt-4 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
+						className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
 					>
 						Ver todas as notícias{' '}
 						<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
