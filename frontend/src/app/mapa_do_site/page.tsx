@@ -9,11 +9,18 @@ export default function MapaDoSite() {
 
 			<ul className="mt-8">
 				{navButtons.map((item) => (
-					<li key={item.id} className="list-disc list-inside">
-						<Link href={item.link} prefetch={false} className="text-lg underline font-semibold hover:text-title_blue">{item.title}</Link>
+					<li
+						key={item.id}
+						className="list-disc list-inside">
+						<Link
+							href={item.link}
+							prefetch={false}
+							className="text-lg underline font-semibold hover:text-title_blue">
+							{item.title}
+						</Link>
 					</li>
 				))}
 			</ul>
 		</div>
-	)
+	);
 }
