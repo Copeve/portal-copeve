@@ -19,6 +19,7 @@
     "@radix-ui/react-select": "^1.2.2",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-toggle": "^1.0.3",
+    "@tawk.to/tawk-messenger-react": "^2.0.2",
     "@types/node": "20.3.3",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
