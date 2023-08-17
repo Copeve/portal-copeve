@@ -1,20 +1,20 @@
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import * as AccordionUI from '@radix-ui/react-accordion';
-import { MdOutlineArrowDropDownCircle } from 'react-icons/md';
+import { HiPlusSmall, HiMinusSmall } from 'react-icons/hi2';
 import { IconBaseProps } from 'react-icons';
 
 type Props = {
 	children: React.ReactNode;
 	type: 'single' | 'multiple';
 } & (
-	| ({ type: 'single' } & AccordionUI.AccordionSingleProps)
-	| ({ type: 'multiple' } & AccordionUI.AccordionMultipleProps)
-);
+		| ({ type: 'single' } & AccordionUI.AccordionSingleProps)
+		| ({ type: 'multiple' } & AccordionUI.AccordionMultipleProps)
+	);
 
 const Accordion = ({ children, ...rootProps }: Props) => (
 	<AccordionUI.Root
-		className="w-full rounded-md shadow-[0_2px_10px] shadow-black/5"
+		className="w-full rounded-md"
 		{...rootProps}
 	>
 		{children}
@@ -27,7 +27,7 @@ const AccordionItem = React.forwardRef<
 >(function AccordionItem({ children, className, ...props }, forwardedRef) {
 	return (
 		<AccordionUI.Item
-			className={twMerge('mt-4 first:mt-0', className)}
+			className={twMerge('mt-5 first:mt-0 border border-zinc-300 rounded-lg overflow-hidden', className)}
 			{...props}
 			ref={forwardedRef}
 		>
@@ -47,24 +47,33 @@ const AccordionTrigger = React.forwardRef<
 		<AccordionUI.Header className="flex">
 			<AccordionUI.Trigger
 				className={twMerge(
-					'mouse-over group flex flex-1 items-center justify-between bg-primary px-5 py-3 text-xl leading-none text-white outline-none ring-gray_text ring-offset-2 focus-visible:ring-2 dark:bg-white dark:text-gray_text',
+					'mouse-over group flex flex-1 items-center justify-between px-8 py-5 text-xl leading-none outline-none ring-gray_text ring-offset-2 focus-visible:ring-2 dark:bg-black dark:text-white text-title_blue font-semibold gap-2',
 					className
 				)}
 				{...props}
 				ref={forwardedRef}
 			>
 				{children}
-
-				<MdOutlineArrowDropDownCircle
-					className={twMerge(
-						'h-6 w-6 fill-white transition-transform duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)] group-data-[state=open]:rotate-180 dark:fill-gray_text',
-						iconProps?.className
-					)}
-					aria-hidden
-					{...iconProps}
-				/>
+				<div className='h-6 w-6 relative'>
+					<HiPlusSmall
+						className={twMerge(
+							'h-6 w-6 transition-transform duration-300 group-data-[state=open]:scale-y-0 dark:fill-white absolute',
+							iconProps?.className
+						)}
+						aria-hidden
+						{...iconProps}
+					/>
+					<HiMinusSmall
+						className={twMerge(
+							'h-6 w-6 scale-y-0 transition-transform duration-300 group-data-[state=open]:scale-y-100 dark:fill-white absolute',
+							iconProps?.className
+						)}
+						aria-hidden
+						{...iconProps}
+					/>
+				</div>
 			</AccordionUI.Trigger>
-		</AccordionUI.Header>
+		</AccordionUI.Header >
 	);
 });
 

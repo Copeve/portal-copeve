@@ -19,8 +19,8 @@ export function NewsBox({ imageUrl, imgAlt, title, date }: Props) {
 			<div className="group aspect-4/3 min-w-[50%] max-w-full overflow-hidden">
 				<Image
 					src={imageUrl}
-					width={200}
-					height={200}
+					width={1000}
+					height={500}
 					alt={imgAlt}
 					className={
 						'min-h-full min-w-full self-center object-cover transition-transform duration-500 group-hover:scale-110'

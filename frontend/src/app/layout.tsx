@@ -6,6 +6,15 @@ const inter = Open_Sans({ subsets: ['latin'] });
 
 import { Footer } from './components/footer';
 import { Header } from './components/header';
+import { LadingSlider } from './components/landing-slider';
+import { Spacer } from './components/spacer';
+import { SideBar } from './components/side-menu/SideBar';
+import { InstagramButton } from './components/social-medias/instagram';
+import { TwitterButton } from './components/social-medias/twitter';
+import { FacebookButton } from './components/social-medias/facebook';
+import { TiktokButton } from './components/social-medias/tiktok';
+import { twMerge } from 'tailwind-merge';
+import { Breadcrumbs } from './components/breadcrumbs';
 
 export const metadata: Metadata = {
 	title: 'Copeve: Comissão permanente do vestibular',
@@ -34,17 +43,64 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				<div className="flex h-full min-h-screen flex-col bg-white dark:bg-black">
-					{/* Header */}
 					<Header />
 
-					{/* Main */}
-					<div className="flex flex-1">{children}</div>
+					<LadingSlider />
 
-					<div className="h-18 bg-[#f2f2f2]"></div>
-					{/* Footer */}
+					<Spacer />
+
+					<div className="px-4">
+						<div className="mx-auto flex max-w-web flex-1 gap-x-9">
+							<div className="hidden lg:block">
+								<SideBar />
+								<SocialMediasSection />
+
+								<Spacer />
+							</div>
+							<div className="flex flex-1 flex-col relative">
+								<div className='h-0 w-0 absolute -top-32' id={'content-page-focus'} />
+								<Breadcrumbs />
+								{children}
+							</div>
+						</div>
+					</div>
+
+					<SocialMediasSection className="flex max-w-full flex-wrap justify-around gap-10 border-0 bg-[#f2f2f2] px-14 py-14 lg:hidden" />
+
 					<Footer />
 				</div>
 			</body>
 		</html>
+	);
+}
+
+function SocialMediasSection({ className }: { className?: string }) {
+	return (
+		<div
+			className={twMerge(
+				'mt-10 flex justify-between gap-4 border-t border-icon_blue px-2 pt-8 dark:border-white',
+				className
+			)}
+		>
+			<InstagramButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
+
+			<TwitterButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
+
+			<FacebookButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
+
+			<TiktokButton
+				className="h-10 w-10 border-icon_blue dark:border-white"
+				iconColor="fill-icon_blue dark:fill-white"
+			/>
+		</div>
 	);
 }

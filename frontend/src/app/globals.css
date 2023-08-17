@@ -4,7 +4,7 @@
 
 @layer base {
 	.mouse-over {
-		@apply transition-colors hover:brightness-75 cursor-pointer;
+		@apply transition-all hover:brightness-75 cursor-pointer;
 	}
 
 	*,
@@ -39,5 +39,36 @@ div.slick-dots ul li button:focus-visible {
 	outline-width: 2px;
 	outline-style: solid;
 	outline-color: white;
+}
+
+.breadcrumbContainer {
+	text-align: left;
+}
+
+.breadcrumbContainer ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.breadcrumbContainer li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+.breadcrumbContainer li a {
+	color: black;
+}
+
+.breadcrumbContainer li a[aria-current]{
+	color: black;
+	font-weight: bold;
+}
+
+.breadcrumbContainer li + li::before {
+	display: inline-block;
+	margin: 0 6px;
+	content: '/';
 }
 

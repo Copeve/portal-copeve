@@ -7,7 +7,7 @@ type SectionProps = {
 
 export function Section({ title, children }: SectionProps) {
 	return (
-		<section className="w-web max-w-full self-center">
+		<section className="w-full max-w-full self-center">
 			<h1 className="mb-8 text-4xl text-title_blue dark:text-white">
 				{title}
 			</h1>

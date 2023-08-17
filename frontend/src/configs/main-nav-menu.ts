@@ -8,31 +8,36 @@ export const navButtons: NavButtons[] = [
 	{
 		id: '1',
 		link: '/',
-		title: 'Concursos'
+		title: 'Início'
 	},
 	{
 		id: '2',
-		link: '/',
-		title: 'Calendário/Notícias'
+		link: '/concursos',
+		title: 'Concursos'
 	},
 	{
 		id: '3',
-		link: '/',
-		title: 'Contato'
+		link: '/noticias',
+		title: 'Calendário/Notícias'
 	},
 	{
 		id: '4',
-		link: '/',
-		title: 'Processos Seletivos Anteriores'
+		link: '/contato',
+		title: 'Contato'
 	},
 	{
 		id: '5',
-		link: '/',
-		title: 'A COPEVE'
+		link: '/processos_seletivos_anteriores',
+		title: 'Processos Seletivos Anteriores'
 	},
 	{
 		id: '6',
-		link: '/',
+		link: '/a_copeve',
+		title: 'A COPEVE'
+	},
+	{
+		id: '7',
+		link: 'https://ufmg.br/',
 		title: 'A UFMG'
 	}
 ];
