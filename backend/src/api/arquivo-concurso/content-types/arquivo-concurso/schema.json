@@ -29,6 +29,12 @@
       "allowedTypes": [
         "files"
       ]
+    },
+    "observacao": {
+      "type": "text"
+    },
+    "titulo": {
+      "type": "string"
     }
   }
 }

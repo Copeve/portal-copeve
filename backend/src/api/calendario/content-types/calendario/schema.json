@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "calendarios",
+  "info": {
+    "singularName": "calendario",
+    "pluralName": "calendarios",
+    "displayName": "Calendário"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "concurso": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::concurso.concurso"
+    },
+    "data": {
+      "type": "date",
+      "required": true
+    },
+    "tipo_calendario": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tipo-calendario.tipo-calendario"
+    },
+    "observacao": {
+      "type": "text"
+    }
+  }
+}

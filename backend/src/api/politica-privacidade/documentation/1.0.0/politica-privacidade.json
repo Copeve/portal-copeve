@@ -1,5 +1,5 @@
 {
-  "/tipo-eventos": {
+  "/politica-privacidade": {
     "get": {
       "responses": {
         "200": {
@@ -7,7 +7,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoEventoListResponse"
+                "$ref": "#/components/schemas/PoliticaPrivacidadeResponse"
               }
             }
           }
@@ -64,7 +64,7 @@
         }
       },
       "tags": [
-        "Tipo-evento"
+        "Politica-privacidade"
       ],
       "parameters": [
         {
@@ -169,168 +169,7 @@
           }
         }
       ],
-      "operationId": "get/tipo-eventos"
-    },
-    "post": {
-      "responses": {
-        "200": {
-          "description": "OK",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TipoEventoResponse"
-              }
-            }
-          }
-        },
-        "400": {
-          "description": "Bad Request",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "401": {
-          "description": "Unauthorized",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "403": {
-          "description": "Forbidden",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "404": {
-          "description": "Not Found",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "500": {
-          "description": "Internal Server Error",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        }
-      },
-      "tags": [
-        "Tipo-evento"
-      ],
-      "parameters": [],
-      "operationId": "post/tipo-eventos",
-      "requestBody": {
-        "required": true,
-        "content": {
-          "application/json": {
-            "schema": {
-              "$ref": "#/components/schemas/TipoEventoRequest"
-            }
-          }
-        }
-      }
-    }
-  },
-  "/tipo-eventos/{id}": {
-    "get": {
-      "responses": {
-        "200": {
-          "description": "OK",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TipoEventoResponse"
-              }
-            }
-          }
-        },
-        "400": {
-          "description": "Bad Request",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "401": {
-          "description": "Unauthorized",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "403": {
-          "description": "Forbidden",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "404": {
-          "description": "Not Found",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        },
-        "500": {
-          "description": "Internal Server Error",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Error"
-              }
-            }
-          }
-        }
-      },
-      "tags": [
-        "Tipo-evento"
-      ],
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "description": "",
-          "deprecated": false,
-          "required": true,
-          "schema": {
-            "type": "number"
-          }
-        }
-      ],
-      "operationId": "get/tipo-eventos/{id}"
+      "operationId": "get/politica-privacidade"
     },
     "put": {
       "responses": {
@@ -339,7 +178,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TipoEventoResponse"
+                "$ref": "#/components/schemas/PoliticaPrivacidadeResponse"
               }
             }
           }
@@ -396,27 +235,16 @@
         }
       },
       "tags": [
-        "Tipo-evento"
+        "Politica-privacidade"
       ],
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "description": "",
-          "deprecated": false,
-          "required": true,
-          "schema": {
-            "type": "number"
-          }
-        }
-      ],
-      "operationId": "put/tipo-eventos/{id}",
+      "parameters": [],
+      "operationId": "put/politica-privacidade",
       "requestBody": {
         "required": true,
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/TipoEventoRequest"
+              "$ref": "#/components/schemas/PoliticaPrivacidadeRequest"
             }
           }
         }
@@ -487,21 +315,10 @@
         }
       },
       "tags": [
-        "Tipo-evento"
+        "Politica-privacidade"
       ],
-      "parameters": [
-        {
-          "name": "id",
-          "in": "path",
-          "description": "",
-          "deprecated": false,
-          "required": true,
-          "schema": {
-            "type": "number"
-          }
-        }
-      ],
-      "operationId": "delete/tipo-eventos/{id}"
+      "parameters": [],
+      "operationId": "delete/politica-privacidade"
     }
   }
 }
