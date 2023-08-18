@@ -24,12 +24,12 @@ const ThemeSwitcher = ({ className }: Props): React.ReactElement => {
 			aria-label={'Habilitar modo escuro'}
 			pressed={pressed}
 			onPressedChange={setPressed}
-			className={twMerge('text-white text-sm flex flex-col gap-y-2 items-center justify-center', className)}
+			className={twMerge(
+				'flex flex-col items-center justify-center gap-y-2 text-sm text-white',
+				className
+			)}
 		>
-			<IoMdContrast
-				className="darK:fill-black fill-icon_blue mG:fill-white w-[30px] h-[30px]"
-			/>
-
+			<IoMdContrast className="darK:fill-black h-[30px] w-[30px] fill-icon_blue mG:fill-white" />
 			Contraste
 		</ToggleUI.Root>
 	);

@@ -11,7 +11,7 @@ const SideMenuMobile = (): React.ReactElement => {
 			<Dialog.Root modal>
 				<Dialog.Trigger asChild>
 					<button
-						className="lg:hidden group flex h-12 w-14 flex-col items-center justify-center gap-1 data-[state=open]:bg-secondary md:data-[state=closed]:opacity-[0.92] lg:dark:bg-black"
+						className="group flex h-12 w-14 flex-col items-center justify-center gap-1 data-[state=open]:bg-secondary md:data-[state=closed]:opacity-[0.92] lg:hidden lg:dark:bg-black"
 						aria-label="Menu de navegação"
 					>
 						<Burger />
@@ -19,7 +19,7 @@ const SideMenuMobile = (): React.ReactElement => {
 				</Dialog.Trigger>
 
 				<Dialog.Portal>
-					<Dialog.Overlay className="fixed inset-0 top-0 lg:hidden bg-black opacity-0 transition-opacity data-[state=open]:opacity-50" />
+					<Dialog.Overlay className="fixed inset-0 top-0 bg-black opacity-0 transition-opacity data-[state=open]:opacity-50 lg:hidden" />
 
 					<Dialog.Content className="fixed bottom-0 left-0 top-[100px] bg-secondary focus:outline-none data-[state=closed]:animate-slideOut data-[state=open]:animate-slideIn lg:hidden">
 						<ScrollArea.Root

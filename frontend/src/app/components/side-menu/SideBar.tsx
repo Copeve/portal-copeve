@@ -9,7 +9,7 @@ export const SideBar = () => {
 
 	return (
 		<NavigationMenu.Root>
-			<NavigationMenu.List className='w-64 flex-col h-min gap-2 hidden lg:flex'>
+			<NavigationMenu.List className="hidden h-min w-64 flex-col gap-2 lg:flex">
 				{navButtons.map((item) => {
 					return (
 						<NavigationMenu.Item key={item.id}>
@@ -17,14 +17,16 @@ export const SideBar = () => {
 								prefetch={false}
 								key={item.id}
 								href={item.link}
-								as={item.uriAs}
 								text={item.title}
-								className={`border-b-0 dark:bg-black dark:border dark:border-white ${new RegExp(`^${item.link}`).test(pathname) ? 'bg-secondary' : 'bg-primary'}`}
+								className={`border-b-0 dark:border dark:border-white dark:bg-black ${new RegExp(`^${item.link}`).test(pathname)
+										? 'bg-secondary'
+										: 'bg-primary'
+									}`}
 							/>
 						</NavigationMenu.Item>
-					)
+					);
 				})}
 			</NavigationMenu.List>
 		</NavigationMenu.Root>
-	)
-}
+	);
+};

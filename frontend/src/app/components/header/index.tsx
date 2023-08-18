@@ -10,15 +10,15 @@ import Link from 'next/link';
 
 export function Header() {
 	return (
-		<header className="sticky top-0 z-40 flex w-full flex-wrap-reverse bg-white lg:bg-primary mG:dark:bg-black drop-shadow-lg lg:drop-shadow-none">
+		<header className="sticky top-0 z-40 flex w-full flex-wrap-reverse bg-white drop-shadow-lg mG:dark:bg-black lg:bg-primary lg:drop-shadow-none">
 			<SideMenuMobile />
 
-			<div className="max-w-web flex w-full flex-wrap items-center lg:flex-1 mx-auto md:px-4 bg-primary dark:bg-black ">
+			<div className="mx-auto flex w-full max-w-web flex-wrap items-center bg-primary dark:bg-black md:px-4 lg:flex-1 ">
 				<a
 					href={'/'}
-					className="flex py-[6px] h-full lg:py-[18px] w-full gap-x-4 items-center mG:w-auto md:px-0 px-4 mr-auto"
+					className="mr-auto flex h-full w-full items-center gap-x-4 px-4 py-[6px] mG:w-auto md:px-0 lg:py-[18px]"
 				>
-					<div className="lg:h-11 lg:w-[46px] h-[25px] w-[25px]">
+					<div className="h-[25px] w-[25px] lg:h-11 lg:w-[46px]">
 						<Image
 							src="/logo/logo-ufmg.png"
 							height={48}
@@ -29,45 +29,45 @@ export function Header() {
 					</div>
 
 					<Separator
-						className="bg-white h-full max-h-6 lg:max-h-11"
+						className="h-full max-h-6 bg-white lg:max-h-11"
 						decorative
 						orientation="vertical"
 					/>
 
-					<h1 className="font-bold text-white text-sm whitespace-pre-line lg:text-lg max-w-[210px]">
+					<h1 className="max-w-[210px] whitespace-pre-line text-sm font-bold text-white lg:text-lg">
 						{'Comissão Permanente do Vestibular'}
 					</h1>
 				</a>
 
-				<div className='flex mG:h-full gap-2 lg:gap-4 pr-8 lg:pr-4 mG:static absolute bottom-0 right-0'>
+				<div className="absolute bottom-0 right-0 flex gap-2 pr-8 mG:static mG:h-full lg:gap-4 lg:pr-4">
 					<Link
 						href={'/acessibilidade'}
 						prefetch={false}
-						className="text-[0px] lg:text-sm aspect-square mG:aspect-auto transition-all hover:brightness-75 h-12 mG:h-full text-white flex flex-col items-center justify-center gap-y-2"
+						className="flex aspect-square h-12 flex-col items-center justify-center gap-y-2 text-[0px] text-white transition-all hover:brightness-75 mG:aspect-auto mG:h-full lg:text-sm"
 					>
-						<MdOutlineAccessibilityNew
-							className="darK:fill-black fill-icon_blue mG:fill-white w-[25px] h-[25px] border-2 mG:border-white border-icon_blue rounded-full p-px"
-						/>
+						<MdOutlineAccessibilityNew className="darK:fill-black h-[25px] w-[25px] rounded-full border-2 border-icon_blue fill-icon_blue p-px mG:border-white mG:fill-white" />
 						Acessibilidade
 					</Link>
 
-					<ThemeSwitcher className="hover:brightness-75 h-12 text-[0px] lg:text-sm mG:h-full aspect-square" />
+					<ThemeSwitcher className="aspect-square h-12 text-[0px] hover:brightness-75 mG:h-full lg:text-sm" />
 
 					<Link
 						href={'/mapa_do_site'}
 						prefetch={false}
-						className="text-[0px] lg:text-sm aspect-square mG:aspect-auto transition-all hover:brightness-75 h-12 mG:h-full text-white lg:flex flex-col items-center justify-center gap-y-2 text-center hidden"
+						className="hidden aspect-square h-12 flex-col items-center justify-center gap-y-2 text-center text-[0px] text-white transition-all hover:brightness-75 mG:aspect-auto mG:h-full lg:flex lg:text-sm"
 					>
 						{'Mapa do site'}
 					</Link>
 
-					<div className='relative my-auto'>
-						<input type="search" placeholder='Buscar por' className='w-80 rounded-full py-3 pr-16 pl-5 placeholder:text-lg text-sm hidden lg:block' />
+					<div className="relative my-auto">
+						<input
+							type="search"
+							placeholder="Buscar por"
+							className="hidden w-80 rounded-full py-3 pl-5 pr-16 text-sm placeholder:text-lg lg:block"
+						/>
 
-						<button className='lg:absolute lg:right-4 lg:top-0 h-full'>
-							<HiSearch
-								className="fill-icon_blue mG:fill-white lg:fill-icon_blue w-[30px] h-[30px]"
-							/>
+						<button className="h-full lg:absolute lg:right-4 lg:top-0">
+							<HiSearch className="h-[30px] w-[30px] fill-icon_blue mG:fill-white lg:fill-icon_blue" />
 						</button>
 					</div>
 				</div>

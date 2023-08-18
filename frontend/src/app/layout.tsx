@@ -28,7 +28,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en">
+		<html lang="pt-BR">
 			<head>
 				<link
 					rel="stylesheet"
@@ -44,8 +44,9 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				<TawkMessengerReact
-					propertyId="64d9465194cf5d49dc6a2be5"
-					widgetId="1h7oblc21" />
+					propertyId="64dea69394cf5d49dc6b0dfe"
+					widgetId="1h82rlcav"
+				/>
 
 				<div className="flex h-full min-h-screen flex-col bg-white dark:bg-black">
 					<Header />
@@ -62,8 +63,11 @@ export default function RootLayout({
 
 								<Spacer />
 							</div>
-							<div className="flex flex-1 flex-col relative">
-								<div className='h-0 w-0 absolute -top-32' id={'content-page-focus'} />
+							<div className="relative flex flex-1 flex-col">
+								<div
+									className="absolute -top-32 h-0 w-0"
+									id={'content-page-focus'}
+								/>
 								<Breadcrumbs />
 								{children}
 							</div>

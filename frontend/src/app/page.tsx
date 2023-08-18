@@ -43,15 +43,15 @@ const contestsData: TContests[] = [
 			inicio: new Date('2023-05-23'),
 			fim: addHours(new Date(), 4)
 		}
-	},
+	}
 ];
 
 export default function Home() {
 	return (
-		<main className="flex flex-1 flex-col pb-20 max-w-full">
+		<main className="flex max-w-full flex-1 flex-col pb-20">
 			<div className="max-w-full self-center">
 				<Section title="Concurso Destaques">
-					<ContestBox data={contestsData} type='1' />
+					<ContestBox data={contestsData} type="1" />
 					<Link
 						href="/concursos"
 						prefetch={false}
@@ -93,10 +93,22 @@ export default function Home() {
 				<Spacer />
 
 				<Section title="Resultados">
-					<div className='flex justify-between py-16 flex-wrap gap-16 flex-col sm:flex-row'>
-						<ShowResults className='flex-1' end={81} title='Concursos Abertos' />
-						<ShowResults className='flex-1' end={20050} title='Concursos Concluídos' />
-						<ShowResults className='flex-1' end={489} title='Concursos Cancelado' />
+					<div className="flex flex-col flex-wrap justify-between gap-16 py-16 sm:flex-row">
+						<ShowResults
+							className="flex-1"
+							end={81}
+							title="Concursos Abertos"
+						/>
+						<ShowResults
+							className="flex-1"
+							end={20050}
+							title="Concursos Concluídos"
+						/>
+						<ShowResults
+							className="flex-1"
+							end={489}
+							title="Concursos Cancelado"
+						/>
 					</div>
 				</Section>
 
@@ -111,21 +123,31 @@ type ShowResultsProps = {
 	duration?: number;
 	title?: string;
 	className?: string;
-}
+};
 
-function ShowResults({ end, duration = 8, title, className }: ShowResultsProps) {
+function ShowResults({
+	end,
+	duration = 8,
+	title,
+	className
+}: ShowResultsProps) {
 	return (
-		<div className={twMerge('flex flex-col items-center justify-center gap-6', className)}>
-			<h3 className='text-xl text-center' >{title}</h3>
+		<div
+			className={twMerge(
+				'flex flex-col items-center justify-center gap-6',
+				className
+			)}
+		>
+			<h3 className="text-center text-xl">{title}</h3>
 			<CountUp
 				end={end}
 				duration={duration}
 				enableScrollSpy
 				scrollSpyOnce
-				className='text-5xl font-semibold text-title_blue drop-shadow-2xl'
+				className="text-5xl font-semibold text-title_blue drop-shadow-2xl"
 			/>
 		</div>
-	)
+	);
 }
 
 const newsDataImage = [
@@ -133,4 +155,4 @@ const newsDataImage = [
 	'https://live.staticflickr.com/7090/7171706600_4d420fdbab_b.jpg',
 	'https://live.staticflickr.com/7099/7136201181_73d3a8926d_3k.jpg',
 	'https://live.staticflickr.com/7101/6990120534_03ec7c28cb_b.jpg'
-]
+];

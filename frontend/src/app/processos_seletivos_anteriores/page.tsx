@@ -21,7 +21,7 @@ export default function PreviousContests() {
 			},
 			imagem: 'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
 			imagemAlt: 'Imagem do concurso'
-		})
+		});
 	}, []);
 
 	return (
@@ -32,55 +32,45 @@ export default function PreviousContests() {
 				Selecione o grupo e o nome do processo seletivo
 			</h2>
 
-			<div className='mt-6 flex flex-col gap-1'>
+			<div className="mt-6 flex flex-col gap-1">
 				<Label.Root className="ml-1" htmlFor="selectContestGroup">
 					Selecione o grupo
 				</Label.Root>
 
 				<Select
 					triggerProps={{
-						'aria-label': "Selecionar Grupo do Concurso",
+						'aria-label': 'Selecionar Grupo do Concurso',
 						id: 'selectContestGroup',
-						placeholder: "Selecione o grupo..."
+						placeholder: 'Selecione o grupo...'
 					}}
 					onValueChange={setGroup}
 				>
-					{
-						groups.map((item, idx) => (
-							<SelectItem
-								key={String(idx)}
-								value={`${idx}-${item}`}
-							>
-								{item}
-							</SelectItem>
-						))
-					}
+					{groups.map((item, idx) => (
+						<SelectItem key={String(idx)} value={`${idx}-${item}`}>
+							{item}
+						</SelectItem>
+					))}
 				</Select>
 			</div>
 
-			<div className='mt-6 flex flex-col gap-1 mb-16'>
+			<div className="mb-16 mt-6 flex flex-col gap-1">
 				<Label.Root className="ml-1" htmlFor="selectContestName">
 					Selecione o nome
 				</Label.Root>
 
 				<Select
 					triggerProps={{
-						'aria-label': "Selecionar Grupo do Concurso",
+						'aria-label': 'Selecionar Grupo do Concurso',
 						id: 'selectContestName',
-						placeholder: "Selecione o nome..."
+						placeholder: 'Selecione o nome...'
 					}}
 					onValueChange={handleNameSelection}
 				>
-					{
-						names.map((item, idx) => (
-							<SelectItem
-								key={String(idx)}
-								value={`${idx}-${item}`}
-							>
-								{item}
-							</SelectItem>
-						))
-					}
+					{names.map((item, idx) => (
+						<SelectItem key={String(idx)} value={`${idx}-${item}`}>
+							{item}
+						</SelectItem>
+					))}
 				</Select>
 			</div>
 
@@ -98,7 +88,7 @@ const groups = [
 	'Concursos para Técnicos Administrativos UFMG',
 	'Formação Intercultural para Educadores Indígenas',
 	'Habilidades'
-]
+];
 
 const names = [
 	'Centro Pedagógico',

@@ -1,8 +1,8 @@
 'use client';
-import { addHours } from "date-fns";
-import { PageTitle } from "../components/page-title";
-import { Spacer } from "../components/spacer";
-import { ContestBox, TContests } from "../components/contest-box";
+import { addHours } from 'date-fns';
+import { PageTitle } from '../components/page-title';
+import { Spacer } from '../components/spacer';
+import { ContestBox, TContests } from '../components/contest-box';
 
 const contestsData: TContests[] = [
 	{
@@ -36,7 +36,7 @@ const contestsData: TContests[] = [
 			inicio: new Date('2023-05-23'),
 			fim: addHours(new Date(), 4)
 		}
-	},
+	}
 ];
 
 const Concursos = (): React.ReactElement => {
@@ -52,13 +52,15 @@ const Concursos = (): React.ReactElement => {
 
 			<Spacer />
 
-			<div className="w-full flex justify-center">
-				<button className="bg-primary text-white text-xl p-4 mouse-over">Carregar Mais</button>
+			<div className="flex w-full justify-center">
+				<button className="mouse-over bg-primary p-4 text-xl text-white">
+					Carregar Mais
+				</button>
 			</div>
 
 			<Spacer />
 		</main>
-	)
-}
+	);
+};
 
 export default Concursos;
