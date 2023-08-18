@@ -44,6 +44,19 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::tipo-concurso.tipo-concurso"
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "link_area_candidato": {
+      "type": "string"
     }
   }
 }

@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Titulo": {
+    "titulo": {
       "type": "string"
     },
     "tipo_noticia": {
@@ -20,8 +20,17 @@
       "relation": "oneToOne",
       "target": "api::tipo-noticia.tipo-noticia"
     },
-    "Corpo": {
+    "noticia": {
       "type": "richtext",
+      "required": true
+    },
+    "concurso": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::concurso.concurso"
+    },
+    "destaque": {
+      "type": "boolean",
       "required": true
     }
   }

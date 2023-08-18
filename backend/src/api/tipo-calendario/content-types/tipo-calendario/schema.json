@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "tipo_eventos",
+  "collectionName": "tipo_calendarios",
   "info": {
-    "singularName": "tipo-evento",
-    "pluralName": "tipo-eventos",
-    "displayName": "Tipo Evento"
+    "singularName": "tipo-calendario",
+    "pluralName": "tipo-calendarios",
+    "displayName": "Tipo Calendário"
   },
   "options": {
     "draftAndPublish": true
@@ -16,8 +16,7 @@
       "required": true
     },
     "descricao": {
-      "type": "text",
-      "required": true
+      "type": "text"
     }
   }
 }
