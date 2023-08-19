@@ -1,0 +1,49 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true,
+        "jest": true
+    },
+    "extends": [
+        "next",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "warn",
+        "indent": [
+            "warn",
+            "tab"
+        ],
+        "linebreak-style": 0,
+        "operator-linebreak": [
+            "warn",
+            "before"
+        ],
+        "quotes": [
+            "warn",
+            "single",
+            {
+                "avoidEscape": true
+            }
+        ],
+        "semi": [
+            // "error",
+            "warn",
+            "always"
+        ],
+        "no-unused-vars": "off",
+        "@typescript-eslint/no-unused-vars": "warn",
+        "no-template-curly-in-string": "warn",
+        "prefer-template": "warn"
+    }
+}
