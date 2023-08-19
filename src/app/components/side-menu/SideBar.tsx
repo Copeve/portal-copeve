@@ -4,6 +4,16 @@ import { usePathname } from 'next/navigation';
 import { navButtons } from '../../../configs/main-nav-menu';
 import { NavButton } from './NavButton';
 
+function getButtonHighlighted(pathname: string, link: string) {
+	if (link === '/') {
+		return pathname === '/';
+	} else if (new RegExp(`^${link}`).test(pathname)) {
+		return true;
+	}
+
+	return false;
+}
+
 export const SideBar = () => {
 	const pathname = usePathname();
 
@@ -18,7 +28,7 @@ export const SideBar = () => {
 								key={item.id}
 								href={item.link}
 								text={item.title}
-								className={`border-b-0 dark:border dark:border-white dark:bg-black ${new RegExp(`^${item.link}`).test(pathname)
+								className={`border-b-0 dark:border dark:border-white dark:bg-black ${getButtonHighlighted(pathname, item.link)
 										? 'bg-secondary'
 										: 'bg-primary'
 									}`}
