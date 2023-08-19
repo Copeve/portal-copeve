@@ -41,32 +41,11 @@ div.slick-dots ul li button:focus-visible {
 	outline-color: white;
 }
 
-.breadcrumbContainer {
-	text-align: left;
-}
-
-.breadcrumbContainer ol {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-}
-
-.breadcrumbContainer li {
-	display: inline;
-	margin: 0;
-	padding: 0;
-}
-
-.breadcrumbContainer li a {
-	color: black;
-}
-
-.breadcrumbContainer li a[aria-current]{
-	color: black;
+.breadcrumbLink[aria-current]{
 	font-weight: bold;
 }
 
-.breadcrumbContainer li + li::before {
+.breadcrumbLi + .breadcrumbLi::before {
 	display: inline-block;
 	margin: 0 6px;
 	content: '/';

@@ -6,7 +6,7 @@ Esse é o repositório do código do portal Copeve criado pelos colaboradores da
 
 Instale o Chocolatey
 
-1) Abra o pronpt em modo administrador
+1) Abra o prompt em modo administrador
 2) Execute o comando:
 ```batch
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -14,7 +14,7 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 
 Instale o NodeJS com o NPM
 
-1) Abra o pronpt em modo administrador
+1) Abra o prompt em modo administrador
 2) Execute o comando:
 ```batch
 cinst nodejs.install
@@ -31,9 +31,9 @@ Instale o VS Code
 https://code.visualstudio.com/download
 ```
 
-Libere a executação de script
+Libere a execução de script
 
-1) Abra o pronpt em modo administrador
+1) Abra o prompt em modo administrador
 2) Execute o comando:
 ```batch
 Set-ExecutionPolicy Unrestricted
@@ -41,20 +41,20 @@ Set-ExecutionPolicy Unrestricted
 
 Instale o Git
 
- 1) Siga as instruçãoe do site:
+ 1) Siga as instruções do site:
  ```batch
  https://git-scm.com/book/pt-br/v2/Come%C3%A7ando-Instalando-o-Git
  ```
 
 Instale o Yarn
 
-1) Abra o pronpt em modo administrador
+1) Abra o prompt em modo administrador
 2) Execute o comando:
 ```batch
 npm install --global yarn
 ```
 
-Faça chreckout nesse projeto
+Faça checkout nesse projeto
 
  1) no VSCode acesse o Source Control
  2) Faça o checkout
