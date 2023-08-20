@@ -1,27 +1,52 @@
 'use client';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import * as Label from '@radix-ui/react-label';
-import { addHours } from 'date-fns';
 
 import { PageTitle } from '../components/page-title';
 import { Select, SelectItem } from '../components/select';
 import { Spacer } from '../components/spacer';
 import { ContestBox, TContests } from '../components/contest-box';
+import { api } from '../../api/api';
+
+type ContestGroupData = {
+	nome: string;
+	descricao: string;
+	createdAt: string;
+	updatedAt: string;
+	publishedAt: string;
+};
+
+type ContestGroupResponse = {
+	data: {
+		id: number;
+		attributes: ContestGroupData;
+	}[];
+};
 
 export default function PreviousContests() {
-	const [group, setGroup] = useState('');
-	const [name, setName] = useState<TContests>();
+	const [group, setGroup] = useState<ContestGroupResponse['data']>([]);
+	const [names, setName] = useState([]);
 
-	const handleNameSelection = useCallback((titulo: string) => {
-		setName({
-			titulo: titulo.substring(2),
-			periodoInscricao: {
-				inicio: new Date('2023-05-23'),
-				fim: addHours(new Date(), 4)
-			},
-			imagem: 'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
-			imagemAlt: 'Imagem do concurso'
-		});
+	const [selectedGroup, setSelectedGroup] = useState('');
+	const [selectedName, setSelectedName] = useState('');
+
+	useEffect(() => {
+		loadInitialData();
+	}, []);
+
+	const loadInitialData = useCallback(async () => {
+		const { data } = await api<ContestGroupResponse>('/tipo-concursos');
+
+		setName(namesData);
+		setGroup(data);
+	}, []);
+
+	const handleGroupSelection = useCallback((value: string) => {
+		setSelectedGroup(value);
+	}, []);
+
+	const handleNameSelection = useCallback((value: string) => {
+		setSelectedName(value);
 	}, []);
 
 	return (
@@ -43,11 +68,14 @@ export default function PreviousContests() {
 						id: 'selectContestGroup',
 						placeholder: 'Selecione o grupo...'
 					}}
-					onValueChange={setGroup}
+					onValueChange={handleGroupSelection}
 				>
-					{groups.map((item, idx) => (
-						<SelectItem key={String(idx)} value={`${idx}-${item}`}>
-							{item}
+					{group.map((item) => (
+						<SelectItem
+							key={String(item.id)}
+							value={String(item.id)}
+						>
+							{item.attributes.descricao}
 						</SelectItem>
 					))}
 				</Select>
@@ -74,23 +102,29 @@ export default function PreviousContests() {
 				</Select>
 			</div>
 
-			{name && group && <ContestBox type={'2'} data={[name]} />}
+			{selectedName && selectedGroup ? (
+				<ContestBox
+					type={'2'}
+					data={[
+						{
+							titulo: selectedName
+						}
+					]}
+				/>
+			) : (
+				<>
+					<Spacer />
+					<Spacer />
+					<Spacer />
+				</>
+			)}
 
 			<Spacer />
 		</main>
 	);
 }
 
-const groups = [
-	'Centro Pedagógico',
-	'COLTEC',
-	'COLTEC - Cursos Subsequentes',
-	'Concursos para Técnicos Administrativos UFMG',
-	'Formação Intercultural para Educadores Indígenas',
-	'Habilidades'
-];
-
-const names = [
+const namesData = [
 	'Centro Pedagógico',
 	'COLTEC',
 	'COLTEC - Cursos Subsequentes',

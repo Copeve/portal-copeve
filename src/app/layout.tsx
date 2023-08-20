@@ -13,7 +13,7 @@ import { TwitterButton } from './components/social-medias/twitter';
 import { FacebookButton } from './components/social-medias/facebook';
 import { TiktokButton } from './components/social-medias/tiktok';
 import { Breadcrumbs } from './components/breadcrumbs';
-import { TawkMessengerReact } from './components/tawl-messenger';
+import { TawkMessengerReact } from './components/tawk-messenger';
 
 const inter = Open_Sans({ subsets: ['latin'] });
 

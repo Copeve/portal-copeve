@@ -27,7 +27,7 @@ const Select = ({ children, triggerProps, ...rootProps }: Props) => {
 
 			<SelectUI.Portal>
 				<SelectUI.Content
-					className="w-selectTrigger overflow-hidden bg-white py-2 drop-shadow-md"
+					className="max-h-96 w-selectTrigger overflow-hidden bg-white py-2 drop-shadow-md"
 					position="popper"
 					align="center"
 					side="bottom"
