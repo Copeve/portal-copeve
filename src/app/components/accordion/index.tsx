@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import * as AccordionUI from '@radix-ui/react-accordion';
@@ -8,9 +9,9 @@ type Props = {
 	children: React.ReactNode;
 	type: 'single' | 'multiple';
 } & (
-	| ({ type: 'single' } & AccordionUI.AccordionSingleProps)
-	| ({ type: 'multiple' } & AccordionUI.AccordionMultipleProps)
-);
+		| ({ type: 'single' } & AccordionUI.AccordionSingleProps)
+		| ({ type: 'multiple' } & AccordionUI.AccordionMultipleProps)
+	);
 
 const Accordion = ({ children, ...rootProps }: Props) => (
 	<AccordionUI.Root className="w-full rounded-md" {...rootProps}>

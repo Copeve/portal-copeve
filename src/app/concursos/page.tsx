@@ -1,54 +1,50 @@
-'use client';
-import { addHours } from 'date-fns';
 import { PageTitle } from '../components/page-title';
 import { Spacer } from '../components/spacer';
-import { ContestBox, TContests } from '../components/contest-box';
+import { ContestBox } from '../components/contest-box';
+import { api } from '../../api/api';
 
-const contestsData: TContests[] = [
-	{
-		titulo: 'Processo Seletivo Técnico em Linguagem de Sinais',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		imagem: 'https://live.staticflickr.com/7099/7136201181_73d3a8926d_3k.jpg'
-	},
-	{
-		titulo: 'Lorem ipsum - dolor sit (amet), consecteturadipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		imagem: 'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
-		imagemAlt: 'Imagem do concurso'
-	},
-	{
-		titulo: 'Colégio Técnico 2024 - Cursos Subsequentes',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		imagem: 'https://live.staticflickr.com/7101/6990120534_03ec7c28cb_b.jpg'
-	},
-	{
-		titulo: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla velit repellat atque quod, totam minima fuga consequatur officiis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla velit repellat atque quod, totam minima fuga consequatur officiis!',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
+export type TContest = {
+	id: number;
+	attributes: {
+		nome: string;
+		ano: number;
+		data_inicio: string;
+		data_fim: string;
+		encerrado: boolean;
+		link_incricao: string | null;
+		destaque: boolean;
+		createdAt: string;
+		updatedAt: string;
+		publishedAt: string;
+		link: string | null;
+		link_area_candidato: string | null;
+		logo: {
+			data: {
+				textoAlt?: string;
+				link?: string;
+			} | null;
+		};
+	};
+};
+
+const Concursos = async () => {
+	const { data: contestsData } = await api<{ data: TContest[] }>({
+		url: '/concursos',
+		strapiQueryParams: ['populate[0]=logo'],
+		fetchOptions: {
+			cache: 'no-cache'
 		}
-	}
-];
+	});
 
-const Concursos = (): React.ReactElement => {
 	return (
 		<main>
 			<PageTitle title="Concursos em Andamento" className="mb-14" />
 
-			<ContestBox type={'1'} data={contestsData} />
-
-			<Spacer />
-
-			<ContestBox type={'2'} data={contestsData} />
+			<ContestBox
+				type={'2'}
+				data={contestsData}
+				defaultValue={`item-${contestsData[0].id}`}
+			/>
 
 			<Spacer />
 

@@ -1,7 +1,5 @@
-'use client';
 import React from 'react';
 import Link from 'next/link';
-import { addHours } from 'date-fns';
 
 import { TwitterButton } from '../../components/social-medias/twitter';
 import { FacebookButton } from '../../components/social-medias/facebook';
@@ -20,84 +18,35 @@ import {
 } from '../../components/Icons';
 import { DownloadableDocList } from './DownloadableDocList';
 import { PeriodStates } from './PeriodStates';
-import { TContests } from '../../components/contest-box';
+import { api } from '../../../api/api';
+import { TContest } from '../page';
 
 type Props = {
 	params: { slug: string };
 };
 
-export default function DetalhesConcursos({ params }: Props) {
-	console.log(params);
-
-	const contestsData: TContests = {
-		titulo: 'Processo Seletivo Técnico em Linguagem de Sinais',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		comunicados: [
-			{
-				id: '1',
-				title: 'Comunicado - Alteração no local de prova (publicado em 28/07/2023 às 12:06)',
-				link: '#',
-				tipo: '.pdf'
-			},
-			{
-				id: '2',
-				title: 'Comunicado - Alteração no local de prova (publicado em 28/07/2023 às 12:06)',
-				link: '#',
-				tipo: '.pdf'
-			}
-		],
-		documentos: [
-			{
-				id: '1',
-				title: 'Resultado do Processo de Isenção (publicado em 11/07/2023 às 21:22)',
-				link: '#',
-				tipo: '.pdf'
-			},
-			{
-				id: '2',
-				title: 'Comunicado - Alteração no local de prova (publicado em 28/07/2023 às 12:06)',
-				link: '#',
-				tipo: '.pdf'
-			}
-		],
-		inscricoes: [
-			{
-				id: '1',
-				title: 'Comprovante definitivo de inscrição (publicado em 01/08/2023 às 15:25)',
-				link: '#',
-				tipo: 'link'
-			},
-			{
-				id: '2',
-				title: 'Homologação das Inscrições (publicado em 28/07/2023 às 12:06)',
-				link: '#',
-				tipo: '.pdf'
-			},
-			{
-				id: '3',
-				title: 'Resultado do Processo de Isenção (publicado em 11/07/2023 às 21:22)',
-				link: '#',
-				tipo: '.pdf'
-			}
-		],
-		faq: '#',
-		eventos: '#',
-		noticias: '#'
-	};
+export default async function DetalhesConcursos({ params }: Props) {
+	console.log('params', params);
+	const { attributes: contestsData } = (
+		await api<{ data: TContest }>({ url: '/concursos/1' })
+	).data;
+	// const { } = await api<{}>('/arquivo-concursos');
 
 	return (
 		<main className="mx-auto w-full max-w-web">
-			<PageTitle title={contestsData.titulo} className="mb-14" />
+			<PageTitle title={contestsData.nome} className="mb-14" />
 
-			<PeriodStates period={contestsData.periodoInscricao} />
+			<PeriodStates
+				period={{
+					startDate: contestsData.data_inicio,
+					endDate: contestsData.data_fim
+				}}
+			/>
 
 			<div className="mb-14 flex items-center gap-4 pl-[3px]">
 				<ArrowUpRight className="h-[26px] w-[26px] rounded-full border-2 border-title_blue stroke-title_blue" />{' '}
 				<Link
-					href={'/'}
+					href={contestsData.link_area_candidato || '/404'}
 					className="text-xl underline underline-offset-2 hover:text-title_blue"
 				>
 					Área do Candidato

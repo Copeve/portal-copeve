@@ -5,7 +5,7 @@ import './globals.css';
 
 import { Footer } from './components/footer';
 import { Header } from './components/header';
-import { LadingSlider } from './components/landing-slider';
+import { LandingSlider } from './components/landing-slider';
 import { Spacer } from './components/spacer';
 import { SideBar } from './components/side-menu/SideBar';
 import { InstagramButton } from './components/social-medias/instagram';
@@ -50,8 +50,7 @@ export default function RootLayout({
 
 				<div className="flex h-full min-h-screen flex-col bg-white dark:bg-black">
 					<Header />
-
-					<LadingSlider />
+					<LandingSlider />
 
 					<Spacer />
 

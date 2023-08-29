@@ -26,6 +26,10 @@ const nextConfig = {
 			{
 				protocol: 'http',
 				hostname: 'localhost'
+			},
+			{
+				protocol: 'https',
+				hostname: 'copeve-backend-f46d9526ce84.herokuapp.com'
 			}
 		]
 	}

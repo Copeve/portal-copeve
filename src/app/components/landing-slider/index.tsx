@@ -1,65 +1,41 @@
-'use client';
-import Image from 'next/image';
-import { Slider } from '../slider';
+import { api } from '../../../api/api';
+import { LadingSliderClient } from './LandingSlider';
 
-export function LadingSlider() {
-	return (
-		<Slider
-			{...{
-				dots: true,
-				infinite: true,
-				speed: 600,
-				autoplaySpeed: 3000,
-				fade: true,
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				arrows: false,
-				autoplay: true,
-				pauseOnHover: true,
-				accessibility: true,
-				focusOnSelect: true,
-				appendDots: (dots) => (
-					<div>
-						<ul className="-translate-y-12">{dots}</ul>
-					</div>
-				),
-				customPaging: (i) => (
-					<button>
-						<div
-							className="h-4 w-4 rounded-full border-2 border-yellow_1 transition-colors duration-300 hover:bg-yellow_1"
-							aria-label={`Imagem Slide ${i + 1} m-0`}
-						/>
-					</button>
-				)
-			}}
-			className="max-w-full"
-		>
-			{ladingImages.map((item) => (
-				<div key={item.id}>
-					<Image
-						src={item.link}
-						width={1920}
-						height={564}
-						alt={'Reitoria UFMG'}
-						className="h-[564px] w-full min-w-[1080px] object-cover sm:min-w-[1920px]"
-					/>
-				</div>
-			))}
-		</Slider>
-	);
-}
+export type CarouselData = {
+	id: number;
+	attributes: {
+		texto: string | null;
+		createdAt: string;
+		updatedAt: string;
+		publishedAt: string;
+		imagem: {
+			data: {
+				id: number;
+				attributes: {
+					name: string;
+					alternativeText: string;
+					width: number;
+					height: number;
+					ext: string;
+					url: string;
+				};
+			}[];
+		};
+	};
+};
 
-const ladingImages = [
-	{
-		id: '1',
-		link: 'https://live.staticflickr.com/7050/6990116376_e68aa898f3_k.jpg'
-	},
-	{
-		id: '2',
-		link: 'https://live.staticflickr.com/7102/7136201683_29e038f48d_b.jpg'
-	},
-	{
-		id: '3',
-		link: 'https://live.staticflickr.com/8165/7136205487_c02a251e51_b.jpg'
-	}
-];
+const LandingSlider = async () => {
+	const { data } = await api<{ data: CarouselData[] }>({
+		url: '/carrossels',
+		strapiQueryParams: ['populate=*'],
+		fetchOptions: {
+			next: {
+				revalidate: 60 * 60 * 24 //24 horas
+			}
+		}
+	});
+
+	return <LadingSliderClient content={data} />;
+};
+
+export { LandingSlider };

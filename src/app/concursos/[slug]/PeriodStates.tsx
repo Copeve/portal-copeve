@@ -1,15 +1,16 @@
 import { format, formatDistanceToNow, isAfter } from 'date-fns';
+import { toDate } from 'date-fns-tz';
 import { ptBR } from 'date-fns/locale';
 import { ArrowDropright } from '../../components/Icons';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
 	period:
-		| {
-				inicio: Date;
-				fim?: Date;
-		  }
-		| undefined;
+	| {
+		startDate?: string;
+		endDate?: string;
+	}
+	| undefined;
 	className?: string;
 	textClassName?: string;
 };
@@ -17,22 +18,25 @@ type Props = {
 export function PeriodStates({ className, textClassName, period }: Props) {
 	const formatOptions = { locale: ptBR };
 	let outOfDateMessage = '';
+	const toStartDate
+		= period?.startDate && toDate(period.startDate, formatOptions);
+	const toEndDate = period?.endDate && toDate(period.endDate, formatOptions);
 
-	if (period) {
-		if (!isAfter(new Date(), period.inicio)) {
+	if (toStartDate) {
+		if (!isAfter(new Date(), toStartDate)) {
 			outOfDateMessage = `O período de inscrição se inicia em ${formatDistanceToNow(
-				period.inicio,
+				toStartDate,
 				formatOptions
 			)}`;
 		}
+	}
 
-		if (period?.fim) {
-			if (isAfter(new Date(), period.fim)) {
-				outOfDateMessage = `O período de inscrição se encerrou há ${formatDistanceToNow(
-					period.fim,
-					formatOptions
-				)}`;
-			}
+	if (toEndDate) {
+		if (isAfter(new Date(), toEndDate)) {
+			outOfDateMessage = `O período de inscrição se encerrou há ${formatDistanceToNow(
+				toEndDate,
+				formatOptions
+			)}`;
 		}
 	}
 
@@ -49,9 +53,12 @@ export function PeriodStates({ className, textClassName, period }: Props) {
 					Período de inscrição:
 					{period ? (
 						<strong className={'font-semibold'}>
-							{format(period.inicio, 'dd/MM/yyyy')} -{' '}
-							{period.fim
-								? format(period.fim, 'dd/MM/yyyy')
+							{toStartDate
+								? format(toStartDate, 'dd/MM/yyyy')
+								: 'Data início não definida'}{' '}
+							-{' '}
+							{toEndDate
+								? format(toEndDate, 'dd/MM/yyyy')
 								: 'Data fim não definida'}
 						</strong>
 					) : (

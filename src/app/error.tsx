@@ -18,7 +18,7 @@ export default function Error({ error, reset }: Props) {
 			</h2>
 
 			<p className="mt-4 text-center text-xl">
-				Tente carregar a página novamente{' '}
+				Tente recarregar a página{' '}
 				<button
 					className="text-title_blue underline underline-offset-2"
 					onClick={() => reset()}

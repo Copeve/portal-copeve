@@ -14,9 +14,12 @@ type AboutUsData = {
 	};
 };
 export default async function Copeve() {
-	const { data } = await api<AboutUsData>('/quem-somo', {
-		next: {
-			revalidate: 60 * 60 * 24 // 24 horas
+	const { data } = await api<AboutUsData>({
+		url: '/quem-somo',
+		fetchOptions: {
+			next: {
+				revalidate: 60 * 60 * 24 // 24 horas
+			}
 		}
 	});
 

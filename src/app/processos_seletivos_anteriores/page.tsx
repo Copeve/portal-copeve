@@ -5,7 +5,7 @@ import * as Label from '@radix-ui/react-label';
 import { PageTitle } from '../components/page-title';
 import { Select, SelectItem } from '../components/select';
 import { Spacer } from '../components/spacer';
-import { ContestBox, TContests } from '../components/contest-box';
+import { ContestBox } from '../components/contest-box';
 import { api } from '../../api/api';
 
 type ContestGroupData = {
@@ -35,7 +35,9 @@ export default function PreviousContests() {
 	}, []);
 
 	const loadInitialData = useCallback(async () => {
-		const { data } = await api<ContestGroupResponse>('/tipo-concursos');
+		const { data } = await api<ContestGroupResponse>({
+			url: '/tipo-concursos'
+		});
 
 		setName(namesData);
 		setGroup(data);

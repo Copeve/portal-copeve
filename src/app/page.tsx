@@ -2,51 +2,55 @@
 import React from 'react';
 import Link from 'next/link';
 import { HiChevronRight } from 'react-icons/hi';
-import CountUp from 'react-countup';
 
 import { NewsBox } from './components/home-page/newsbox';
 import { Section } from './components/home-page/section/indext';
 import { Spacer } from './components/spacer';
-import { twMerge } from 'tailwind-merge';
-import { ContestBox, TContests } from './components/contest-box';
-import { addHours } from 'date-fns';
+import { ContestBox } from './components/contest-box';
+import { ShowResults } from './components/count-up-display';
+import { api } from '../api/api';
+import { TContest } from './concursos/page';
 
-const contestsData: TContests[] = [
-	{
-		titulo: 'Processo Seletivo Técnico em Linguagem de Sinais',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		imagem: 'https://live.staticflickr.com/7099/7136201181_73d3a8926d_3k.jpg'
-	},
-	{
-		titulo: 'Lorem ipsum - dolor sit (amet), consecteturadipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		imagem: 'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
-		imagemAlt: 'Imagem do concurso'
-	},
-	{
-		titulo: 'Colégio Técnico 2024 - Cursos Subsequentes',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		},
-		imagem: 'https://live.staticflickr.com/7101/6990120534_03ec7c28cb_b.jpg'
-	},
-	{
-		titulo: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla velit repellat atque quod, totam minima fuga consequatur officiis! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit obcaecati quibusdam reiciendis suscipit sunt libero iure vero ratione aliquid quidem nulla velit repellat atque quod, totam minima fuga consequatur officiis!',
-		periodoInscricao: {
-			inicio: new Date('2023-05-23'),
-			fim: addHours(new Date(), 4)
-		}
-	}
-];
+type TNews = {
+	id: number;
+	attributes: {
+		titulo: string;
+		createdAt: string;
+		updatedAt: string;
+		publishedAt: string;
+		noticia: string;
+		destaque: boolean;
+	};
+};
 
-export default function Home() {
+type TResult = {
+	id: number;
+	attributes: {
+		resultado: string;
+		valor: number;
+	};
+};
+
+export default async function Home() {
+	const { data: contestsData } = await api<{ data: TContest[] }>({
+		url: '/concursos',
+		strapiQueryParams: ['populate[0]=logo', 'filters[destaque][$eq]=true'],
+		fetchOptions: { cache: 'no-cache' }
+	});
+	const { data: resultsData } = await api<{ data: TResult[] }>({
+		url: '/resultados',
+		fetchOptions: { cache: 'no-cache' }
+	});
+	const { data: newsData } = await api<{ data: TNews[] }>({
+		url: '/noticias',
+		strapiQueryParams: [
+			'filters[destaque][$eq]=true',
+			'fields[0]=titulo',
+			'fields[1]=publishedAt'
+		],
+		fetchOptions: { cache: 'no-cache' }
+	});
+
 	return (
 		<main className="flex max-w-full flex-1 flex-col pb-20">
 			<div className="max-w-full self-center">
@@ -66,15 +70,19 @@ export default function Home() {
 
 				<Section title="Notícias">
 					<ol className="grid grid-cols-1 gap-4 gap-y-10 mG:grid-cols-2 lg:grid-cols-2">
-						{new Array(4).fill('').map((_, index) => (
-							<li key={String(index)} className="w-full">
+						{newsData.map(({ id, attributes: attrs }, index) => (
+							<li key={String(id)} className="w-full">
 								<NewsBox
-									imageUrl={newsDataImage[index]}
-									imgAlt="Lorem ipsum dolor sit"
-									title={
-										'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Unde eveniet corporis consequatur ipsum magnam.'
+									imageUrl={
+										newsDataImage[
+										index < newsDataImage.length
+											? index
+											: 0
+										]
 									}
-									date={new Date('2023-07-18')}
+									imgAlt="Lorem ipsum dolor sit"
+									title={attrs.titulo}
+									date={new Date(attrs.publishedAt)}
 								/>
 							</li>
 						))}
@@ -94,59 +102,20 @@ export default function Home() {
 
 				<Section title="Resultados">
 					<div className="flex flex-col flex-wrap justify-between gap-16 py-16 sm:flex-row">
-						<ShowResults
-							className="flex-1"
-							end={81}
-							title="Concursos Abertos"
-						/>
-						<ShowResults
-							className="flex-1"
-							end={20050}
-							title="Concursos Concluídos"
-						/>
-						<ShowResults
-							className="flex-1"
-							end={489}
-							title="Concursos Cancelado"
-						/>
+						{resultsData.map(({ id, attributes: attrs }) => (
+							<ShowResults
+								key={String(id)}
+								className="flex-1"
+								end={attrs.valor}
+								title={attrs.resultado}
+							/>
+						))}
 					</div>
 				</Section>
 
 				<Spacer />
 			</div>
 		</main>
-	);
-}
-
-type ShowResultsProps = {
-	end: number;
-	duration?: number;
-	title?: string;
-	className?: string;
-};
-
-function ShowResults({
-	end,
-	duration = 8,
-	title,
-	className
-}: ShowResultsProps) {
-	return (
-		<div
-			className={twMerge(
-				'flex flex-col items-center justify-center gap-6',
-				className
-			)}
-		>
-			<h3 className="text-center text-xl">{title}</h3>
-			<CountUp
-				end={end}
-				duration={duration}
-				enableScrollSpy
-				scrollSpyOnce
-				className="text-5xl font-semibold text-title_blue drop-shadow-2xl"
-			/>
-		</div>
 	);
 }
 
