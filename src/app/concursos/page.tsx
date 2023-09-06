@@ -3,21 +3,12 @@ import { Spacer } from '../components/spacer';
 import { ContestBox } from '../components/contest-box';
 import { api } from '../../api/api';
 
-export type TContest = {
+type TContest = {
 	id: number;
 	attributes: {
 		nome: string;
-		ano: number;
 		data_inicio: string;
 		data_fim: string;
-		encerrado: boolean;
-		link_incricao: string | null;
-		destaque: boolean;
-		createdAt: string;
-		updatedAt: string;
-		publishedAt: string;
-		link: string | null;
-		link_area_candidato: string | null;
 		logo: {
 			data: {
 				textoAlt?: string;
@@ -30,7 +21,12 @@ export type TContest = {
 const Concursos = async () => {
 	const { data: contestsData } = await api<{ data: TContest[] }>({
 		url: '/concursos',
-		strapiQueryParams: ['populate[0]=logo'],
+		strapiQueryParams: [
+			'populate[0]=logo',
+			'fields[0]=nome',
+			'fields[1]=data_inicio',
+			'fields[2]=data_fim'
+		],
 		fetchOptions: {
 			cache: 'no-cache'
 		}
@@ -41,7 +37,7 @@ const Concursos = async () => {
 			<PageTitle title="Concursos em Andamento" className="mb-14" />
 
 			<ContestBox
-				type={'2'}
+				type={'1'}
 				data={contestsData}
 				defaultValue={`item-${contestsData[0].id}`}
 			/>

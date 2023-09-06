@@ -9,7 +9,21 @@ import {
 	AccordionItem,
 	AccordionTrigger
 } from '../accordion';
-import { TContest } from '../../concursos/page';
+
+type TContest = {
+	id: number;
+	attributes: {
+		nome: string;
+		data_inicio: string;
+		data_fim: string;
+		logo: {
+			data: {
+				textoAlt?: string;
+				link?: string;
+			} | null;
+		};
+	};
+};
 
 type Props = {
 	type: '1' | '2';
@@ -23,25 +37,103 @@ const ContestBox = ({
 	defaultValue
 }: Props): React.ReactElement => {
 	if (type === '1') {
+		return <TypeOne data={data} />;
+	}
+
+	return <TypeTwo data={data} defaultValue={defaultValue} />;
+};
+
+function TypeOne({ data }: { data: TContest[] }) {
+	const Period = (props: {
+		formattedStartDate: string | undefined;
+		formattedEndDate: string | undefined;
+	}) => {
+		const { formattedStartDate, formattedEndDate } = props;
 		return (
-			<ol className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-				{data.map(({ id, attributes: attrs }) => (
+			<div className="flex gap-2">
+				<ArrowDropright className="mt-1 h-8 w-8 fill-title_blue" />
+				<div>
+					<h2 className="flex gap-1 text-lg">Período de inscrição</h2>
+					{formattedStartDate ? (
+						<strong className={'text-sm font-semibold'}>
+							{formattedStartDate} -{' '}
+							{formattedEndDate || 'Data fim não definida'}
+						</strong>
+					) : (
+						<span className={'text-md text-red-500'}>
+							Período de inscrições não definido
+						</span>
+					)}
+				</div>
+			</div>
+		);
+	};
+
+	const NewsLink = (props: { nome: string }) => (
+		<div className="mt-3 flex items-center gap-2">
+			<Newspaper
+				className="h-8 w-8 fill-title_blue"
+				style={{ strokeWidth: 2 }}
+			/>
+			<Link
+				href={'concursos/1'}
+				as={`concursos/${props.nome
+					.replaceAll(' ', '_')
+					.replaceAll('/', '_')
+					.toLocaleLowerCase()}`}
+				prefetch={false}
+				className="text-lg underline underline-offset-2 hover:text-title_blue"
+			>
+				Notícias
+			</Link>
+		</div>
+	);
+
+	const DetailsLink = (props: { id: number; nome: string }) => (
+		<div className="mt-3 flex items-center gap-2">
+			<ArrowUpRight className="h-8 w-8 stroke-title_blue" />
+			<Link
+				href={`concursos/${props.id}`}
+				// as={`concursos/${props.nome
+				// 	.replaceAll('/', '_')
+				// 	.replaceAll(' ', '_')
+				// 	.toLocaleLowerCase()}`}
+				prefetch={false}
+				className="text-lg underline underline-offset-2 hover:text-title_blue"
+			>
+				Detalhes
+			</Link>
+		</div>
+	);
+
+	return (
+		<ol className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+			{data.map(({ id, attributes: attrs }) => {
+				const { nome, logo, data_inicio, data_fim } = attrs;
+
+				const formattedStartDate
+					= data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
+
+				const formattedEndDate =
+					data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
+
+				return (
 					<li
 						key={`item-${id}`}
 						className="group flex flex-col rounded border border-title_blue p-4 pb-10"
 					>
 						<div className="flex w-full flex-1 flex-col items-center gap-4 pb-4">
 							<div className="flex h-52 w-full items-center justify-center overflow-hidden rounded bg-slate-200">
-								{attrs.logo.data ? (
+								{logo.data ? (
 									<div className="flex h-full w-full items-center justify-center">
 										<Image
 											width={208}
 											height={208}
 											alt={
-												attrs.logo.data?.textoAlt ??
-												`Imagem representativa do concurso ${attrs.nome}`
+												logo.data?.textoAlt ??
+												`Imagem representativa do concurso ${nome}`
 											}
-											src={attrs.logo.data?.link}
+											src={logo.data?.link}
 											className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
 										/>
 									</div>
@@ -51,85 +143,34 @@ const ContestBox = ({
 							</div>
 
 							<h3 className="line-clamp-2 self-start text-left text-xl font-semibold leading-7">
-								{attrs.nome}
+								{nome}
 							</h3>
 						</div>
 
 						<div className="mt-6 pl-2">
-							<div className="flex gap-2">
-								<ArrowDropright className="mt-1 h-8 w-8 fill-title_blue" />
-								<div>
-									<h2 className="flex gap-1 text-lg">
-										Período de inscrição
-									</h2>
-									{attrs.data_inicio ? (
-										<strong
-											className={'text-sm font-semibold'}
-										>
-											{format(
-												new Date(attrs.data_inicio),
-												'dd/MM/yyyy'
-											)}{' '}
-											-{' '}
-											{attrs.data_fim
-												? format(
-													new Date(
-														attrs.data_fim
-													),
-													'dd/MM/yyyy'
-												)
-												: 'Data fim não definida'}
-										</strong>
-									) : (
-										<span
-											className={'text-md text-red-500'}
-										>
-											{
-												'Período de inscrições não definido'
-											}
-										</span>
-									)}
-								</div>
-							</div>
+							<Period
+								formattedStartDate={formattedStartDate}
+								formattedEndDate={formattedEndDate}
+							/>
 
-							<div className="mt-3 flex items-center gap-2">
-								<Newspaper
-									className="h-8 w-8 fill-title_blue"
-									style={{ strokeWidth: 2 }}
-								/>
-								<Link
-									href={'concursos/1'}
-									as={`concursos/${attrs.nome
-										.replaceAll(' ', '_')
-										.toLocaleLowerCase()}`}
-									prefetch={false}
-									className="text-lg underline underline-offset-2 hover:text-title_blue"
-								>
-									Notícias
-								</Link>
-							</div>
+							<NewsLink nome={nome} />
 
-							<div className="mt-3 flex items-center gap-2">
-								<ArrowUpRight className="h-8 w-8 stroke-title_blue" />
-								<Link
-									href={`concursos/${id}`}
-									// as={`concursos/${attrs.nome
-									// 	.replaceAll('/', '_')
-									// 	.replaceAll(' ', '_')
-									// 	.toLocaleLowerCase()}`}
-									prefetch={false}
-									className="text-lg underline underline-offset-2 hover:text-title_blue"
-								>
-									Detalhes
-								</Link>
-							</div>
+							<DetailsLink id={id} nome={nome} />
 						</div>
 					</li>
-				))}
-			</ol>
-		);
-	}
+				);
+			})}
+		</ol>
+	);
+}
 
+function TypeTwo({
+	data,
+	defaultValue
+}: {
+	data: TContest[];
+	defaultValue: string;
+}) {
 	return (
 		<Accordion type="single" defaultValue={defaultValue} collapsible>
 			{data.map(({ id, attributes: attrs }) => (
@@ -174,9 +215,10 @@ const ContestBox = ({
 							/>
 							<Link
 								href={'/noticias'}
-								// as={`concursos/${attrs.nome
-								// 	.replaceAll(' ', '_')
-								// 	.toLocaleLowerCase()}`}
+								as={`concursos/${attrs.nome
+									.replaceAll(' ', '_')
+									.replaceAll('/', '_')
+									.toLocaleLowerCase()}`}
 								prefetch={false}
 								className="text-lg underline underline-offset-2 hover:text-title_blue"
 							>
@@ -187,11 +229,11 @@ const ContestBox = ({
 						<div className="mt-2 flex items-center gap-4">
 							<ArrowUpRight className="h-8 w-8 stroke-title_blue" />{' '}
 							<Link
-								href={`concursos/${id}`}
-								as={`concursos/${attrs.nome
-									.replaceAll(' ', '_')
-									.replaceAll('/', '_')
-									.toLocaleLowerCase()}`}
+								href={{ pathname: `concursos/${id}` }}
+								// as={`concursos/${attrs.nome
+								// 	.replaceAll(' ', '_')
+								// 	.replaceAll('/', '_')
+								// 	.toLocaleLowerCase()}`}
 								prefetch={false}
 								className="text-lg underline underline-offset-2 hover:text-title_blue"
 							>
@@ -203,6 +245,6 @@ const ContestBox = ({
 			))}
 		</Accordion>
 	);
-};
+}
 
 export { ContestBox };

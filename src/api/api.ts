@@ -1,12 +1,21 @@
 type ResponseData = {};
 
+type ResponseError = {
+	error?: {
+		status: number;
+		name: string;
+		message: string;
+		details: Record<string, unknown>;
+	};
+};
+
 export async function api<T = ResponseData>(options: {
 	url: string;
 	fetchOptions?: RequestInit;
 	strapiQueryParams?: string[];
-}): Promise<T> {
+}): Promise<T & ResponseError> {
 	const { url, fetchOptions, strapiQueryParams = [] } = options;
-	const baseUrl = `https://copeve-backend-f46d9526ce84.herokuapp.com/api${url}`;
+	const baseUrl = `${'https://copeve-backend-f46d9526ce84.herokuapp.com'}/api${url}`;
 
 	const resp = await fetch(`${baseUrl}?${strapiQueryParams.join('&')}`, {
 		headers: {

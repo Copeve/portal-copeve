@@ -3,33 +3,66 @@ import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../components/spacer';
 import { PageTitle } from '../components/page-title';
+import { api } from '../../api/api';
+import { notFound } from 'next/navigation';
 
-export default function NewsList() {
+type TNews = {
+	id: number;
+	attributes: {
+		titulo: string;
+		publishedAt: string;
+		noticia: string;
+	};
+};
+
+async function getData(): Promise<TNews[]> {
+	const { data, error } = await api<{ data: TNews[] }>({
+		url: '/noticias',
+		strapiQueryParams: [],
+		fetchOptions: {
+			cache: 'no-cache'
+		}
+	});
+
+	if (error) {
+		if (error.status === 404) return notFound();
+		throw new Error(error.message);
+	}
+
+	return data;
+}
+
+export default async function NewsList() {
+	const data = await getData();
+
 	return (
 		<main>
 			<PageTitle title="Notícias" className="pb-4" />
 
-			{new Array(10).fill(newsData).map((item, index) => (
+			{data.map(({ id, attributes: attrs }) => (
 				<Link
-					key={String(index)}
+					key={String(id)}
 					prefetch={false}
-					href={'noticias/1'}
+					href={`noticias/${id}`}
 					className="group flex w-full flex-col border-b pb-4 pt-2"
 				>
 					<time
 						className={'mb-2 text-lg font-bold text-title_blue'}
-						dateTime={item.date}
+						dateTime={format(
+							new Date(attrs.publishedAt),
+							'yyyy-MM-dd'
+						)}
 					>
-						{format(new Date(item.date), 'dd LLL', {
+						{format(new Date(attrs.publishedAt), 'dd LLL', {
 							locale: ptBR
 						})}
 					</time>
 
 					<h2 className="mb-2 text-lg font-bold leading-5 transition-colors group-hover:text-title_blue">
-						{item.title}
+						{attrs.titulo}
 					</h2>
 
-					<p className="text-sm leading-4">{item.preview}</p>
+					<p className="text-sm leading-4">{attrs.titulo}</p>
 				</Link>
 			))}
 
@@ -37,10 +70,3 @@ export default function NewsList() {
 		</main>
 	);
 }
-
-const newsData = {
-	date: '2023-03-01',
-	title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae modi esse nisi ipsa maxime atque.',
-	preview:
-		'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni vel quos quam est nulla voluptate, nobis, maxime atque quae saepe possimus velit! Iusto natus tenetur iure architecto rerum, neque ad.'
-};

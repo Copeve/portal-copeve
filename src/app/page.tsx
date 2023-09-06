@@ -9,17 +9,27 @@ import { Spacer } from './components/spacer';
 import { ContestBox } from './components/contest-box';
 import { ShowResults } from './components/count-up-display';
 import { api } from '../api/api';
-import { TContest } from './concursos/page';
+
+type TContest = {
+	id: number;
+	attributes: {
+		nome: string;
+		data_inicio: string;
+		data_fim: string;
+		logo: {
+			data: {
+				textoAlt?: string;
+				link?: string;
+			} | null;
+		};
+	};
+};
 
 type TNews = {
 	id: number;
 	attributes: {
 		titulo: string;
-		createdAt: string;
-		updatedAt: string;
 		publishedAt: string;
-		noticia: string;
-		destaque: boolean;
 	};
 };
 
@@ -34,13 +44,16 @@ type TResult = {
 export default async function Home() {
 	const { data: contestsData } = await api<{ data: TContest[] }>({
 		url: '/concursos',
-		strapiQueryParams: ['populate[0]=logo', 'filters[destaque][$eq]=true'],
+		strapiQueryParams: [
+			'populate[0]=logo',
+			'filters[destaque][$eq]=true',
+			'fields[0]=nome',
+			'fields[1]=data_inicio',
+			'fields[2]=data_fim'
+		],
 		fetchOptions: { cache: 'no-cache' }
 	});
-	const { data: resultsData } = await api<{ data: TResult[] }>({
-		url: '/resultados',
-		fetchOptions: { cache: 'no-cache' }
-	});
+
 	const { data: newsData } = await api<{ data: TNews[] }>({
 		url: '/noticias',
 		strapiQueryParams: [
@@ -48,6 +61,11 @@ export default async function Home() {
 			'fields[0]=titulo',
 			'fields[1]=publishedAt'
 		],
+		fetchOptions: { cache: 'no-cache' }
+	});
+
+	const { data: resultsData } = await api<{ data: TResult[] }>({
+		url: '/resultados',
 		fetchOptions: { cache: 'no-cache' }
 	});
 

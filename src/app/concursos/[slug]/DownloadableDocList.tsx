@@ -6,7 +6,7 @@ export function DownloadableDocList({
 	children: React.ReactNode;
 }) {
 	return (
-		<ol className="space-y-4 text-lg">
+		<ol className="space-y-4 pl-4 text-lg">
 			{React.Children.toArray(children).map((child, index) => (
 				<li key={String(index)}>
 					{React.cloneElement(

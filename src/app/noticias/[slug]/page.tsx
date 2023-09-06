@@ -1,22 +1,58 @@
 import Image from 'next/image';
+import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../../components/spacer';
 import { PageTitle } from '../../components/page-title';
+import { api } from '../../../api/api';
+
+type TNews = {
+	id: number;
+	attributes: {
+		titulo: string;
+		publishedAt: string;
+		noticia: string;
+	};
+};
 
 type Props = {
 	params: { slug: string };
 };
 
-export default function NewsContent({ params }: Props) {
+async function getData(id: string): Promise<TNews> {
+	const { data, error } = await api<{ data: TNews }>({
+		url: `/noticias/${id}`,
+		strapiQueryParams: [],
+		fetchOptions: {
+			cache: 'no-cache'
+		}
+	});
+
+	if (error) {
+		if (error.status === 404) return notFound();
+		throw new Error(error.message);
+	}
+
+	return data;
+}
+
+export default async function NewsContent({ params }: Props) {
+	const response = await getData(params.slug);
+
+	const { attributes: data } = response;
+
 	return (
 		<main>
-			<PageTitle title="Lorem ipsum dolor sit, amet consectetur adipisicing elit" />
+			<PageTitle title={data.titulo} />
 
-			<p className="pb-8 pt-4 text-lg">
-				<time dateTime="2023-07-30">
+			<p className="pb-16 pt-4 text-lg">
+				<time
+					dateTime={format(new Date(data.publishedAt), 'yyyy-MM-dd')}
+				>
 					{format(
-						new Date('2023-07-30T08:35:16'),
+						new Date(data.publishedAt),
 						"EEEE, dd 'de' MMMM 'de' yyyy, 'às' HH'h'mm",
 						{
 							locale: ptBR
@@ -25,7 +61,7 @@ export default function NewsContent({ params }: Props) {
 				</time>
 			</p>
 
-			<figure className="w-full overflow-hidden">
+			{/* <figure className="w-full overflow-hidden">
 				<Image
 					src={
 						'https://live.staticflickr.com/7237/6990120326_261dd73545_b.jpg'
@@ -41,13 +77,13 @@ export default function NewsContent({ params }: Props) {
 					dolorum ab soluta temporibus in? Illo itaque similique
 					autem, consectetur minima totam excepturi doloribus.
 				</figcaption>
-			</figure>
+			</figure> */}
 
-			<p className="mt-8 whitespace-pre-line text-justify text-lg leading-8">
-				{
-					'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit.\n\nLaborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate.\n\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate.\n\nLorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laborum eum corrupti inventore voluptatem deleniti ipsa repellat illo sit, commodi fugiat consequuntur consequatur iusto autem perferendis necessitatibus ut? Iusto, tempora voluptate.'
-				}
-			</p>
+			<ReactMarkdown
+				children={data.noticia}
+				rehypePlugins={[rehypeRaw]}
+				className="text-justify text-lg leading-8"
+			/>
 
 			<Spacer />
 		</main>

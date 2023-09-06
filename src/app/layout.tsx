@@ -14,6 +14,7 @@ import { FacebookButton } from './components/social-medias/facebook';
 import { TiktokButton } from './components/social-medias/tiktok';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { TawkMessengerReact } from './components/tawk-messenger';
+import { Alert } from './components/alert';
 
 const inter = Open_Sans({ subsets: ['latin'] });
 
@@ -43,6 +44,8 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={inter.className}>
+				<Alert />
+
 				<TawkMessengerReact
 					propertyId="64dea69394cf5d49dc6b0dfe"
 					widgetId="1h82rlcav"
