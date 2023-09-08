@@ -2,7 +2,7 @@ import { api } from '../../api/api';
 import { PageTitle } from '../components/page-title';
 import { Spacer } from '../components/spacer';
 
-type AboutUsData = {
+type TAboutUsData = {
 	data: {
 		id: number;
 		attributes: {
@@ -13,8 +13,9 @@ type AboutUsData = {
 		};
 	};
 };
+
 export default async function Copeve() {
-	const { data } = await api<AboutUsData>({
+	const { data } = await api<TAboutUsData>({
 		url: '/quem-somo',
 		fetchOptions: {
 			next: {

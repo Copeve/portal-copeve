@@ -8,7 +8,7 @@ import { Spacer } from '../components/spacer';
 import { ContestBox } from '../components/contest-box';
 import { api } from '../../api/api';
 
-type ContestGroupData = {
+type TContestGroupData = {
 	nome: string;
 	descricao: string;
 	createdAt: string;
@@ -16,40 +16,70 @@ type ContestGroupData = {
 	publishedAt: string;
 };
 
-type ContestGroupResponse = {
+type TContestGroupResponse = {
 	data: {
 		id: number;
-		attributes: ContestGroupData;
+		attributes: TContestGroupData;
 	}[];
 };
 
+type TContestData = {
+	id: number;
+	attributes: {
+		nome: string;
+		data_inicio: string;
+		data_fim: string;
+		logo: { data: { textoAlt?: string; link?: string } };
+	};
+};
+
 export default function PreviousContests() {
-	const [group, setGroup] = useState<ContestGroupResponse['data']>([]);
-	const [names, setName] = useState([]);
+	const [groups, setGroups] = useState<TContestGroupResponse['data']>([]);
+	const [contests, setContests] = useState<TContestData[]>([]);
 
 	const [selectedGroup, setSelectedGroup] = useState('');
-	const [selectedName, setSelectedName] = useState('');
+	const [selectedContest, setSelectedContest] = useState<TContestData>();
 
 	useEffect(() => {
 		loadInitialData();
 	}, []);
 
 	const loadInitialData = useCallback(async () => {
-		const { data } = await api<ContestGroupResponse>({
+		const { data } = await api<TContestGroupResponse>({
 			url: '/tipo-concursos'
 		});
 
-		setName(namesData);
-		setGroup(data);
+		setGroups(data);
 	}, []);
 
-	const handleGroupSelection = useCallback((value: string) => {
-		setSelectedGroup(value);
+	const loadContests = useCallback(async (groupId: string) => {
+		const { data } = await api<{ data: TContestData[] }>({
+			url: '/concursos',
+			strapiQueryParams: [
+				'populate[0]=logo',
+				`filters[tipo_concurso][id][$eq]=${groupId}`
+			]
+		});
+
+		setContests(data);
 	}, []);
 
-	const handleNameSelection = useCallback((value: string) => {
-		setSelectedName(value);
-	}, []);
+	const handleGroupSelection = useCallback(
+		(id: string) => {
+			setContests([]);
+			setSelectedContest(undefined);
+			setSelectedGroup(id);
+			loadContests(id);
+		},
+		[loadContests]
+	);
+
+	const handleNameSelection = useCallback(
+		(id: string) => {
+			setSelectedContest(contests.find((e) => String(e.id) === id));
+		},
+		[contests]
+	);
 
 	return (
 		<main>
@@ -72,7 +102,7 @@ export default function PreviousContests() {
 					}}
 					onValueChange={handleGroupSelection}
 				>
-					{group.map((item) => (
+					{groups.map((item) => (
 						<SelectItem
 							key={String(item.id)}
 							value={String(item.id)}
@@ -96,41 +126,21 @@ export default function PreviousContests() {
 					}}
 					onValueChange={handleNameSelection}
 				>
-					{names.map((item, idx) => (
-						<SelectItem key={String(idx)} value={`${idx}-${item}`}>
-							{item}
+					{contests.map(({ id, attributes }) => (
+						<SelectItem key={String(id)} value={String(id)}>
+							{attributes.nome}
 						</SelectItem>
 					))}
 				</Select>
 			</div>
 
-			{selectedName && selectedGroup ? (
-				<ContestBox
-					type={'2'}
-					data={[
-						{
-							titulo: selectedName
-						}
-					]}
-				/>
-			) : (
-				<>
-					<Spacer />
-					<Spacer />
-					<Spacer />
-				</>
+			{selectedContest && selectedGroup && (
+				<ContestBox type={'2'} data={[selectedContest]} />
 			)}
 
+			<Spacer />
+			<Spacer />
 			<Spacer />
 		</main>
 	);
 }
-
-const namesData = [
-	'Centro Pedagógico',
-	'COLTEC',
-	'COLTEC - Cursos Subsequentes',
-	'Concursos para Técnicos Administrativos UFMG',
-	'Formação Intercultural para Educadores Indígenas',
-	'Habilidades'
-];

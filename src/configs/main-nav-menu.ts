@@ -18,12 +18,7 @@ export const navButtons: NavButtons[] = [
 	{
 		id: '3',
 		link: '/noticias',
-		title: 'Calendário/Notícias'
-	},
-	{
-		id: '4',
-		link: '/contato',
-		title: 'Contato'
+		title: 'Notícias'
 	},
 	{
 		id: '5',

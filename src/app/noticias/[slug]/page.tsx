@@ -80,6 +80,7 @@ export default async function NewsContent({ params }: Props) {
 			</figure> */}
 
 			<ReactMarkdown
+				// eslint-disable-next-line react/no-children-prop
 				children={data.noticia}
 				rehypePlugins={[rehypeRaw]}
 				className="text-justify text-lg leading-8"
