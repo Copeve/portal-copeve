@@ -12,6 +12,7 @@ type TNews = {
 		titulo: string;
 		publishedAt: string;
 		noticia: string;
+		subtitulo: string | null;
 	};
 };
 
@@ -62,7 +63,7 @@ export default async function NewsList() {
 						{attrs.titulo}
 					</h2>
 
-					<p className="text-sm leading-4">{attrs.titulo}</p>
+					<p className="text-sm leading-4">{attrs.subtitulo}</p>
 				</Link>
 			))}
 

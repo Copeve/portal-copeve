@@ -120,7 +120,7 @@ function TypeOne({ data }: { data: TContest[] }) {
 				return (
 					<li
 						key={`item-${id}`}
-						className="group flex flex-col rounded border border-title_blue p-4 pb-10"
+						className="group flex flex-col rounded border border-title_blue p-4 pb-10 dark:border-white"
 					>
 						<div className="flex w-full flex-1 flex-col items-center gap-4 pb-4">
 							<div className="flex h-52 w-full items-center justify-center overflow-hidden rounded bg-slate-200">
@@ -177,7 +177,7 @@ function TypeTwo({
 				<AccordionItem
 					key={`item-${id}`}
 					value={`item-${id}`}
-					className="group rounded border border-title_blue"
+					className="group rounded border border-title_blue dark:border-white"
 				>
 					<AccordionTrigger className="p-4 text-left leading-7 hover:brightness-100">
 						<div className="flex w-full gap-4">

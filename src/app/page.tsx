@@ -118,18 +118,20 @@ export default async function Home() {
 
 				<Spacer />
 
-				<Section title="Resultados">
-					<div className="flex flex-col flex-wrap justify-between gap-16 py-16 sm:flex-row">
-						{resultsData.map(({ id, attributes: attrs }) => (
-							<ShowResults
-								key={String(id)}
-								className="flex-1"
-								end={attrs.valor}
-								title={attrs.resultado}
-							/>
-						))}
-					</div>
-				</Section>
+				{resultsData && (
+					<Section title="Resultados">
+						<div className="flex flex-col flex-wrap justify-between gap-16 py-16 sm:flex-row">
+							{resultsData.map(({ id, attributes: attrs }) => (
+								<ShowResults
+									key={String(id)}
+									className="flex-1"
+									end={attrs.valor}
+									title={attrs.resultado}
+								/>
+							))}
+						</div>
+					</Section>
+				)}
 
 				<Spacer />
 			</div>

@@ -1,8 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { TwitterButton } from '../../components/social-medias/twitter';
-import { FacebookButton } from '../../components/social-medias/facebook';
 import {
 	Accordion,
 	AccordionContent,
@@ -167,8 +165,8 @@ export default async function DetalhesConcursos({ params }: Props) {
 				type="single"
 				collapsible
 				defaultValue={
-					groupedFiles[0] &&
-					String(groupedFiles[0].tipo_arquivo.data.id)
+					groupedFiles[0]
+					&& String(groupedFiles[0].tipo_arquivo.data.id)
 				}
 			>
 				{groupedFiles.map(({ tipo_arquivo, arquivos }) => {

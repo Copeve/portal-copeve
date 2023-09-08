@@ -3,6 +3,7 @@ import { AiOutlineTwitter } from 'react-icons/ai';
 import { twMerge } from 'tailwind-merge';
 
 type Props = {
+	link: string;
 	className?: string;
 	/** Ex: fill-white | stroke-red-500*/
 	iconColor?: string;

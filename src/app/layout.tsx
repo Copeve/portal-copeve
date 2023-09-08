@@ -15,6 +15,7 @@ import { TiktokButton } from './components/social-medias/tiktok';
 import { Breadcrumbs } from './components/breadcrumbs';
 import { TawkMessengerReact } from './components/tawk-messenger';
 import { Alert } from './components/alert';
+import { api } from '../api/api';
 
 const inter = Open_Sans({ subsets: ['latin'] });
 
@@ -85,7 +86,21 @@ export default function RootLayout({
 	);
 }
 
-function SocialMediasSection({ className }: { className?: string }) {
+async function SocialMediasSection({ className }: { className?: string }) {
+	const { data } = await api<{
+		data: {
+			instagram: string | null;
+			twitter: string | null;
+			facebook: string | null;
+			tiktok: string | null;
+		};
+	}>({
+		url: '/redes-social',
+		fetchOptions: {
+			cache: 'no-store'
+		}
+	});
+
 	return (
 		<div
 			className={twMerge(
@@ -93,25 +108,37 @@ function SocialMediasSection({ className }: { className?: string }) {
 				className
 			)}
 		>
-			<InstagramButton
-				className="h-10 w-10 border-icon_blue dark:border-white"
-				iconColor="fill-icon_blue dark:fill-white"
-			/>
+			{data.instagram && (
+				<InstagramButton
+					link={data.instagram}
+					className="h-10 w-10 border-icon_blue dark:border-white"
+					iconColor="fill-icon_blue dark:fill-white"
+				/>
+			)}
 
-			<TwitterButton
-				className="h-10 w-10 border-icon_blue dark:border-white"
-				iconColor="fill-icon_blue dark:fill-white"
-			/>
+			{data.twitter && (
+				<TwitterButton
+					link={data.twitter}
+					className="h-10 w-10 border-icon_blue dark:border-white"
+					iconColor="fill-icon_blue dark:fill-white"
+				/>
+			)}
 
-			<FacebookButton
-				className="h-10 w-10 border-icon_blue dark:border-white"
-				iconColor="fill-icon_blue dark:fill-white"
-			/>
+			{data.facebook && (
+				<FacebookButton
+					link={data.facebook}
+					className="h-10 w-10 border-icon_blue dark:border-white"
+					iconColor="fill-icon_blue dark:fill-white"
+				/>
+			)}
 
-			<TiktokButton
-				className="h-10 w-10 border-icon_blue dark:border-white"
-				iconColor="fill-icon_blue dark:fill-white"
-			/>
+			{data.tiktok && (
+				<TiktokButton
+					link={data.tiktok}
+					className="h-10 w-10 border-icon_blue dark:border-white"
+					iconColor="fill-icon_blue dark:fill-white"
+				/>
+			)}
 		</div>
 	);
 }

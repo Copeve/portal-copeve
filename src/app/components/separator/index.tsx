@@ -1,3 +1,4 @@
+'use client';
 import * as SeparatorUI from '@radix-ui/react-separator';
 import { twMerge } from 'tailwind-merge';
 type Props = SeparatorUI.SeparatorProps;

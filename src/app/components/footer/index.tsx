@@ -1,12 +1,29 @@
-'use client';
 import Image from 'next/image';
 import { Separator } from '../separator';
-import { FacebookButton } from '../social-medias/facebook';
-import { TwitterButton } from '../social-medias/twitter';
-import { TiktokButton } from '../social-medias/tiktok';
-import { InstagramButton } from '../social-medias/instagram';
+import { RawToMarkdown } from '../react-markdown';
+import { api } from '../../../api/api';
 
-export function Footer() {
+type TFooterData = {
+	id: 1;
+	attributes: {
+		nome: string;
+		endereco: string;
+		telefone: string;
+		atendimento: string;
+		direitos_autorais: string;
+	};
+};
+
+export async function Footer() {
+	const { data: footerData } = await api<{ data: TFooterData }>({
+		url: '/rodape',
+		fetchOptions: {
+			next: {
+				revalidate: 60 // atualiza os dados a cada 60 segundos
+			}
+		}
+	});
+
 	return (
 		<div className="flex flex-col items-center justify-center bg-gray_1 px-2 text-white">
 			<div className="w-[1080px] max-w-full text-white">
@@ -19,21 +36,9 @@ export function Footer() {
 						className="w-36"
 					/>
 
-					<section
-						className="flex flex-col flex-wrap gap-2 text-inherit"
-						aria-label="Redes Sociais"
-					>
-						<p className="text-2xl text-inherit">Redes Sociais</p>
-						<div className="flex gap-2">
-							<InstagramButton />
-
-							<TwitterButton />
-
-							<FacebookButton />
-
-							<TiktokButton />
-						</div>
-					</section>
+					<h2 className="text-xl text-white">
+						{footerData.attributes.nome}
+					</h2>
 				</div>
 
 				<Separator
@@ -41,21 +46,41 @@ export function Footer() {
 					className="bg-white opacity-80"
 				/>
 
-				<div className="flex flex-wrap justify-center gap-3 pb-6 pt-5 text-inherit md:justify-between">
+				<div className="flex flex-col justify-center gap-5 pb-6 pt-5 text-inherit">
 					<address
 						aria-label="Endereço UFMG"
-						className="w-full text-center text-lg not-italic text-inherit"
+						className="mb-2 text-center text-lg not-italic text-inherit"
 					>
-						Av. Antônio Carlos, 6627, Pampulha - Belo Horizonte - MG
-						- CEP 31270-901
+						{footerData.attributes.endereco}
 					</address>
-					<p className="mb-6 text-center text-sm text-inherit">
-						© 2023 Universidade Federal de Minas Gerais. Todos os
-						direitos reservados.
-					</p>
+
 					<p className="text-center text-sm text-inherit">
-						31270-901 · Fones: +55 (31) 3409-4408/4409
+						{footerData.attributes.atendimento}
+						{' · '}
+						{footerData.attributes.telefone}
 					</p>
+
+					<div className="mb-6 text-center text-sm">
+						<RawToMarkdown
+							text={footerData.attributes.direitos_autorais}
+							components={{
+								p({ children, ...props }) {
+									return (
+										<p className="text-white" {...props}>
+											{children}
+										</p>
+									);
+								},
+								a({ children, ...props }) {
+									return (
+										<a className="font-bold" {...props}>
+											{children}
+										</a>
+									);
+								}
+							}}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

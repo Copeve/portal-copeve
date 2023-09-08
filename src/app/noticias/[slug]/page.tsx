@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../../components/spacer';
 import { PageTitle } from '../../components/page-title';
 import { api } from '../../../api/api';
+import { RawToMarkdown } from '../../components/react-markdown';
 
 type TNews = {
 	id: number;
@@ -14,6 +13,42 @@ type TNews = {
 		titulo: string;
 		publishedAt: string;
 		noticia: string;
+		imagem_noticia: {
+			data: {
+				id: number;
+				attributes: {
+					name: string;
+					alternativeText: string;
+					caption: string;
+					width: number;
+					height: number;
+					formats: string;
+					hash: string;
+					ext: string;
+					mime: string;
+					size: number;
+					url: string;
+					previewUrl: string;
+					provider: string;
+					provider_metadata: string;
+					related: {
+						data: [
+							{
+								id: number;
+								attributes: {};
+							}
+						];
+					};
+					folder: {
+						data: {
+							id: number;
+							attributes: {};
+						};
+					};
+					folderPath: string;
+				};
+			} | null;
+		};
 	};
 };
 
@@ -42,6 +77,7 @@ export default async function NewsContent({ params }: Props) {
 	const response = await getData(params.slug);
 
 	const { attributes: data } = response;
+	const { imagem_noticia } = data;
 
 	return (
 		<main>
@@ -61,29 +97,33 @@ export default async function NewsContent({ params }: Props) {
 				</time>
 			</p>
 
-			{/* <figure className="w-full overflow-hidden">
-				<Image
-					src={
-						'https://live.staticflickr.com/7237/6990120326_261dd73545_b.jpg'
-					}
-					width={1080}
-					height={500}
-					alt={'Imagem da notícia'}
-				/>
+			{imagem_noticia && (
+				<figure className="w-full overflow-hidden">
+					<Image
+						src={imagem_noticia.data.attributes.url}
+						width={imagem_noticia.data.attributes.width}
+						height={imagem_noticia.data.attributes.height}
+						alt={imagem_noticia.data.attributes.alternativeText}
+					/>
 
-				<figcaption className="mt-2 text-sm">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad
-					porro nostrum adipisci eaque, repudiandae amet, esse,
-					dolorum ab soluta temporibus in? Illo itaque similique
-					autem, consectetur minima totam excepturi doloribus.
-				</figcaption>
-			</figure> */}
+					<figcaption className="mt-2 text-sm">
+						{imagem_noticia.data.attributes.caption}
+					</figcaption>
+				</figure>
+			)}
 
-			<ReactMarkdown
-				// eslint-disable-next-line react/no-children-prop
-				children={data.noticia}
-				rehypePlugins={[rehypeRaw]}
+			<RawToMarkdown
+				text={data.noticia}
 				className="text-justify text-lg leading-8"
+				components={{
+					a({ children, ...props }) {
+						return (
+							<a className="text-title_blue underline" {...props}>
+								{children}
+							</a>
+						);
+					}
+				}}
 			/>
 
 			<Spacer />

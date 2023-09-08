@@ -27,7 +27,7 @@ const Select = ({ children, triggerProps, ...rootProps }: Props) => {
 
 			<SelectUI.Portal>
 				<SelectUI.Content
-					className="max-h-96 w-selectTrigger overflow-hidden bg-white py-2 drop-shadow-md"
+					className="max-h-96 w-selectTrigger overflow-hidden bg-white py-2 drop-shadow-md dark:border dark:border-white dark:bg-black"
 					position="popper"
 					align="center"
 					side="bottom"
@@ -56,7 +56,7 @@ const SelectItem = React.forwardRef<HTMLDivElement, SelectItemProps>(
 		return (
 			<SelectUI.Item
 				className={twMerge(
-					'cursor-pointer bg-white px-4 py-1 outline-none data-[highlighted]:bg-slate-200 data-[state=checked]:bg-primary data-[state=checked]:text-white',
+					'cursor-pointer bg-white px-4 py-1 outline-none data-[highlighted]:bg-slate-200 data-[state=checked]:bg-primary data-[state=checked]:text-white dark:bg-black dark:data-[highlighted]:bg-white dark:data-[state=checked]:bg-white dark:data-[highlighted]:text-black dark:data-[state=checked]:text-black',
 					className
 				)}
 				{...props}
