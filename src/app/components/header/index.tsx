@@ -1,12 +1,11 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { HiSearch } from 'react-icons/hi';
-import { MdOutlineAccessibilityNew } from 'react-icons/md';
 
 import { ThemeSwitcher } from '../theme-switcher';
 import { Separator } from '../separator';
 import { SideMenuMobile } from '../side-menu/SideBarMobile';
-import Link from 'next/link';
 
 export function Header() {
 	return (
@@ -40,15 +39,6 @@ export function Header() {
 				</a>
 
 				<div className="absolute bottom-0 right-0 flex gap-2 pr-8 mG:static mG:h-full lg:gap-4 lg:pr-4">
-					<Link
-						href={'/acessibilidade'}
-						prefetch={false}
-						className="flex aspect-square h-12 flex-col items-center justify-center gap-y-2 text-[0px] text-white transition-all hover:brightness-75 mG:aspect-auto mG:h-full lg:text-sm"
-					>
-						<MdOutlineAccessibilityNew className="darK:fill-black h-[25px] w-[25px] rounded-full border-2 border-icon_blue fill-icon_blue p-px mG:border-white mG:fill-white" />
-						Acessibilidade
-					</Link>
-
 					<ThemeSwitcher className="aspect-square h-12 text-[0px] hover:brightness-75 mG:h-full lg:text-sm" />
 
 					<Link

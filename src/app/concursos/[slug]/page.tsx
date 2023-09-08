@@ -140,7 +140,6 @@ export default async function DetalhesConcursos({ params }: Props) {
 	});
 
 	const groupedFiles: TContestGroupedFiles[] = groupFiles(contestFiles);
-	console.log('groupedFiles', groupedFiles);
 
 	return (
 		<main className="mx-auto w-full max-w-web">
@@ -230,17 +229,6 @@ export default async function DetalhesConcursos({ params }: Props) {
 						Últimas Notícias
 					</Link>
 				)}
-			</div>
-
-			<div className="mt-16 flex justify-end gap-2 md:justify-start">
-				<TwitterButton
-					className="flex gap-4 border-icon_blue dark:border-white"
-					iconColor="fill-icon_blue dark:fill-white"
-				/>
-				<FacebookButton
-					className="flex gap-4 border-icon_blue dark:border-white"
-					iconColor="fill-icon_blue dark:fill-white"
-				/>
 			</div>
 
 			<Spacer />
