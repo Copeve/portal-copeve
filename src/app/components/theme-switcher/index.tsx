@@ -12,10 +12,20 @@ const ThemeSwitcher = ({ className }: Props): React.ReactElement => {
 	const [pressed, setPressed] = useState(false);
 
 	useEffect(() => {
+		const theme = sessionStorage.getItem('theme');
+
+		if (theme === 'dark') {
+			setPressed(true);
+		}
+	}, []);
+
+	useEffect(() => {
 		if (pressed) {
 			document.documentElement.classList.add('dark');
+			sessionStorage.setItem('theme', 'dark');
 		} else {
 			document.documentElement.classList.remove('dark');
+			sessionStorage.setItem('theme', 'light');
 		}
 	}, [pressed]);
 

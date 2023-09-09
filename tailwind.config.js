@@ -63,8 +63,12 @@ module.exports = {
 				title_blue: '#4eb1da'
 			},
 			boxShadow: {
-				'allDir': '0 0 15px rgba(0, 0, 0, 0.15)',
+				allDir: '0 0 15px rgba(0, 0, 0, 0.15)'
 			}
 		}
-	}
+	},
+	plugins: [
+		// ...
+		require('tailwindcss-all')
+	]
 };

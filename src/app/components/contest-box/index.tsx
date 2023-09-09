@@ -9,6 +9,7 @@ import {
 	AccordionItem,
 	AccordionTrigger
 } from '../accordion';
+import { TStrapiImage } from '../../../dto/news.dto';
 
 type TContest = {
 	id: number;
@@ -16,12 +17,7 @@ type TContest = {
 		nome: string;
 		data_inicio: string;
 		data_fim: string;
-		logo: {
-			data: {
-				textoAlt?: string;
-				link?: string;
-			} | null;
-		};
+		logo: TStrapiImage;
 	};
 };
 
@@ -110,12 +106,13 @@ function TypeOne({ data }: { data: TContest[] }) {
 		<ol className="grid grid-cols-1 gap-4 sm:grid-cols-2">
 			{data.map(({ id, attributes: attrs }) => {
 				const { nome, logo, data_inicio, data_fim } = attrs;
+				const displayedImg = logo.data?.attributes.formats.medium;
 
-				const formattedStartDate
-					= data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
+				const formattedStartDate =
+					data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
 
-				const formattedEndDate =
-					data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
+				const formattedEndDate
+					= data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
 
 				return (
 					<li
@@ -127,18 +124,19 @@ function TypeOne({ data }: { data: TContest[] }) {
 								{logo.data ? (
 									<div className="flex h-full w-full items-center justify-center">
 										<Image
-											width={208}
-											height={208}
+											width={displayedImg.width}
+											height={displayedImg.height}
 											alt={
-												logo.data?.textoAlt ??
-												`Imagem representativa do concurso ${nome}`
+												logo.data?.attributes
+													.alternativeText
+												?? `Imagem representativa do concurso ${nome}`
 											}
-											src={logo.data?.link}
+											src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImg.url}`}
 											className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
 										/>
 									</div>
 								) : (
-									<FileText className="h-24 w-24 opacity-30 transition-transform duration-[400ms] group-hover:scale-105 dark:fill-gray_text" />
+									<FileText className="h-24 w-24 stroke-1 opacity-30 transition-transform duration-[400ms] group-hover:scale-105 dark:stroke-gray_text" />
 								)}
 							</div>
 
@@ -173,76 +171,84 @@ function TypeTwo({
 }) {
 	return (
 		<Accordion type="single" defaultValue={defaultValue} collapsible>
-			{data.map(({ id, attributes: attrs }) => (
-				<AccordionItem
-					key={`item-${id}`}
-					value={`item-${id}`}
-					className="group rounded border border-title_blue dark:border-white"
-				>
-					<AccordionTrigger className="p-4 text-left leading-7 hover:brightness-100">
-						<div className="flex w-full gap-4">
-							<div className="flex h-36 w-60 min-w-[240px] items-center justify-center overflow-hidden rounded bg-slate-200">
-								{attrs.logo.data ? (
-									<Image
-										width={200}
-										height={144}
-										className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
-										src={attrs.logo.data?.link}
-										alt={attrs.logo.data?.textoAlt}
-									/>
-								) : (
-									<FileText className="h-24 w-24 opacity-30 transition-transform duration-[400ms] group-hover:scale-105 dark:fill-gray_text" />
-								)}
+			{data.map(({ id, attributes: attrs }) => {
+				const displayedImg = attrs.logo.data?.attributes.formats.medium;
+
+				return (
+					<AccordionItem
+						key={`item-${id}`}
+						value={`item-${id}`}
+						className="group rounded border border-title_blue dark:border-white"
+					>
+						<AccordionTrigger className="p-4 text-left leading-7 hover:brightness-100">
+							<div className="flex w-full gap-4">
+								<div className="flex h-36 w-60 min-w-[240px] items-center justify-center overflow-hidden rounded bg-slate-200">
+									{attrs.logo.data ? (
+										<Image
+											className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
+											width={displayedImg.width}
+											height={displayedImg.height}
+											alt={
+												attrs.logo.data?.attributes
+													.alternativeText ??
+												`Imagem representativa do concurso ${attrs.nome}`
+											}
+											src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImg.url}`}
+										/>
+									) : (
+										<FileText className="h-24 w-24 opacity-30 transition-transform duration-[400ms] group-hover:scale-105 dark:fill-gray_text" />
+									)}
+								</div>
+
+								<h3 className="line-clamp-3">{attrs.nome}</h3>
+							</div>
+						</AccordionTrigger>
+						<AccordionContent className="pb-6">
+							<PeriodStates
+								period={{
+									startDate: attrs.data_inicio,
+									endDate: attrs.data_fim
+								}}
+								className="mb-2"
+								textClassName="text-lg"
+							/>
+
+							<div className="flex items-center gap-4">
+								<Newspaper
+									className="h-8 w-8 fill-title_blue"
+									style={{ strokeWidth: 2 }}
+								/>
+								<Link
+									href={'/noticias'}
+									as={`concursos/${attrs.nome
+										.replaceAll(' ', '_')
+										.replaceAll('/', '_')
+										.toLocaleLowerCase()}`}
+									prefetch={false}
+									className="text-lg underline underline-offset-2 hover:text-title_blue"
+								>
+									Notícias
+								</Link>
 							</div>
 
-							<h3 className="line-clamp-3">{attrs.nome}</h3>
-						</div>
-					</AccordionTrigger>
-					<AccordionContent className="pb-6">
-						<PeriodStates
-							period={{
-								startDate: attrs.data_inicio,
-								endDate: attrs.data_fim
-							}}
-							className="mb-2"
-							textClassName="text-lg"
-						/>
-
-						<div className="flex items-center gap-4">
-							<Newspaper
-								className="h-8 w-8 fill-title_blue"
-								style={{ strokeWidth: 2 }}
-							/>
-							<Link
-								href={'/noticias'}
-								as={`concursos/${attrs.nome
-									.replaceAll(' ', '_')
-									.replaceAll('/', '_')
-									.toLocaleLowerCase()}`}
-								prefetch={false}
-								className="text-lg underline underline-offset-2 hover:text-title_blue"
-							>
-								Notícias
-							</Link>
-						</div>
-
-						<div className="mt-2 flex items-center gap-4">
-							<ArrowUpRight className="h-8 w-8 stroke-title_blue" />{' '}
-							<Link
-								href={{ pathname: `concursos/${id}` }}
-								// as={`concursos/${attrs.nome
-								// 	.replaceAll(' ', '_')
-								// 	.replaceAll('/', '_')
-								// 	.toLocaleLowerCase()}`}
-								prefetch={false}
-								className="text-lg underline underline-offset-2 hover:text-title_blue"
-							>
-								Detalhes
-							</Link>
-						</div>
-					</AccordionContent>
-				</AccordionItem>
-			))}
+							<div className="mt-2 flex items-center gap-4">
+								<ArrowUpRight className="h-8 w-8 stroke-title_blue" />{' '}
+								<Link
+									href={{ pathname: `concursos/${id}` }}
+									// as={`concursos/${attrs.nome
+									// 	.replaceAll(' ', '_')
+									// 	.replaceAll('/', '_')
+									// 	.toLocaleLowerCase()}`}
+									prefetch={false}
+									className="text-lg underline underline-offset-2 hover:text-title_blue"
+								>
+									Detalhes
+								</Link>
+							</div>
+						</AccordionContent>
+					</AccordionItem>
+				);
+			})}
 		</Accordion>
 	);
 }

@@ -16,23 +16,6 @@ type TNews = {
 	};
 };
 
-async function getData(): Promise<TNews[]> {
-	const { data, error } = await api<{ data: TNews[] }>({
-		url: '/noticias',
-		strapiQueryParams: [],
-		fetchOptions: {
-			cache: 'no-cache'
-		}
-	});
-
-	if (error) {
-		if (error.status === 404) return notFound();
-		throw new Error(error.message);
-	}
-
-	return data;
-}
-
 export default async function NewsList() {
 	const data = await getData();
 
@@ -70,4 +53,21 @@ export default async function NewsList() {
 			<Spacer />
 		</main>
 	);
+}
+
+async function getData(): Promise<TNews[]> {
+	const { data, error } = await api<{ data: TNews[] }>({
+		url: '/noticias',
+		strapiQueryParams: ['sort=publishedAt:desc'],
+		fetchOptions: {
+			cache: 'no-store'
+		}
+	});
+
+	if (error) {
+		if (error.status === 404) return notFound();
+		throw new Error(error.message);
+	}
+
+	return data;
 }

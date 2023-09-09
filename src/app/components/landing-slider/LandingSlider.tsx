@@ -45,7 +45,7 @@ export function LadingSliderClient({ content }: Props) {
 				return (
 					<div key={item.id}>
 						<Image
-							src={`https://copeve-backend-f46d9526ce84.herokuapp.com${image.url}`}
+							src={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`}
 							width={1920}
 							height={564}
 							alt={image.alternativeText}

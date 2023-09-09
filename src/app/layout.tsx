@@ -54,7 +54,7 @@ export default function RootLayout({
 
 				<div className="flex h-full min-h-screen flex-col bg-white dark:bg-black">
 					<Header />
-					<LandingSlider />
+					{/* <LandingSlider /> */}
 
 					<Spacer />
 
@@ -97,7 +97,9 @@ async function SocialMediasSection({ className }: { className?: string }) {
 	}>({
 		url: '/redes-social',
 		fetchOptions: {
-			cache: 'no-store'
+			next: {
+				revalidate: 60 * 60 // revalida em 1 hora
+			}
 		}
 	});
 

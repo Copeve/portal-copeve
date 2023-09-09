@@ -9,6 +9,7 @@ import { Spacer } from './components/spacer';
 import { ContestBox } from './components/contest-box';
 import { ShowResults } from './components/count-up-display';
 import { api } from '../api/api';
+import { TStrapiImage } from '../dto/news.dto';
 
 type TContest = {
 	id: number;
@@ -16,12 +17,7 @@ type TContest = {
 		nome: string;
 		data_inicio: string;
 		data_fim: string;
-		logo: {
-			data: {
-				textoAlt?: string;
-				link?: string;
-			} | null;
-		};
+		logo: TStrapiImage;
 	};
 };
 
@@ -30,6 +26,7 @@ type TNews = {
 	attributes: {
 		titulo: string;
 		publishedAt: string;
+		imagem_noticia: TStrapiImage;
 	};
 };
 
@@ -42,81 +39,62 @@ type TResult = {
 };
 
 export default async function Home() {
-	const { data: contestsData } = await api<{ data: TContest[] }>({
-		url: '/concursos',
-		strapiQueryParams: [
-			'populate[0]=logo',
-			'filters[destaque][$eq]=true',
-			'fields[0]=nome',
-			'fields[1]=data_inicio',
-			'fields[2]=data_fim'
-		],
-		fetchOptions: { cache: 'no-cache' }
-	});
+	const data = await Promise.all([
+		getContestsData(),
+		getNewsData(),
+		getResultsData()
+	]);
 
-	const { data: newsData } = await api<{ data: TNews[] }>({
-		url: '/noticias',
-		strapiQueryParams: [
-			'filters[destaque][$eq]=true',
-			'fields[0]=titulo',
-			'fields[1]=publishedAt'
-		],
-		fetchOptions: { cache: 'no-cache' }
-	});
-
-	const { data: resultsData } = await api<{ data: TResult[] }>({
-		url: '/resultados',
-		fetchOptions: { cache: 'no-cache' }
-	});
+	const [contestsData, newsData, resultsData] = data;
 
 	return (
 		<main className="flex max-w-full flex-1 flex-col pb-20">
 			<div className="max-w-full self-center">
-				<Section title="Concurso Destaques">
-					<ContestBox data={contestsData} type="1" />
-					<Link
-						href="/concursos"
-						prefetch={false}
-						className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
-					>
-						Ver todos os concursos{' '}
-						<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
-					</Link>
-				</Section>
+				{contestsData && (
+					<>
+						<Section title="Concurso Destaques">
+							<ContestBox data={contestsData} type="1" />
+							<Link
+								href="/concursos"
+								prefetch={false}
+								className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
+							>
+								Ver todos os concursos{' '}
+								<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
+							</Link>
+						</Section>
 
-				<Spacer />
+						<Spacer />
+					</>
+				)}
 
-				<Section title="Notícias">
-					<ol className="grid grid-cols-1 gap-4 gap-y-10 mG:grid-cols-2 lg:grid-cols-2">
-						{newsData.map(({ id, attributes: attrs }, index) => (
-							<li key={String(id)} className="w-full">
-								<NewsBox
-									imageUrl={
-										newsDataImage[
-										index < newsDataImage.length
-											? index
-											: 0
-										]
-									}
-									imgAlt="Lorem ipsum dolor sit"
-									title={attrs.titulo}
-									date={new Date(attrs.publishedAt)}
-								/>
-							</li>
-						))}
-					</ol>
+				{newsData && (
+					<>
+						<Section title="Notícias">
+							<ol className="grid grid-cols-1 gap-4 gap-y-10 mG:grid-cols-2 lg:grid-cols-2">
+								{newsData.map((item) => (
+									<li
+										key={String(item.id)}
+										className="w-full"
+									>
+										<NewsBox data={item} />
+									</li>
+								))}
+							</ol>
 
-					<Link
-						href="/noticias"
-						prefetch={false}
-						className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
-					>
-						Ver todas as notícias{' '}
-						<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
-					</Link>
-				</Section>
+							<Link
+								href="/noticias"
+								prefetch={false}
+								className="ml-auto mt-8 flex w-max items-center justify-center text-lg font-bold text-title_blue dark:text-white"
+							>
+								Ver todas as notícias{' '}
+								<HiChevronRight className="h-6 w-6 fill-yellow_1 pt-px" />
+							</Link>
+						</Section>
 
-				<Spacer />
+						<Spacer />
+					</>
+				)}
 
 				{resultsData && (
 					<Section title="Resultados">
@@ -139,9 +117,48 @@ export default async function Home() {
 	);
 }
 
-const newsDataImage = [
-	'https://live.staticflickr.com/7059/6990116854_1c36116afa_b.jpg',
-	'https://live.staticflickr.com/7090/7171706600_4d420fdbab_b.jpg',
-	'https://live.staticflickr.com/7099/7136201181_73d3a8926d_3k.jpg',
-	'https://live.staticflickr.com/7101/6990120534_03ec7c28cb_b.jpg'
-];
+async function getContestsData() {
+	const { data: contestsData, error } = await api<{ data: TContest[] }>({
+		url: '/concursos',
+		strapiQueryParams: [
+			'populate[0]=logo',
+			'filters[destaque][$eq]=true',
+			'fields[0]=nome',
+			'fields[1]=data_inicio',
+			'fields[2]=data_fim'
+		],
+		fetchOptions: { cache: 'no-store' }
+	});
+
+	if (error) return undefined;
+
+	return contestsData;
+}
+
+async function getNewsData() {
+	const { data: newsData, error } = await api<{ data: TNews[] }>({
+		url: '/noticias',
+		strapiQueryParams: [
+			'filters[destaque][$eq]=true',
+			'fields[0]=titulo',
+			'fields[1]=publishedAt',
+			'populate=imagem_noticia'
+		],
+		fetchOptions: { cache: 'no-store' }
+	});
+
+	if (error) return undefined;
+
+	return newsData;
+}
+
+async function getResultsData() {
+	const { data: resultsData, error } = await api<{ data: TResult[] }>({
+		url: '/resultados',
+		fetchOptions: { cache: 'no-store' }
+	});
+
+	if (error) return undefined;
+
+	return resultsData;
+}

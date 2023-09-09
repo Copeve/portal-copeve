@@ -2,6 +2,8 @@ import { PageTitle } from '../components/page-title';
 import { Spacer } from '../components/spacer';
 import { ContestBox } from '../components/contest-box';
 import { api } from '../../api/api';
+import { TStrapiImage } from '../../dto/news.dto';
+import { notFound } from 'next/navigation';
 
 type TContest = {
 	id: number;
@@ -9,28 +11,14 @@ type TContest = {
 		nome: string;
 		data_inicio: string;
 		data_fim: string;
-		logo: {
-			data: {
-				textoAlt?: string;
-				link?: string;
-			} | null;
-		};
+		logo: TStrapiImage;
 	};
 };
 
 const Concursos = async () => {
-	const { data: contestsData } = await api<{ data: TContest[] }>({
-		url: '/concursos',
-		strapiQueryParams: [
-			'populate[0]=logo',
-			'fields[0]=nome',
-			'fields[1]=data_inicio',
-			'fields[2]=data_fim'
-		],
-		fetchOptions: {
-			cache: 'no-cache'
-		}
-	});
+	const data = await Promise.all([getContestsData()]);
+
+	const [contestsData] = data;
 
 	return (
 		<main>
@@ -54,5 +42,29 @@ const Concursos = async () => {
 		</main>
 	);
 };
+
+async function getContestsData() {
+	const { data, error } = await api<{ data: TContest[] }>({
+		url: '/concursos',
+		strapiQueryParams: [
+			'populate[0]=logo',
+			'fields[0]=nome',
+			'fields[1]=data_inicio',
+			'fields[2]=data_fim',
+			'sort=publishedAt:desc',
+			'filters[encerrado][$eq]=false'
+		],
+		fetchOptions: {
+			cache: 'no-store'
+		}
+	});
+
+	if (error) {
+		if (error.status === 404) return notFound();
+		throw new Error(error.message);
+	}
+
+	return data;
+}
 
 export default Concursos;

@@ -16,7 +16,7 @@ export function DownloadableDocList({
 						>,
 						{
 							className:
-								'mouse-over flex items-center gap-2 hover:underline underline-offset-4'
+								'mouse-over flex items-center gap-2 hover:underline underline-offset-4 relative'
 						}
 					)}
 				</li>

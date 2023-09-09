@@ -15,7 +15,7 @@ export async function api<T = ResponseData>(options: {
 	strapiQueryParams?: string[];
 }): Promise<T & ResponseError> {
 	const { url, fetchOptions, strapiQueryParams = [] } = options;
-	const baseUrl = `${'https://copeve-backend-f46d9526ce84.herokuapp.com'}/api${url}`;
+	const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/api${url}`;
 
 	const resp = await fetch(`${baseUrl}?${strapiQueryParams.join('&')}`, {
 		headers: {

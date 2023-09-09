@@ -61,7 +61,7 @@ async function getData(id: string): Promise<TNews> {
 		url: `/noticias/${id}`,
 		strapiQueryParams: [],
 		fetchOptions: {
-			cache: 'no-cache'
+			cache: 'no-store'
 		}
 	});
 

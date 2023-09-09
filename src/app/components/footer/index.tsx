@@ -19,7 +19,7 @@ export async function Footer() {
 		url: '/rodape',
 		fetchOptions: {
 			next: {
-				revalidate: 60 // atualiza os dados a cada 60 segundos
+				revalidate: 60 * 60 // atualiza os dados a cada 1 hora
 			}
 		}
 	});
@@ -66,14 +66,17 @@ export async function Footer() {
 							components={{
 								p({ children, ...props }) {
 									return (
-										<p className="text-white" {...props}>
+										<p className="!text-white" {...props}>
 											{children}
 										</p>
 									);
 								},
 								a({ children, ...props }) {
 									return (
-										<a className="font-bold" {...props}>
+										<a
+											className="font-bold underline"
+											{...props}
+										>
 											{children}
 										</a>
 									);
