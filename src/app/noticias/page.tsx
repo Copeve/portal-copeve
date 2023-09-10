@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../components/spacer';
 import { PageTitle } from '../components/page-title';
 import { api } from '../../api/api';
-import { notFound } from 'next/navigation';
+import { TApiMeta } from '../../dto/strapi.dto';
+import { Pagination } from '../components/pagination';
 
 type TNews = {
 	id: number;
@@ -16,8 +18,15 @@ type TNews = {
 	};
 };
 
-export default async function NewsList() {
-	const data = await getData();
+type Props = {
+	searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export default async function NewsList({ searchParams }: Props) {
+	const page
+		= typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
+
+	const { data, meta } = await getData(page);
 
 	return (
 		<main>
@@ -51,14 +60,26 @@ export default async function NewsList() {
 			))}
 
 			<Spacer />
+
+			<div className="flex w-full justify-center">
+				{data.length > 0 && (
+					<Pagination length={meta.pagination.pageCount} />
+				)}
+			</div>
+
+			<Spacer />
 		</main>
 	);
 }
 
-async function getData(): Promise<TNews[]> {
-	const { data, error } = await api<{ data: TNews[] }>({
+async function getData(page: string) {
+	const { data, meta, error } = await api<{ data: TNews[]; meta: TApiMeta }>({
 		url: '/noticias',
-		strapiQueryParams: ['sort=publishedAt:desc'],
+		strapiQueryParams: [
+			'pagination[pageSize]=10',
+			`pagination[page]=${page}`,
+			'sort=publishedAt:desc'
+		],
 		fetchOptions: {
 			cache: 'no-store'
 		}
@@ -69,5 +90,5 @@ async function getData(): Promise<TNews[]> {
 		throw new Error(error.message);
 	}
 
-	return data;
+	return { data, meta };
 }

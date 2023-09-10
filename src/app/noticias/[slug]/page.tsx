@@ -6,7 +6,7 @@ import { Spacer } from '../../components/spacer';
 import { PageTitle } from '../../components/page-title';
 import { api } from '../../../api/api';
 import { RawToMarkdown } from '../../components/react-markdown';
-import { TStrapiImage } from '../../../dto/news.dto';
+import { TStrapiImage } from '../../../dto/strapi.dto';
 
 type TNews = {
 	id: number;
@@ -27,8 +27,8 @@ export default async function NewsContent({ params }: Props) {
 
 	const { attributes: data } = response;
 	const { imagem_noticia } = data;
-	const displayedImage
-		= imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
+	const displayedImage =
+		imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
 
 	return (
 		<main>

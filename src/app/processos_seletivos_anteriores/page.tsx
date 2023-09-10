@@ -7,7 +7,7 @@ import { Select, SelectItem } from '../components/select';
 import { Spacer } from '../components/spacer';
 import { ContestBox } from '../components/contest-box';
 import { api } from '../../api/api';
-import { TStrapiImage } from '../../dto/news.dto';
+import { TStrapiImage } from '../../dto/strapi.dto';
 
 type TContestGroupData = {
 	nome: string;

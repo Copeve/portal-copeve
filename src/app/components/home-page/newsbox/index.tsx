@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import { Newspaper } from '../../Icons';
-import { TStrapiImage } from '../../../../dto/news.dto';
+import { TStrapiImage } from '../../../../dto/strapi.dto';
 
 type TNews = {
 	id: number;

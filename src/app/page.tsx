@@ -9,7 +9,7 @@ import { Spacer } from './components/spacer';
 import { ContestBox } from './components/contest-box';
 import { ShowResults } from './components/count-up-display';
 import { api } from '../api/api';
-import { TStrapiImage } from '../dto/news.dto';
+import { TStrapiImage } from '../dto/strapi.dto';
 
 type TContest = {
 	id: number;

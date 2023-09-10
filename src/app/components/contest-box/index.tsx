@@ -9,7 +9,7 @@ import {
 	AccordionItem,
 	AccordionTrigger
 } from '../accordion';
-import { TStrapiImage } from '../../../dto/news.dto';
+import { TStrapiImage } from '../../../dto/strapi.dto';
 
 type TContest = {
 	id: number;
@@ -108,11 +108,11 @@ function TypeOne({ data }: { data: TContest[] }) {
 				const { nome, logo, data_inicio, data_fim } = attrs;
 				const displayedImg = logo.data?.attributes.formats.medium;
 
-				const formattedStartDate =
-					data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
+				const formattedStartDate
+					= data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
 
-				const formattedEndDate
-					= data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
+				const formattedEndDate =
+					data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
 
 				return (
 					<li
@@ -128,8 +128,8 @@ function TypeOne({ data }: { data: TContest[] }) {
 											height={displayedImg.height}
 											alt={
 												logo.data?.attributes
-													.alternativeText
-												?? `Imagem representativa do concurso ${nome}`
+													.alternativeText ??
+												`Imagem representativa do concurso ${nome}`
 											}
 											src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImg.url}`}
 											className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
@@ -190,8 +190,8 @@ function TypeTwo({
 											height={displayedImg.height}
 											alt={
 												attrs.logo.data?.attributes
-													.alternativeText ??
-												`Imagem representativa do concurso ${attrs.nome}`
+													.alternativeText
+												?? `Imagem representativa do concurso ${attrs.nome}`
 											}
 											src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImg.url}`}
 										/>
