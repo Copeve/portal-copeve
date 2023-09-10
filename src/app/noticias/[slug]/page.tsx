@@ -6,6 +6,7 @@ import { Spacer } from '../../components/spacer';
 import { PageTitle } from '../../components/page-title';
 import { api } from '../../../api/api';
 import { RawToMarkdown } from '../../components/react-markdown';
+import { TStrapiImage } from '../../../dto/news.dto';
 
 type TNews = {
 	id: number;
@@ -13,42 +14,7 @@ type TNews = {
 		titulo: string;
 		publishedAt: string;
 		noticia: string;
-		imagem_noticia: {
-			data: {
-				id: number;
-				attributes: {
-					name: string;
-					alternativeText: string;
-					caption: string;
-					width: number;
-					height: number;
-					formats: string;
-					hash: string;
-					ext: string;
-					mime: string;
-					size: number;
-					url: string;
-					previewUrl: string;
-					provider: string;
-					provider_metadata: string;
-					related: {
-						data: [
-							{
-								id: number;
-								attributes: {};
-							}
-						];
-					};
-					folder: {
-						data: {
-							id: number;
-							attributes: {};
-						};
-					};
-					folderPath: string;
-				};
-			} | null;
-		};
+		imagem_noticia: TStrapiImage;
 	};
 };
 
@@ -56,28 +22,13 @@ type Props = {
 	params: { slug: string };
 };
 
-async function getData(id: string): Promise<TNews> {
-	const { data, error } = await api<{ data: TNews }>({
-		url: `/noticias/${id}`,
-		strapiQueryParams: [],
-		fetchOptions: {
-			cache: 'no-store'
-		}
-	});
-
-	if (error) {
-		if (error.status === 404) return notFound();
-		throw new Error(error.message);
-	}
-
-	return data;
-}
-
 export default async function NewsContent({ params }: Props) {
 	const response = await getData(params.slug);
 
 	const { attributes: data } = response;
 	const { imagem_noticia } = data;
+	const displayedImage
+		= imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
 
 	return (
 		<main>
@@ -97,12 +48,12 @@ export default async function NewsContent({ params }: Props) {
 				</time>
 			</p>
 
-			{imagem_noticia && (
+			{displayedImage && (
 				<figure className="w-full overflow-hidden">
 					<Image
-						src={imagem_noticia.data.attributes.url}
-						width={imagem_noticia.data.attributes.width}
-						height={imagem_noticia.data.attributes.height}
+						src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImage.url}`}
+						width={displayedImage.width}
+						height={displayedImage.height}
 						alt={imagem_noticia.data.attributes.alternativeText}
 					/>
 
@@ -115,18 +66,26 @@ export default async function NewsContent({ params }: Props) {
 			<RawToMarkdown
 				text={data.noticia}
 				className="text-justify text-lg leading-8"
-				components={{
-					a({ children, ...props }) {
-						return (
-							<a className="text-title_blue underline" {...props}>
-								{children}
-							</a>
-						);
-					}
-				}}
 			/>
 
 			<Spacer />
 		</main>
 	);
+}
+
+async function getData(id: string): Promise<TNews> {
+	const { data, error } = await api<{ data: TNews }>({
+		url: `/noticias/${id}`,
+		strapiQueryParams: ['populate=imagem_noticia'],
+		fetchOptions: {
+			cache: 'no-store'
+		}
+	});
+
+	if (error) {
+		if (error.status === 404) return notFound();
+		throw new Error(error.message);
+	}
+
+	return data;
 }

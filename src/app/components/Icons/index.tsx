@@ -10,6 +10,7 @@ import {
 } from 'react-icons/fi';
 import { LuFileText } from 'react-icons/lu';
 import { PiNewspaperClippingLight } from 'react-icons/pi';
+import { BsCalendar } from 'react-icons/bs';
 
 //Ai
 export const OutlineFilePdf = (props: IconBaseProps) => (
@@ -45,4 +46,9 @@ export const FileText = (props: IconBaseProps) => <LuFileText {...props} />;
 //Pi
 export const Newspaper = (props: IconBaseProps) => (
 	<PiNewspaperClippingLight {...props} />
+);
+
+//Bs
+export const CalendarEmpty = (props: IconBaseProps) => (
+	<BsCalendar {...props} />
 );

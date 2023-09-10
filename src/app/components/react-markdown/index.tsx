@@ -11,6 +11,21 @@ export function RawToMarkdown({ text, className, ...props }: Props) {
 		<ReactMarkdown
 			rehypePlugins={[rehypeRaw]}
 			className={twMerge('[&>*]:all-revert', className)}
+			components={{
+				a: ({ children, className, ...props }) => {
+					return (
+						<a
+							className={twMerge(
+								'text-title_blue underline dark:text-white',
+								className
+							)}
+							{...props}
+						>
+							{children}
+						</a>
+					);
+				}
+			}}
 			{...props}
 		>
 			{text}

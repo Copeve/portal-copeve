@@ -36,7 +36,7 @@ export async function Footer() {
 						className="w-36"
 					/>
 
-					<h2 className="text-xl text-white">
+					<h2 className="text-center text-xl text-white">
 						{footerData.attributes.nome}
 					</h2>
 				</div>
@@ -63,18 +63,12 @@ export async function Footer() {
 					<div className="mb-6 text-center text-sm">
 						<RawToMarkdown
 							text={footerData.attributes.direitos_autorais}
+							className="text-white"
 							components={{
-								p({ children, ...props }) {
-									return (
-										<p className="!text-white" {...props}>
-											{children}
-										</p>
-									);
-								},
 								a({ children, ...props }) {
 									return (
 										<a
-											className="font-bold underline"
+											className="font-semibold underline underline-offset-2"
 											{...props}
 										>
 											{children}

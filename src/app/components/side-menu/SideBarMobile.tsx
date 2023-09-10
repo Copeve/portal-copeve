@@ -31,11 +31,13 @@ const SideMenuMobile = (): React.ReactElement => {
 									<NavigationMenu.List>
 										{navButtons.map((item) => (
 											<NavigationMenu.Item key={item.id}>
-												<NavButton
-													href={item.link}
-													text={item.title}
-													prefetch={false}
-												/>
+												<Dialog.Close asChild>
+													<NavButton
+														href={item.link}
+														text={item.title}
+														prefetch={false}
+													/>
+												</Dialog.Close>
 											</NavigationMenu.Item>
 										))}
 									</NavigationMenu.List>

@@ -28,8 +28,8 @@ export const SideBar = () => {
 								key={item.id}
 								href={item.link}
 								text={item.title}
-								className={`border-b-0 dark:border dark:border-white dark:bg-black ${getButtonHighlighted(pathname, item.link)
-										? 'bg-secondary'
+								className={`border dark:border dark:border-white dark:bg-black ${getButtonHighlighted(pathname, item.link)
+										? 'bg-secondary dark:bg-white dark:text-black'
 										: 'bg-primary'
 									}`}
 							/>

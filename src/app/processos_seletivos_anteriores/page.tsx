@@ -7,6 +7,7 @@ import { Select, SelectItem } from '../components/select';
 import { Spacer } from '../components/spacer';
 import { ContestBox } from '../components/contest-box';
 import { api } from '../../api/api';
+import { TStrapiImage } from '../../dto/news.dto';
 
 type TContestGroupData = {
 	nome: string;
@@ -29,7 +30,7 @@ type TContestData = {
 		nome: string;
 		data_inicio: string;
 		data_fim: string;
-		logo: { data: { textoAlt?: string; link?: string } };
+		logo: TStrapiImage;
 	};
 };
 
