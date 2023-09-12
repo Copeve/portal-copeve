@@ -27,8 +27,8 @@ export default async function NewsContent({ params }: Props) {
 
 	const { attributes: data } = response;
 	const { imagem_noticia } = data;
-	const displayedImage =
-		imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
+	const displayedImage
+		= imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
 
 	return (
 		<main>
@@ -68,6 +68,7 @@ export default async function NewsContent({ params }: Props) {
 				className="text-justify text-lg leading-8"
 			/>
 
+			<Spacer />
 			<Spacer />
 		</main>
 	);

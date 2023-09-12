@@ -54,7 +54,11 @@ export default function RootLayout({
 
 				<div className="flex h-full min-h-screen flex-col bg-white dark:bg-black">
 					<Header />
-					{/* <LandingSlider /> */}
+					<LandingSlider />
+					<div
+						id="skip-landing-image"
+						className="absolute top-[570px]"
+					/>
 
 					<Spacer />
 

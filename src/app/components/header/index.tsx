@@ -49,17 +49,24 @@ export function Header() {
 						{'Mapa do site'}
 					</Link>
 
-					<div className="relative my-auto">
+					<form
+						action={'/pesquisar/#skip-landing-image'}
+						className="relative my-auto"
+					>
 						<input
 							type="search"
+							name="termo"
 							placeholder="Buscar por"
 							className="hidden w-80 rounded-full py-3 pl-5 pr-16 text-sm placeholder:text-lg lg:block"
 						/>
 
-						<button className="h-full lg:absolute lg:right-4 lg:top-0">
+						<button
+							className="h-full lg:absolute lg:right-4 lg:top-0"
+							type="submit"
+						>
 							<HiSearch className="h-[30px] w-[30px] fill-icon_blue mG:fill-white lg:fill-icon_blue" />
 						</button>
-					</div>
+					</form>
 				</div>
 			</div>
 		</header>

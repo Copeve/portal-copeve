@@ -1,5 +1,6 @@
 import { api } from '../../../api/api';
 import { LadingSliderClient } from './LandingSlider';
+import { TStrapiImage } from '../../../dto/strapi.dto';
 
 export type CarouselData = {
 	id: number;
@@ -9,17 +10,7 @@ export type CarouselData = {
 		updatedAt: string;
 		publishedAt: string;
 		imagem: {
-			data: {
-				id: number;
-				attributes: {
-					name: string;
-					alternativeText: string;
-					width: number;
-					height: number;
-					ext: string;
-					url: string;
-				};
-			}[];
+			data: TStrapiImage['data'][];
 		};
 	};
 };

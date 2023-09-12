@@ -12,7 +12,7 @@ export function LinksDocList({ children, childrenClassName }: Props) {
 	return (
 		<ol className="space-y-4 pl-4 text-lg">
 			{React.Children.toArray(children).map((child, index) => (
-				<li key={String(index)}>
+				<li key={String(index)} className="last:border-b-0">
 					{React.cloneElement(
 						child as React.ReactElement<
 							any,

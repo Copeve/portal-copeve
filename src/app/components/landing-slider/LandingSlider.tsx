@@ -41,13 +41,14 @@ export function LadingSliderClient({ content }: Props) {
 		>
 			{content.map((item) => {
 				const image = item.attributes.imagem.data[0].attributes;
+				const displayedImage = image.formats.large;
 
 				return (
 					<div key={item.id}>
 						<Image
 							src={`${process.env.NEXT_PUBLIC_API_URL}${image.url}`}
-							width={1920}
-							height={564}
+							width={displayedImage.width}
+							height={displayedImage.height}
 							alt={image.alternativeText}
 							className="h-[564px] w-full min-w-[1080px] object-cover sm:min-w-[1920px]"
 						/>

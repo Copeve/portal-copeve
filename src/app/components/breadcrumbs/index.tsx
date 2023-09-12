@@ -56,11 +56,14 @@ const Breadcrumbs = ({
 					const isLastLink = idx === breadcrumbs.length - 1;
 
 					return (
-						<li key={`breadcrumb-link-${idx}`} className='breadcrumbLi inline m-0 p-0'>
+						<li
+							key={`breadcrumb-link-${idx}`}
+							className="breadcrumbLi m-0 inline p-0"
+						>
 							<a
 								href={item.href}
 								aria-current={isLastLink ? 'page' : undefined}
-								className='breadcrumbLink'
+								className="breadcrumbLink"
 							>
 								{item.text}
 							</a>

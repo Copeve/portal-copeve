@@ -233,7 +233,6 @@ export default async function DetalhesConcursos({ params }: Props) {
 													return (
 														<div
 															key={`event-${id}`}
-															className=""
 														>
 															<CalendarNumber
 																day={attributes.publishedAt.substring(
