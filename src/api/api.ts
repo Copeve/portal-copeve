@@ -11,8 +11,8 @@ type ResponseError = {
 
 export async function api<T = ResponseData>(options: {
 	url: string;
-	fetchOptions?: RequestInit;
 	strapiQueryParams?: string[];
+	fetchOptions?: RequestInit;
 }): Promise<T & ResponseError> {
 	const { url, fetchOptions, strapiQueryParams = [] } = options;
 	const baseUrl = `${process.env.NEXT_PUBLIC_API_URL}/api${url}`;
@@ -23,6 +23,7 @@ export async function api<T = ResponseData>(options: {
 		},
 		...fetchOptions
 	});
+
 	const data = await resp.json();
 	return data as T & ResponseError;
 }

@@ -22,24 +22,24 @@ type TContest = {
 };
 
 type Props = {
-	type: '1' | '2';
+	layout: '1' | '2';
 	data: TContest[];
 	defaultValue?: string;
 };
 
 const ContestBox = ({
-	type,
+	layout,
 	data,
 	defaultValue
 }: Props): React.ReactElement => {
-	if (type === '1') {
-		return <TypeOne data={data} />;
+	if (layout === '1') {
+		return <LayoutOne data={data} />;
 	}
 
-	return <TypeTwo data={data} defaultValue={defaultValue} />;
+	return <LayoutTwo data={data} defaultValue={defaultValue} />;
 };
 
-function TypeOne({ data }: { data: TContest[] }) {
+function LayoutOne({ data }: { data: TContest[] }) {
 	const Period = (props: {
 		formattedStartDate: string | undefined;
 		formattedEndDate: string | undefined;
@@ -108,11 +108,11 @@ function TypeOne({ data }: { data: TContest[] }) {
 				const { nome, logo, data_inicio, data_fim } = attrs;
 				const displayedImg = logo.data?.attributes.formats.medium;
 
-				const formattedStartDate
-					= data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
+				const formattedStartDate =
+					data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
 
-				const formattedEndDate =
-					data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
+				const formattedEndDate
+					= data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
 
 				return (
 					<li
@@ -128,8 +128,8 @@ function TypeOne({ data }: { data: TContest[] }) {
 											height={displayedImg.height}
 											alt={
 												logo.data?.attributes
-													.alternativeText ??
-												`Imagem representativa do concurso ${nome}`
+													.alternativeText
+												?? `Imagem representativa do concurso ${nome}`
 											}
 											src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImg.url}`}
 											className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
@@ -162,7 +162,7 @@ function TypeOne({ data }: { data: TContest[] }) {
 	);
 }
 
-function TypeTwo({
+function LayoutTwo({
 	data,
 	defaultValue
 }: {
@@ -190,8 +190,8 @@ function TypeTwo({
 											height={displayedImg.height}
 											alt={
 												attrs.logo.data?.attributes
-													.alternativeText
-												?? `Imagem representativa do concurso ${attrs.nome}`
+													.alternativeText ??
+												`Imagem representativa do concurso ${attrs.nome}`
 											}
 											src={`${process.env.NEXT_PUBLIC_API_URL}${displayedImg.url}`}
 										/>

@@ -1,3 +1,4 @@
+'use client';
 import CountUp from 'react-countup';
 import { twMerge } from 'tailwind-merge';
 

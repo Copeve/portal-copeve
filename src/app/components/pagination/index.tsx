@@ -24,7 +24,6 @@ export function Pagination({ length }: Props) {
 
 	const handlePageChange = useCallback(
 		(page: number) => {
-			console.log(pathname, page);
 			setPage(page);
 			if (pathname) {
 				router.push(`${pathname}?pagina=${page + 1}`);

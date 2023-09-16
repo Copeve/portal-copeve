@@ -21,8 +21,8 @@ type Props = {
 };
 
 const Concursos = async ({ searchParams }: Props) => {
-	const page
-		= typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
+	const page =
+		typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
 
 	const data = await Promise.all([getContestsData(page)]);
 
@@ -36,7 +36,7 @@ const Concursos = async ({ searchParams }: Props) => {
 
 			{contestsData.length > 0 ? (
 				<ContestBox
-					type={'1'}
+					layout={'1'}
 					data={contestsData}
 					defaultValue={`item-${contestsData[0].id}`}
 				/>

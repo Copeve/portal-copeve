@@ -18,8 +18,8 @@ type Props = {
 export function PeriodStates({ className, textClassName, period }: Props) {
 	const formatOptions = { locale: ptBR };
 	let outOfDateMessage = '';
-	const toStartDate
-		= period?.startDate && toDate(period.startDate, formatOptions);
+	const toStartDate =
+		period?.startDate && toDate(period.startDate, formatOptions);
 	const toEndDate = period?.endDate && toDate(period.endDate, formatOptions);
 
 	if (toStartDate) {
@@ -51,15 +51,15 @@ export function PeriodStates({ className, textClassName, period }: Props) {
 					)}
 				>
 					Período de inscrição:
-					{period ? (
+					{period.startDate || period.endDate ? (
 						<strong className={'font-semibold'}>
 							{toStartDate
 								? format(toStartDate, 'dd/MM/yyyy')
-								: 'Data início não definida'}{' '}
+								: 'Não definida'}{' '}
 							-{' '}
 							{toEndDate
 								? format(toEndDate, 'dd/MM/yyyy')
-								: 'Data fim não definida'}
+								: 'Não definida'}
 						</strong>
 					) : (
 						<span className={'text-md text-red-500'}>

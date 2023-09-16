@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import Link from 'next/link';
 import { HiChevronRight } from 'react-icons/hi';
@@ -53,7 +52,7 @@ export default async function Home() {
 				{contestsData && (
 					<>
 						<Section title="Concurso Destaques">
-							<ContestBox data={contestsData} type="1" />
+							<ContestBox data={contestsData} layout="1" />
 							<Link
 								href="/concursos"
 								prefetch={false}
