@@ -124,7 +124,8 @@ async function getContestsData() {
 			'filters[destaque][$eq]=true',
 			'fields[0]=nome',
 			'fields[1]=data_inicio',
-			'fields[2]=data_fim'
+			'fields[2]=data_fim',
+			'sort=publishedAt:desc'
 		],
 		fetchOptions: { cache: 'no-store' }
 	});
@@ -141,7 +142,8 @@ async function getNewsData() {
 			'filters[destaque][$eq]=true',
 			'fields[0]=titulo',
 			'fields[1]=publishedAt',
-			'populate=imagem_noticia'
+			'populate=imagem_noticia',
+			'sort=publishedAt:desc'
 		],
 		fetchOptions: { cache: 'no-store' }
 	});

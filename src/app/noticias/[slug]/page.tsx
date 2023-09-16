@@ -26,9 +26,10 @@ export default async function NewsContent({ params }: Props) {
 	const response = await getData(params.slug);
 
 	const { attributes: data } = response;
+
 	const { imagem_noticia } = data;
-	const displayedImage
-		= imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
+	const displayedImage =
+		imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
 
 	return (
 		<main>

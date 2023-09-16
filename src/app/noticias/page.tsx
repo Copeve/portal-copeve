@@ -23,8 +23,8 @@ type Props = {
 };
 
 export default async function NewsList({ searchParams }: Props) {
-	const page
-		= typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
+	const page =
+		typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
 
 	const { data, meta } = await getData(page);
 
@@ -46,7 +46,7 @@ export default async function NewsList({ searchParams }: Props) {
 							'yyyy-MM-dd'
 						)}
 					>
-						{format(new Date(attrs.publishedAt), 'dd LLL', {
+						{format(new Date(attrs.publishedAt), 'dd LLL yyyy', {
 							locale: ptBR
 						})}
 					</time>
