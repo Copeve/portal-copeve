@@ -41,36 +41,37 @@ const AccordionTrigger = React.forwardRef<
 	HTMLButtonElement,
 	AccordionUI.AccordionTriggerProps & { iconProps?: IconBaseProps }
 >(function AccordionTrigger(
-	{ children, className, iconProps, ...props },
+	{ children, className, iconProps = { className: '' }, ...props },
 	forwardedRef
 ) {
+	const { className: iconClassName, ...iconPropsRest } = iconProps;
 	return (
 		<AccordionUI.Header className="flex">
 			<AccordionUI.Trigger
 				className={twMerge(
-					'mouse-over group flex flex-1 items-center justify-between gap-2 px-8 py-5 text-xl font-semibold leading-none text-title_blue outline-none ring-gray_text ring-offset-2 focus-visible:ring-2 dark:bg-black dark:text-white',
+					'mouse-over group flex flex-1 items-center justify-between gap-2 px-8 py-5 text-left text-xl font-semibold leading-none text-title_blue outline-none ring-gray_text ring-offset-2 focus-visible:ring-2 dark:bg-black dark:text-white',
 					className
 				)}
 				{...props}
 				ref={forwardedRef}
 			>
 				{children}
-				<div className="relative h-6 w-6">
+				<div className="relative h-6 w-0 mG:w-6">
 					<HiPlusSmall
 						className={twMerge(
 							'absolute h-6 w-6 transition-transform duration-300 group-data-[state=open]:scale-y-0 dark:fill-white',
-							iconProps?.className
+							iconClassName
 						)}
 						aria-hidden
-						{...iconProps}
+						{...iconPropsRest}
 					/>
 					<HiMinusSmall
 						className={twMerge(
 							'absolute h-6 w-6 scale-y-0 transition-transform duration-300 group-data-[state=open]:scale-y-100 dark:fill-white',
-							iconProps?.className
+							iconClassName
 						)}
 						aria-hidden
-						{...iconProps}
+						{...iconPropsRest}
 					/>
 				</div>
 			</AccordionUI.Trigger>

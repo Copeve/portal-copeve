@@ -172,9 +172,14 @@ function LayoutTwo({
 						value={`item-${id}`}
 						className="group rounded border border-title_blue dark:border-white"
 					>
-						<AccordionTrigger className="p-4 text-left leading-7 hover:brightness-100">
-							<div className="flex w-full gap-4">
-								<div className="flex h-36 w-60 min-w-[240px] items-center justify-center overflow-hidden rounded bg-slate-200">
+						<AccordionTrigger
+							iconProps={{
+								className: 'hidden w-0 mG:w-6 mG:block'
+							}}
+							className="gap-0 p-4 text-left leading-7 hover:brightness-100 mG:gap-2"
+						>
+							<div className="flex w-full flex-col gap-4 mG:flex-row">
+								<div className="flex h-36 w-full min-w-[240px] items-center justify-center overflow-hidden rounded bg-slate-200 mG:w-60">
 									{attrs.logo.data ? (
 										<Image
 											className="h-full w-full object-cover transition-transform duration-[400ms] group-hover:scale-105"
