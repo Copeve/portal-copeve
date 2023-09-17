@@ -2,7 +2,7 @@ import { api } from '../../../api/api';
 import { LadingSliderClient } from './LandingSlider';
 import { TStrapiImage } from '../../../dto/strapi.dto';
 
-export type CarouselData = {
+export type TCarouselData = {
 	id: number;
 	attributes: {
 		texto: string | null;
@@ -16,7 +16,7 @@ export type CarouselData = {
 };
 
 const LandingSlider = async () => {
-	const { data } = await api<{ data: CarouselData[] }>({
+	const { data } = await api<{ data: TCarouselData[] }>({
 		url: '/carrossels',
 		strapiQueryParams: ['populate=*'],
 		fetchOptions: {

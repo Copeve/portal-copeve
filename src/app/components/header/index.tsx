@@ -49,10 +49,7 @@ export function Header() {
 						{'Mapa do site'}
 					</Link>
 
-					<form
-						action={'/pesquisar/#skip-landing-image'}
-						className="relative my-auto"
-					>
+					<form action={'/pesquisar'} className="relative my-auto">
 						<input
 							type="search"
 							name="termo"

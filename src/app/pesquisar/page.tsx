@@ -59,7 +59,7 @@ export default async function SearchPage({ searchParams }: Props) {
 								<Link
 									key={String(id)}
 									prefetch={false}
-									href={`/concursos/${id}/#skip-landing-image`}
+									href={`/concursos/${id}`}
 									className="group flex w-full flex-col border-b pb-4 pt-2"
 								>
 									<div className="flex items-center justify-between">
@@ -80,7 +80,8 @@ export default async function SearchPage({ searchParams }: Props) {
 								<Link
 									key={String(id)}
 									prefetch={false}
-									href={`/noticias/${id}/#skip-landing-image`}
+									scroll={false}
+									href={`/noticias/${id}`}
 									className="group flex w-full flex-col border-b pb-4 pt-2"
 								>
 									<div className="flex items-center justify-between">
@@ -95,6 +96,20 @@ export default async function SearchPage({ searchParams }: Props) {
 									<RawToMarkdown
 										className="text-sm leading-4"
 										text={transliterations.noticia}
+										components={{
+											a: ({
+												children,
+												href,
+												...props
+											}) => (
+												<span
+													className="text-title_blue underline"
+													{...props}
+												>
+													{children}
+												</span>
+											)
+										}}
 									/>
 								</Link>
 							</li>

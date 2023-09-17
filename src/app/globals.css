@@ -19,28 +19,6 @@
 	}
 }
 
-li.slick-active > button > div {
-	@apply bg-yellow_1;
-}
-
-div.slick-dots ul li button::before {
-	content: none !important;
-}
-
-div.slick-dots ul li button {
-	outline-width: 2px;
-	border-radius: 1000px;
-	padding: 0;
-	width: min-content;
-	height: min-content;
-}
-
-div.slick-dots ul li button:focus-visible {
-	outline-width: 2px;
-	outline-style: solid;
-	outline-color: white;
-}
-
 .breadcrumbLink[aria-current]{
 	font-weight: bold;
 }
