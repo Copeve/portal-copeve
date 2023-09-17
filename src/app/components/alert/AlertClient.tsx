@@ -30,14 +30,14 @@ export const AlertClient = ({ alertData }: Props) => {
 			preventScroll={true}
 			shouldCloseOnOverlayClick={false}
 			overlayClassName={
-				'bg-black bg-opacity-50 dark:bg-opacity-50 dark:bg-white fixed inset-0'
+				'bg-black bg-opacity-50 dark:bg-opacity-50 dark:bg-white fixed inset-0 z-50'
 			}
 			className={
 				'absolute bottom-auto left-[50%] right-auto top-1/2 -mr-[50%] max-w-[95%] -translate-x-1/2 -translate-y-1/2 border-0 bg-transparent md:min-w-[400px] md:max-w-[760px]'
 			}
 			contentLabel="Alerta!"
 		>
-			<div className="flex w-full flex-col rounded border-2 border-yellow_1 bg-white p-2 pb-4 opacity-100 dark:border-white dark:bg-black">
+			<div className="z-50 flex w-full flex-col rounded border-2 border-yellow_1 bg-white p-2 pb-4 opacity-100 dark:border-white dark:bg-black">
 				<div className="flex justify-between border-b border-slate-500 px-4 pb-2">
 					<h1 className="text-lg font-semibold">Aviso</h1>
 					<button
