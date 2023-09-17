@@ -52,7 +52,14 @@ export default async function Home() {
 				{contestsData && (
 					<>
 						<Section title="Concurso Destaques">
-							<ContestBox data={contestsData} layout="1" />
+							<ContestBox
+								data={contestsData}
+								layout={contestsData.length === 1 ? '2' : '1'}
+								defaultValue={
+									contestsData.length === 1 &&
+									`item-${contestsData[0].id}`
+								}
+							/>
 							<Link
 								href="/concursos"
 								prefetch={false}
@@ -109,7 +116,6 @@ export default async function Home() {
 						</div>
 					</Section>
 				)}
-
 				<Spacer />
 			</div>
 		</main>
@@ -127,7 +133,11 @@ async function getContestsData() {
 			'fields[2]=data_fim',
 			'sort=publishedAt:desc'
 		],
-		fetchOptions: { cache: 'no-store' }
+		fetchOptions: {
+			next: {
+				revalidate: 60
+			}
+		}
 	});
 
 	if (error) return undefined;
@@ -145,7 +155,11 @@ async function getNewsData() {
 			'populate=imagem_noticia',
 			'sort=publishedAt:desc'
 		],
-		fetchOptions: { cache: 'no-store' }
+		fetchOptions: {
+			next: {
+				revalidate: 60
+			}
+		}
 	});
 
 	if (error) return undefined;
@@ -156,7 +170,11 @@ async function getNewsData() {
 async function getResultsData() {
 	const { data: resultsData, error } = await api<{ data: TResult[] }>({
 		url: '/resultados',
-		fetchOptions: { cache: 'no-store' }
+		fetchOptions: {
+			next: {
+				revalidate: 60
+			}
+		}
 	});
 
 	if (error) return undefined;

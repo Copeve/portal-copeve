@@ -8,7 +8,6 @@ import {
 	PageButton
 } from 'react-headless-pagination';
 import { ChevronLeft, ChevronRight } from '../Icons';
-import Link from 'next/link';
 
 type Props = {
 	length: number;

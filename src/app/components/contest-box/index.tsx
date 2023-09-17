@@ -65,18 +65,14 @@ function LayoutOne({ data }: { data: TContest[] }) {
 		);
 	};
 
-	const NewsLink = (props: { nome: string }) => (
+	const NewsLink = (props: { id: number }) => (
 		<div className="mt-3 flex items-center gap-2">
 			<Newspaper
 				className="h-8 w-8 fill-title_blue"
 				style={{ strokeWidth: 2 }}
 			/>
 			<Link
-				href={'concursos/1'}
-				as={`concursos/${props.nome
-					.replaceAll(' ', '_')
-					.replaceAll('/', '_')
-					.toLocaleLowerCase()}`}
+				href={`concursos/${props.id}`}
 				prefetch={false}
 				className="text-lg underline underline-offset-2 hover:text-title_blue"
 			>
@@ -90,10 +86,6 @@ function LayoutOne({ data }: { data: TContest[] }) {
 			<ArrowUpRight className="h-8 w-8 stroke-title_blue" />
 			<Link
 				href={`concursos/${props.id}`}
-				// as={`concursos/${props.nome
-				// 	.replaceAll('/', '_')
-				// 	.replaceAll(' ', '_')
-				// 	.toLocaleLowerCase()}`}
 				prefetch={false}
 				className="text-lg underline underline-offset-2 hover:text-title_blue"
 			>
@@ -151,7 +143,7 @@ function LayoutOne({ data }: { data: TContest[] }) {
 								formattedEndDate={formattedEndDate}
 							/>
 
-							<NewsLink nome={nome} />
+							<NewsLink id={id} />
 
 							<DetailsLink id={id} nome={nome} />
 						</div>
