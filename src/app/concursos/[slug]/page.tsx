@@ -27,6 +27,7 @@ import { groupByPublishedDate, groupFiles } from '../../../utils/group-by';
 import { sortByDate } from '../../../utils/sort-by';
 import { EmptySectionMessage } from './EmptySectionMessage';
 import { RawToMarkdown } from '../../components/react-markdown';
+import ScrollToTop from '../../components/scroll-to-top';
 
 type Props = {
 	params: { slug: string };
@@ -54,6 +55,7 @@ export default async function DetalhesConcursos({ params }: Props) {
 
 	return (
 		<main className="mx-auto w-full max-w-web">
+			<ScrollToTop />
 			<PageTitle title={contestsData.attributes.nome} className="mb-14" />
 
 			<PeriodStates
@@ -157,8 +159,8 @@ export default async function DetalhesConcursos({ params }: Props) {
 								}
 							);
 
-							const titleFirstCapital =
-								title.at(0).toUpperCase() + title.substring(1);
+							const titleFirstCapital
+								= title.at(0).toUpperCase() + title.substring(1);
 
 							return (
 								<AccordionItem key={key} value={key}>
@@ -218,8 +220,8 @@ export default async function DetalhesConcursos({ params }: Props) {
 								}
 							);
 
-							const titleFirstCapital =
-								title.at(0).toUpperCase() + title.substring(1);
+							const titleFirstCapital
+								= title.at(0).toUpperCase() + title.substring(1);
 
 							return (
 								<AccordionItem key={key} value={key}>

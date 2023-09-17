@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { PageTitle } from '../components/page-title';
 import { navButtons } from '../../configs/main-nav-menu';
+import ScrollToTop from '../components/scroll-to-top';
 
 export default function MapaDoSite() {
 	return (
 		<div>
+			<ScrollToTop />
 			<PageTitle title="Mapa do site" />
 
 			<ul className="mt-8">

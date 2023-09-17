@@ -4,6 +4,7 @@ import { ptBR } from 'date-fns/locale';
 import { api } from '../../api/api';
 import { Spacer } from '../components/spacer';
 import { RawToMarkdown } from '../components/react-markdown';
+import ScrollToTop from '../components/scroll-to-top';
 
 type SearchResult = {
 	noticias: {
@@ -43,6 +44,8 @@ export default async function SearchPage({ searchParams }: Props) {
 
 	return (
 		<main>
+			<ScrollToTop />
+
 			<span>
 				Resultados para busca: <strong>{term}</strong>
 			</span>

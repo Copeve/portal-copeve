@@ -24,7 +24,8 @@ export const SideBar = () => {
 					return (
 						<NavigationMenu.Item key={item.id}>
 							<NavButton
-								prefetch={false}
+								prefetch={true}
+								scroll={false}
 								key={item.id}
 								href={item.link}
 								text={item.title}

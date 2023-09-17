@@ -5,6 +5,7 @@ import { api } from '../../api/api';
 import { TStrapiImage, TApiMeta } from '../../dto/strapi.dto';
 import { notFound } from 'next/navigation';
 import { Pagination } from '../components/pagination';
+import ScrollToTop from '../components/scroll-to-top';
 
 type TContest = {
 	id: number;
@@ -21,8 +22,8 @@ type Props = {
 };
 
 const Concursos = async ({ searchParams }: Props) => {
-	const page =
-		typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
+	const page
+		= typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
 
 	const data = await Promise.all([getContestsData(page)]);
 
@@ -32,6 +33,7 @@ const Concursos = async ({ searchParams }: Props) => {
 
 	return (
 		<main>
+			<ScrollToTop />
 			<PageTitle title="Concursos em Andamento" className="mb-14" />
 
 			{contestsData.length > 0 ? (

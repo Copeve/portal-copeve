@@ -7,6 +7,7 @@ import { PageTitle } from '../components/page-title';
 import { api } from '../../api/api';
 import { TApiMeta } from '../../dto/strapi.dto';
 import { Pagination } from '../components/pagination';
+import ScrollToTop from '../components/scroll-to-top';
 
 type TNews = {
 	id: number;
@@ -30,6 +31,7 @@ export default async function NewsList({ searchParams }: Props) {
 
 	return (
 		<main>
+			<ScrollToTop />
 			<PageTitle title="Notícias" className="pb-4" />
 
 			{data.map(({ id, attributes: attrs }) => (

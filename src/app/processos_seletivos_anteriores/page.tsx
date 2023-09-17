@@ -1,5 +1,6 @@
 import { api } from '../../api/api';
 import { TStrapiImage } from '../../dto/strapi.dto';
+import ScrollToTop from '../components/scroll-to-top';
 import { PreviousContestsClientSide } from './client-side';
 
 export type TContestGroupData = {
@@ -35,7 +36,12 @@ export default async function PreviousContests({ searchParams }: Props) {
 
 	const groups = await getGroupsData();
 	const contests = await getContestsData(groupId);
-	return <PreviousContestsClientSide groups={groups} contests={contests} />;
+	return (
+		<>
+			<ScrollToTop />
+			<PreviousContestsClientSide groups={groups} contests={contests} />
+		</>
+	);
 }
 
 const getGroupsData = async () => {

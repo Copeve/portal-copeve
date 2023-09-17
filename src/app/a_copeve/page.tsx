@@ -1,5 +1,6 @@
 import { api } from '../../api/api';
 import { PageTitle } from '../components/page-title';
+import ScrollToTop from '../components/scroll-to-top';
 import { Spacer } from '../components/spacer';
 
 type TAboutUsData = {
@@ -26,6 +27,8 @@ export default async function Copeve() {
 
 	return (
 		<main className="flex flex-col gap-16">
+			<ScrollToTop />
+
 			<PageTitle title="A COPEVE" />
 
 			<Section title="História" text={data.attributes.historia} />

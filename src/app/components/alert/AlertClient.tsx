@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import Modal from 'react-modal';
+import { useLockedBody } from 'usehooks-ts';
 import { RawToMarkdown } from '../react-markdown';
 import { TAlert } from './index';
 import Link from 'next/link';
@@ -17,6 +18,8 @@ export const AlertClient = ({ alertData }: Props) => {
 			setIsOpen(true);
 		}
 	}, [alertData]);
+
+	useLockedBody(modalIsOpen, 'root');
 
 	const closeAlert = useCallback(() => {
 		sessionStorage.setItem(`alert-${alertData.id}`, 'dismiss');
