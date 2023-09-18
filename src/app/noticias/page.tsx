@@ -25,22 +25,22 @@ type Props = {
 };
 
 export default async function NewsList({ searchParams }: Props) {
-	const page =
-		typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
+	const page
+		= typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
 
 	const { data, meta } = await getData(page);
 
 	return (
 		<main>
 			<ScrollToTop />
-			<PageTitle title="Notícias" className="pb-4" />
+			<PageTitle title="Notícias" className="pb-12" />
 
 			{data.map(({ id, attributes: attrs }) => (
 				<Link
 					key={String(id)}
 					prefetch={false}
 					href={`noticias/${id}`}
-					className="group flex w-full flex-col border-b pb-4 pt-2"
+					className="group flex w-full flex-col border-b pb-6 pt-4"
 				>
 					<time
 						className={'mb-2 text-lg font-bold text-title_blue'}
