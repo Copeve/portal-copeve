@@ -114,7 +114,10 @@ function LayoutOne({ data }: { data: TContest[] }) {
 						key={`item-${id}`}
 						className="group flex flex-col rounded border border-title_blue p-4 pb-10 dark:border-white"
 					>
-						<div className="flex w-full flex-1 flex-col items-center gap-4 pb-4">
+						<Link
+							href={`concursos/${id}`}
+							className="flex w-full flex-1 flex-col items-center gap-4 pb-4"
+						>
 							<div className="flex h-52 w-full items-center justify-center overflow-hidden rounded bg-slate-200">
 								{logo.data ? (
 									<div className="flex h-full w-full items-center justify-center">
@@ -138,7 +141,7 @@ function LayoutOne({ data }: { data: TContest[] }) {
 							<h3 className="line-clamp-2 self-start text-left text-xl font-semibold leading-7">
 								{nome}
 							</h3>
-						</div>
+						</Link>
 
 						<div className="mt-6 pl-2">
 							<Period
@@ -219,11 +222,7 @@ function LayoutTwo({
 									style={{ strokeWidth: 2 }}
 								/>
 								<Link
-									href={'/noticias'}
-									as={`concursos/${attrs.nome
-										.replaceAll(' ', '_')
-										.replaceAll('/', '_')
-										.toLocaleLowerCase()}`}
+									href={`concursos/${id}`}
 									prefetch={false}
 									className="text-lg underline underline-offset-2 hover:text-title_blue"
 								>
@@ -235,10 +234,6 @@ function LayoutTwo({
 								<ArrowUpRight className="h-8 w-8 stroke-title_blue" />{' '}
 								<Link
 									href={{ pathname: `concursos/${id}` }}
-									// as={`concursos/${attrs.nome
-									// 	.replaceAll(' ', '_')
-									// 	.replaceAll('/', '_')
-									// 	.toLocaleLowerCase()}`}
 									prefetch={false}
 									className="text-lg underline underline-offset-2 hover:text-title_blue"
 								>

@@ -137,9 +137,10 @@ export default async function DetalhesConcursos({ params }: Props) {
 
 			<Section
 				title="Notícias"
-				className="mt-8"
+				className="relative mt-8"
 				titleClassName="text-2xl text-gray_text mb-4"
 			>
+				<div id={'noticias'} className="absolute -top-28 h-2 w-2" />
 				{groupedNewsSortedKeys.length === 0 ? (
 					<EmptySectionMessage sectionLabel={'notícias'} />
 				) : (
@@ -159,8 +160,8 @@ export default async function DetalhesConcursos({ params }: Props) {
 								}
 							);
 
-							const titleFirstCapital
-								= title.at(0).toUpperCase() + title.substring(1);
+							const titleFirstCapital =
+								title.at(0).toUpperCase() + title.substring(1);
 
 							return (
 								<AccordionItem key={key} value={key}>
@@ -198,9 +199,10 @@ export default async function DetalhesConcursos({ params }: Props) {
 
 			<Section
 				title="Eventos"
-				className="mt-8"
+				className="relative mt-8"
 				titleClassName="text-2xl text-gray_text mb-4"
 			>
+				<div id={'eventos'} className="absolute -top-28 h-2 w-2" />
 				{groupedEventsSortedKeys.length === 0 ? (
 					<EmptySectionMessage sectionLabel={'eventos'} />
 				) : (
@@ -220,8 +222,8 @@ export default async function DetalhesConcursos({ params }: Props) {
 								}
 							);
 
-							const titleFirstCapital
-								= title.at(0).toUpperCase() + title.substring(1);
+							const titleFirstCapital =
+								title.at(0).toUpperCase() + title.substring(1);
 
 							return (
 								<AccordionItem key={key} value={key}>
