@@ -18,9 +18,9 @@ type Props = {
 export function PeriodStates({ className, textClassName, period }: Props) {
 	const formatOptions = { locale: ptBR };
 	let outOfDateMessage = '';
-	const toStartDate =
-		period?.startDate && toDate(period.startDate, formatOptions);
-	const toEndDate = period?.endDate && toDate(period.endDate, formatOptions);
+	const toStartDate
+		= period?.startDate && toDate(period.startDate.split('T')[0]);
+	const toEndDate = period?.endDate && toDate(period.endDate.split('T')[0]);
 
 	if (toStartDate) {
 		if (!isAfter(new Date(), toStartDate)) {

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
+import { toDate } from 'date-fns-tz';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../components/spacer';
 import { PageTitle } from '../components/page-title';
@@ -44,13 +45,17 @@ export default async function NewsList({ searchParams }: Props) {
 					<time
 						className={'mb-2 text-lg font-bold text-title_blue'}
 						dateTime={format(
-							new Date(attrs.publishedAt),
+							toDate(attrs.publishedAt.split('T')[0]),
 							'yyyy-MM-dd'
 						)}
 					>
-						{format(new Date(attrs.publishedAt), 'dd LLL yyyy', {
-							locale: ptBR
-						})}
+						{format(
+							toDate(attrs.publishedAt.split('T')[0]),
+							'dd LLL yyyy',
+							{
+								locale: ptBR
+							}
+						)}
 					</time>
 
 					<h2 className="mb-2 text-lg font-bold leading-5 transition-colors group-hover:text-title_blue">

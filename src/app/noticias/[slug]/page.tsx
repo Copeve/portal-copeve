@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
+import { toDate } from 'date-fns-tz';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../../components/spacer';
 import { PageTitle } from '../../components/page-title';
@@ -29,8 +30,9 @@ export default async function NewsContent({ params }: Props) {
 	const { attributes: data } = response;
 
 	const { imagem_noticia } = data;
-	const displayedImage
-		= imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
+	const displayedImage =
+		imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
+	const newsDate = toDate(data.publishedAt.split('T')[0]);
 
 	return (
 		<main>
@@ -38,11 +40,9 @@ export default async function NewsContent({ params }: Props) {
 			<PageTitle title={data.titulo} />
 
 			<p className="pb-16 pt-4 text-lg">
-				<time
-					dateTime={format(new Date(data.publishedAt), 'yyyy-MM-dd')}
-				>
+				<time dateTime={format(newsDate, 'yyyy-MM-dd')}>
 					{format(
-						new Date(data.publishedAt),
+						newsDate,
 						"EEEE, dd 'de' MMMM 'de' yyyy, 'às' HH'h'mm",
 						{
 							locale: ptBR

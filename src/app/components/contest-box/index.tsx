@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import { toDate } from 'date-fns-tz';
 import { PeriodStates } from '../../concursos/[slug]/PeriodStates';
 import { ArrowDropright, ArrowUpRight, FileText, Newspaper } from '../Icons';
 import {
@@ -101,10 +102,12 @@ function LayoutOne({ data }: { data: TContest[] }) {
 				const displayedImg = logo.data?.attributes.formats.medium;
 
 				const formattedStartDate =
-					data_inicio && format(new Date(data_inicio), 'dd/MM/yyyy');
+					data_inicio
+					&& format(toDate(data_inicio.split('T')[0]), 'dd/MM/yyyy');
 
 				const formattedEndDate
-					= data_fim && format(new Date(data_fim), 'dd/MM/yyyy');
+					= data_fim
+					&& format(toDate(data_fim.split('T')[0]), 'dd/MM/yyyy');
 
 				return (
 					<li

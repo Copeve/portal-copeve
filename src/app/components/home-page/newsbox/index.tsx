@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import { toDate } from 'date-fns-tz';
+import { ptBR } from 'date-fns/locale';
 import { Newspaper } from '../../Icons';
 import { TStrapiImage } from '../../../../dto/strapi.dto';
 
@@ -54,7 +56,9 @@ export function NewsBox({ data }: Props) {
 				<h2 className="line-clamp-4 text-lg font-bold">{titulo}</h2>
 
 				<span className="pt-3 opacity-60">
-					{format(new Date(publishedAt), 'dd LLL yy')}
+					{format(toDate(publishedAt.split('T')[0]), 'dd LLL yy', {
+						locale: ptBR
+					})}
 				</span>
 			</div>
 		</Link>
