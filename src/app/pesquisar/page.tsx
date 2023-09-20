@@ -1,10 +1,12 @@
 import Link from 'next/link';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import { HiSearch } from 'react-icons/hi';
 import { api } from '../../api/api';
 import { Spacer } from '../components/spacer';
 import { RawToMarkdown } from '../components/react-markdown';
 import ScrollToTop from '../components/scroll-to-top';
+import { twJoin } from 'tailwind-merge';
 
 type SearchResult = {
 	noticias: {
@@ -43,16 +45,35 @@ export default async function SearchPage({ searchParams }: Props) {
 	const hasNoResults = concursos.length === 0 && noticias.length === 0;
 
 	return (
-		<main>
+		<main className="flex flex-col">
 			<ScrollToTop />
 
-			<span>
+			<form
+				action={'/pesquisar'}
+				className="relative mb-8 block h-min w-full max-w-xl self-center lg:hidden"
+			>
+				<input
+					type="search"
+					name="termo"
+					placeholder="Buscar por"
+					className="min-h-[40px] w-full rounded-full border py-3 pl-5 pr-16 text-sm placeholder:text-lg"
+					autoFocus
+				/>
+
+				<button className="absolute right-4 top-0 h-full" type="submit">
+					<HiSearch className="h-[30px] w-[30px] fill-icon_blue" />
+				</button>
+			</form>
+
+			<span className={twJoin(!term && 'hidden')}>
 				Resultados para busca: <strong>{term}</strong>
 			</span>
 
 			{hasNoResults ? (
 				<div className="mt-16 flex justify-center">
-					<p className="text-lg">Nenhum resultado encontrado</p>
+					<p className="text-lg opacity-75">
+						Nenhum resultado encontrado
+					</p>
 				</div>
 			) : (
 				<ul className="mt-16">
@@ -156,7 +177,7 @@ function ContentTag({ label }: { label: 'Concurso' | 'Notícia' }) {
 
 	return (
 		<span
-			className={`rounded ${color} px-2 py-1 text-sm text-white dark:bg-white dark:text-black`}
+			className={`rounded ${color} mb-2 px-2 py-1 text-sm text-white dark:bg-white dark:text-black`}
 		>
 			{label}
 		</span>

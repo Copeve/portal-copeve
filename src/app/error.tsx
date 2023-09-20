@@ -12,12 +12,12 @@ export default function Error({ error, reset }: Props) {
 	}, [error]);
 
 	return (
-		<div className="mt-10 flex flex-col justify-center">
-			<h2 className="text-center text-5xl">
+		<div className="my-16 flex flex-col justify-center">
+			<h2 className="text-center text-3xl">
 				Parece que algo deu errado!
 			</h2>
 
-			<p className="mt-4 text-center text-xl">
+			<p className="mt-4 text-center text-lg">
 				Tente recarregar a página{' '}
 				<button
 					className="text-title_blue underline underline-offset-2"
