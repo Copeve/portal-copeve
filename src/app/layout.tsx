@@ -16,6 +16,7 @@ import { Breadcrumbs } from './components/breadcrumbs';
 import { TawkMessengerReact } from './components/tawk-messenger';
 import { Alert } from './components/alert';
 import { api } from '../api/api';
+import { YoutubeButton } from './components/social-medias/youtube';
 
 const inter = Open_Sans({ subsets: ['latin'] });
 
@@ -87,56 +88,73 @@ export default function RootLayout({
 }
 
 async function SocialMediasSection({ className }: { className?: string }) {
-	const { data } = await api<{
+	const { data, error } = await api<{
 		data: {
-			instagram: string | null;
-			twitter: string | null;
-			facebook: string | null;
-			tiktok: string | null;
+			id: string;
+			attributes: {
+				instagram: string | null;
+				twitter: string | null;
+				facebook: string | null;
+				tiktok: string | null;
+				site: string | null;
+				youtube: string | null;
+			};
 		};
 	}>({
 		url: '/redes-social',
 		fetchOptions: {
 			next: {
-				revalidate: 60 * 60 // revalida em 1 hora
+				revalidate: 60 // revalida em 1 minuto
 			}
 		}
 	});
 
+	if (error) return <></>;
+
+	const { attributes } = data;
+
 	return (
 		<div
 			className={twMerge(
-				'mt-10 flex justify-between gap-4 border-t border-icon_blue px-2 pt-8 dark:border-white',
+				'mt-10 flex justify-between gap-4 border-t border-icon_blue pt-4 dark:border-white',
 				className
 			)}
 		>
-			{data.instagram && (
+			{attributes.youtube && (
+				<YoutubeButton
+					link={attributes.youtube}
+					className="h-10 w-10 border-icon_blue dark:border-white"
+					iconColor="fill-icon_blue dark:fill-white"
+				/>
+			)}
+
+			{attributes.instagram && (
 				<InstagramButton
-					link={data.instagram}
+					link={attributes.instagram}
 					className="h-10 w-10 border-icon_blue dark:border-white"
 					iconColor="fill-icon_blue dark:fill-white"
 				/>
 			)}
 
-			{data.twitter && (
+			{attributes.twitter && (
 				<TwitterButton
-					link={data.twitter}
+					link={attributes.twitter}
 					className="h-10 w-10 border-icon_blue dark:border-white"
 					iconColor="fill-icon_blue dark:fill-white"
 				/>
 			)}
 
-			{data.facebook && (
+			{attributes.facebook && (
 				<FacebookButton
-					link={data.facebook}
+					link={attributes.facebook}
 					className="h-10 w-10 border-icon_blue dark:border-white"
 					iconColor="fill-icon_blue dark:fill-white"
 				/>
 			)}
 
-			{data.tiktok && (
+			{attributes.tiktok && (
 				<TiktokButton
-					link={data.tiktok}
+					link={attributes.tiktok}
 					className="h-10 w-10 border-icon_blue dark:border-white"
 					iconColor="fill-icon_blue dark:fill-white"
 				/>
