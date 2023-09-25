@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { Separator } from '../separator';
 import { RawToMarkdown } from '../react-markdown';
 import { api } from '../../../api/api';
+import Link from 'next/link';
 
 type TFooterData = {
 	id: 1;
@@ -59,6 +60,13 @@ export async function Footer() {
 						{' · '}
 						{footerData.attributes.telefone}
 					</p>
+
+					<Link
+						className={'self-center underline'}
+						href={'/politica_de_privacidade'}
+					>
+						política de privacidade
+					</Link>
 
 					<div className="mb-6 text-center text-sm">
 						<RawToMarkdown

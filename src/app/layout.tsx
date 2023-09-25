@@ -17,6 +17,7 @@ import { TawkMessengerReact } from './components/tawk-messenger';
 import { Alert } from './components/alert';
 import { api } from '../api/api';
 import { YoutubeButton } from './components/social-medias/youtube';
+import { CookiesBanner } from './components/cookies-banner';
 
 const inter = Open_Sans({ subsets: ['latin'] });
 
@@ -47,6 +48,8 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				<Alert />
+
+				<CookiesBanner />
 
 				<TawkMessengerReact
 					propertyId="64dea69394cf5d49dc6b0dfe"
