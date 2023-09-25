@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { format } from 'date-fns';
-import { toDate } from 'date-fns-tz';
+import { toDate, format } from 'date-fns-tz';
 import { ptBR } from 'date-fns/locale';
 import { Spacer } from '../../components/spacer';
 import { PageTitle } from '../../components/page-title';
@@ -32,7 +31,7 @@ export default async function NewsContent({ params }: Props) {
 	const { imagem_noticia } = data;
 	const displayedImage =
 		imagem_noticia.data && imagem_noticia.data.attributes.formats.large;
-	const newsDate = toDate(data.publishedAt.split('T')[0]);
+	const newsDate = toDate(data.publishedAt);
 
 	return (
 		<main>
