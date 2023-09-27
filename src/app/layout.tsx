@@ -18,6 +18,7 @@ import { Alert } from './components/alert';
 import { api } from '../api/api';
 import { YoutubeButton } from './components/social-medias/youtube';
 import { CookiesBanner } from './components/cookies-banner';
+import Script from 'next/script';
 
 const inter = Open_Sans({ subsets: ['latin'] });
 
@@ -34,17 +35,17 @@ export default function RootLayout({
 	return (
 		<html lang="pt-BR">
 			<head>
-				<link
-					rel="stylesheet"
-					type="text/css"
-					charSet="UTF-8"
-					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+				<Script
+					async
+					src="https://www.googletagmanager.com/gtag/js?id=G-05ZKQMNWEV"
 				/>
-				<link
-					rel="stylesheet"
-					type="text/css"
-					href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-				/>
+				<Script id="google-analytics">
+					{`window.dataLayer = window.dataLayer || [];
+					  function gtag(){dataLayer.push(arguments);}
+					  gtag('js', new Date());
+				
+					  gtag('config', 'G-05ZKQMNWEV');`}
+				</Script>
 			</head>
 			<body className={inter.className}>
 				<Alert />
