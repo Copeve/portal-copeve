@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { format } from 'date-fns';
 import { toDate } from 'date-fns-tz';
 import { PeriodStates } from '../../concursos/[slug]/PeriodStates';
-import { ArrowDropright, ArrowUpRight, FileText, Newspaper } from '../Icons';
+import { ArrowDropright, ArrowUpRight, FileText } from '../Icons';
 import {
 	Accordion,
 	AccordionContent,
@@ -65,22 +65,6 @@ function LayoutOne({ data }: { data: TContest[] }) {
 			</div>
 		);
 	};
-
-	const NewsLink = (props: { id: number }) => (
-		<div className="mt-3 flex items-center gap-2">
-			<Newspaper
-				className="h-8 w-8 fill-title_blue"
-				style={{ strokeWidth: 2 }}
-			/>
-			<Link
-				href={`concursos/${props.id}`}
-				prefetch={false}
-				className="text-lg underline underline-offset-2 hover:text-title_blue"
-			>
-				Notícias
-			</Link>
-		</div>
-	);
 
 	const DetailsLink = (props: { id: number; nome: string }) => (
 		<div className="mt-3 flex items-center gap-2">
@@ -149,8 +133,6 @@ function LayoutOne({ data }: { data: TContest[] }) {
 								formattedEndDate={formattedEndDate}
 							/>
 
-							<NewsLink id={id} />
-
 							<DetailsLink id={id} nome={nome} />
 						</div>
 					</li>
@@ -215,20 +197,6 @@ function LayoutTwo({
 								className="mb-2"
 								textClassName="text-lg"
 							/>
-
-							<div className="flex items-center gap-4">
-								<Newspaper
-									className="h-8 w-8 fill-title_blue"
-									style={{ strokeWidth: 2 }}
-								/>
-								<Link
-									href={`concursos/${id}`}
-									prefetch={false}
-									className="text-lg underline underline-offset-2 hover:text-title_blue"
-								>
-									Notícias
-								</Link>
-							</div>
 
 							<div className="mt-2 flex items-center gap-4">
 								<ArrowUpRight className="h-8 w-8 stroke-title_blue" />{' '}

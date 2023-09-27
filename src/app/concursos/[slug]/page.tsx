@@ -70,16 +70,31 @@ export default async function DetalhesConcursos({ params }: Props) {
 				}}
 			/>
 
-			<div className="flex items-center gap-4 pl-[3px]">
-				<ArrowUpRight className="h-[26px] w-[26px] rounded-full border-2 border-title_blue stroke-title_blue" />{' '}
-				<Link
-					href={contestsData.attributes.link_area_candidato || '/404'}
-					target="_blank"
-					className="text-xl underline underline-offset-2 hover:text-title_blue"
-				>
-					Área do Candidato
-				</Link>
-			</div>
+			{contestsData.attributes.link_area_candidato && (
+				<div className="flex items-center gap-4 pl-[3px]">
+					<ArrowUpRight className="h-[26px] w-[26px] rounded-full border-2 border-title_blue stroke-title_blue" />{' '}
+					<Link
+						href={contestsData.attributes.link_area_candidato}
+						target="_blank"
+						className="text-xl underline underline-offset-2 hover:text-title_blue"
+					>
+						Área do Candidato
+					</Link>
+				</div>
+			)}
+
+			{contestsData.attributes.link_incricao && (
+				<div className="mt-6 flex items-center gap-4 pl-[3px]">
+					<ArrowUpRight className="h-[26px] w-[26px] rounded-full border-2 border-title_blue stroke-title_blue" />{' '}
+					<Link
+						href={contestsData.attributes.link_incricao}
+						target="_blank"
+						className="text-xl underline underline-offset-2 hover:text-title_blue"
+					>
+						Inscrição
+					</Link>
+				</div>
+			)}
 
 			<Spacer />
 
