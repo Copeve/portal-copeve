@@ -30,7 +30,7 @@ export async function Footer() {
 			<div className="w-[1080px] max-w-full text-white">
 				<div className="mb-8 flex flex-wrap items-center justify-center gap-14 px-4 pb-6 pt-12 text-inherit md:justify-between">
 					<Image
-						src={'https://ufmg.br/static/logo-ufmg.svg'}
+						src={'/logo/logo-ufmg.svg'}
 						width={431}
 						height={185}
 						alt={'Lôgo da UFMG'}

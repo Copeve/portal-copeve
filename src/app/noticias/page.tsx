@@ -25,8 +25,8 @@ type Props = {
 };
 
 export default async function NewsList({ searchParams }: Props) {
-	const page
-		= typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
+	const page =
+		typeof searchParams.pagina === 'string' ? searchParams.pagina : '1';
 
 	const { data, meta } = await getData(page);
 
@@ -84,6 +84,7 @@ async function getData(page: string) {
 		url: '/noticias',
 		strapiQueryParams: [
 			'pagination[pageSize]=10',
+			'filters[tipo_noticia][id][$not]=1',
 			`pagination[page]=${page}`,
 			'sort=publishedAt:desc'
 		],
