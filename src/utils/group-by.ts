@@ -19,6 +19,26 @@ export function groupByPublishedDate<
 	return grouped;
 }
 
+/** Agrupa um array de dados da API do Strapi pela propriedade 'data' quando possui parametro de data */
+export function groupByPropDate<
+	T extends { attributes: { data: string } }
+>(data: T[]) {
+	const grouped: Record<string, T[]> = {};
+
+	data.forEach((item) => {
+		const key = item.attributes.data.substring(0, 7);
+
+		if (grouped[key]) {
+			grouped[key].push(item);
+		} else {
+			grouped[key] = [item];
+		}
+	});
+
+	return grouped;
+}
+
+
 type TContestGroupedFiles = {
 	tipo_arquivo: TContestFileData['attributes']['tipo_arquivo'];
 	arquivos: (TContestFileData['attributes']['arquivo'] & {

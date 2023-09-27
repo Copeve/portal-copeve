@@ -23,7 +23,7 @@ import {
 	TContestNews
 } from '../../../dto/contest-details.dto';
 import { CalendarNumber } from '../../components/calendar-day';
-import { groupByPublishedDate, groupFiles } from '../../../utils/group-by';
+import { groupByPublishedDate, groupFiles, groupByPropDate } from '../../../utils/group-by';
 import { sortByDate } from '../../../utils/sort-by';
 import { EmptySectionMessage } from './EmptySectionMessage';
 import { RawToMarkdown } from '../../components/react-markdown';
@@ -48,9 +48,9 @@ export default async function DetalhesConcursos({ params }: Props) {
 	const groupedNewsSortedKeys = Object.keys(groupedNews).sort((a, b) =>
 		sortByDate(new Date(`${a}-15`), new Date(`${b}-15`))
 	);
-	const groupedEvents = groupByPublishedDate(contestEvents);
+	const groupedEvents = groupByPropDate(contestEvents);
 	const groupedEventsSortedKeys = Object.keys(groupedEvents).sort((a, b) =>
-		sortByDate(new Date(`${a}-15`), new Date(`${b}-15`))
+		sortByDate(new Date(`${a}-15`), new Date(`${b}-15`), 'asc')
 	);
 
 	return (
@@ -212,7 +212,9 @@ export default async function DetalhesConcursos({ params }: Props) {
 						defaultValue={groupedEventsSortedKeys[0]}
 					>
 						{groupedEventsSortedKeys.map((key) => {
-							const events = groupedEvents[key];
+							let events = groupedEvents[key];
+
+							events = events.sort((a, b) => sortByDate(new Date(a.attributes.data), new Date(b.attributes.data), 'asc'));
 
 							const title = format(
 								new Date(`${key}-15`),
@@ -239,7 +241,7 @@ export default async function DetalhesConcursos({ params }: Props) {
 															key={`event-${id}`}
 														>
 															<CalendarNumber
-																day={attributes.publishedAt.substring(
+																day={attributes.data.substring(
 																	8,
 																	10
 																)}
