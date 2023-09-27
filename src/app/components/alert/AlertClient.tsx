@@ -1,10 +1,10 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
+import Link from 'next/link';
 import Modal from 'react-modal';
 import { useLockedBody } from 'usehooks-ts';
 import { RawToMarkdown } from '../react-markdown';
 import { TAlert } from './index';
-import Link from 'next/link';
 
 type Props = {
 	alertData: TAlert;
@@ -14,7 +14,11 @@ export const AlertClient = ({ alertData }: Props) => {
 	const [modalIsOpen, setIsOpen] = useState(false);
 
 	useEffect(() => {
-		if (sessionStorage.getItem(`alert-${alertData.id}`) !== 'dismiss') {
+		if (
+			sessionStorage.getItem(
+				`alert-${alertData.attributes.publishedAt}`
+			) !== 'dismiss'
+		) {
 			setIsOpen(true);
 		}
 	}, [alertData]);
@@ -22,7 +26,10 @@ export const AlertClient = ({ alertData }: Props) => {
 	useLockedBody(modalIsOpen, 'root');
 
 	const closeAlert = useCallback(() => {
-		sessionStorage.setItem(`alert-${alertData.id}`, 'dismiss');
+		sessionStorage.setItem(
+			`alert-${alertData.attributes.publishedAt}`,
+			'dismiss'
+		);
 		setIsOpen(false);
 	}, [alertData]);
 

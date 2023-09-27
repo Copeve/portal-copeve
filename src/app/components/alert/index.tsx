@@ -6,6 +6,7 @@ export type TAlert = {
 	attributes: {
 		alerta: string;
 		url_saiba_mais: string | null;
+		publishedAt: string;
 	};
 };
 
