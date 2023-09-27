@@ -23,11 +23,16 @@ import {
 	TContestNews
 } from '../../../dto/contest-details.dto';
 import { CalendarNumber } from '../../components/calendar-day';
-import { groupByPublishedDate, groupFiles, groupByPropDate } from '../../../utils/group-by';
+import {
+	groupByPublishedDate,
+	groupFiles,
+	groupByPropDate
+} from '../../../utils/group-by';
 import { sortByDate } from '../../../utils/sort-by';
 import { EmptySectionMessage } from './EmptySectionMessage';
 import { RawToMarkdown } from '../../components/react-markdown';
 import ScrollToTop from '../../components/scroll-to-top';
+import { firstLetterCapital } from '../../../utils/string-format';
 
 type Props = {
 	params: { slug: string };
@@ -160,8 +165,7 @@ export default async function DetalhesConcursos({ params }: Props) {
 								}
 							);
 
-							const titleFirstCapital =
-								title.at(0).toUpperCase() + title.substring(1);
+							const titleFirstCapital = firstLetterCapital(title);
 
 							return (
 								<AccordionItem key={key} value={key}>
@@ -214,7 +218,13 @@ export default async function DetalhesConcursos({ params }: Props) {
 						{groupedEventsSortedKeys.map((key) => {
 							let events = groupedEvents[key];
 
-							events = events.sort((a, b) => sortByDate(new Date(a.attributes.data), new Date(b.attributes.data), 'asc'));
+							events = events.sort((a, b) =>
+								sortByDate(
+									new Date(a.attributes.data),
+									new Date(b.attributes.data),
+									'asc'
+								)
+							);
 
 							const title = format(
 								new Date(`${key}-15`),
@@ -224,13 +234,10 @@ export default async function DetalhesConcursos({ params }: Props) {
 								}
 							);
 
-							const titleFirstCapital =
-								title.at(0).toUpperCase() + title.substring(1);
-
 							return (
 								<AccordionItem key={key} value={key}>
 									<AccordionTrigger>
-										{titleFirstCapital}
+										{firstLetterCapital(title)}
 									</AccordionTrigger>
 									<AccordionContent>
 										<LinksDocList childrenClassName="hover:no-underline hover:cursor-default hover:brightness-100 border-b pb-4 gap-4">
@@ -249,11 +256,23 @@ export default async function DetalhesConcursos({ params }: Props) {
 
 															<div className="h-8 min-w-[2px] bg-title_blue dark:bg-white"></div>
 
-															<RawToMarkdown
-																text={
-																	attributes.observacao
-																}
-															/>
+															<div>
+																<h3 className="text-lg font-semibold">
+																	{firstLetterCapital(
+																		attributes
+																			.tipo_calendario
+																			.data
+																			.attributes
+																			.nome
+																	)}
+																</h3>
+																<RawToMarkdown
+																	text={
+																		attributes.observacao
+																	}
+																	className="text-sm"
+																/>
+															</div>
 														</div>
 													);
 												}
