@@ -34,5 +34,10 @@ export const navButtons: NavButtons[] = [
 		id: '7',
 		link: 'https://ufmg.br/',
 		title: 'A UFMG'
+	},
+	{
+		id: '8',
+		link: '/trabalhe_conosco',
+		title: 'Trabalhe Conosco'
 	}
 ];
