@@ -21,7 +21,7 @@ const SideMenuMobile = (): React.ReactElement => {
 				<Dialog.Portal>
 					<Dialog.Overlay className="fixed inset-0 top-0 bg-black opacity-0 transition-opacity data-[state=open]:opacity-50 lg:hidden" />
 
-					<Dialog.Content className="fixed bottom-0 left-0 top-[100px] bg-secondary focus:outline-none data-[state=closed]:animate-slideOut data-[state=open]:animate-slideIn lg:hidden">
+					<Dialog.Content className="fixed bottom-0 left-0 top-[100px] z-50 bg-secondary focus:outline-none data-[state=closed]:animate-slideOut data-[state=open]:animate-slideIn lg:hidden">
 						<ScrollArea.Root
 							scrollHideDelay={200}
 							className="h-full w-full overflow-hidden"

@@ -21,7 +21,7 @@ const LandingSlider = async () => {
 		strapiQueryParams: ['populate=*'],
 		fetchOptions: {
 			next: {
-				revalidate: 60 * 60 * 24 //24 horas
+				revalidate: 60 * 60 //1 horas
 			}
 		}
 	});
