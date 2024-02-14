@@ -38,7 +38,7 @@ export function NewsBox({ data }: Props) {
 						height={displayedImg.height}
 						alt={newsImage.attributes.alternativeText}
 						className={
-							'min-h-full min-w-full self-center object-cover transition-transform duration-500 group-hover:scale-110'
+							'min-h-full min-w-full self-center rounded-md object-cover transition-transform duration-500 group-hover:scale-110'
 						}
 					/>
 				) : (
